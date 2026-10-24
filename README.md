@@ -1,0 +1,10 @@
+# qkix.github.io
+
+Static site for **qkix** games, served by GitHub Pages at <https://qkix.github.io>.
+
+- `index.html` – game list
+- `steer-clear/privacy/` – Steer Clear privacy policy (source text: `docs/privacy-policy.md`
+  in the steer-clear repo – keep both in sync)
+- `app-ads.txt` – to be added once the AdMob publisher ID exists
+
+Plain HTML + `style.css`, no build step (`.nojekyll`).
