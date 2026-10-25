@@ -9,4 +9,4 @@ Static site for **qkix** games, served by GitHub Pages at <https://qkix.eu> (cus
 
 Plain HTML + `style.css`, no build step (`.nojekyll`).
 
-E-mail: `contact@qkix.eu` is forwarded by ImprovMX (MX mx1/mx2.improvmx.com + SPF TXT at GoDaddy).
+E-mail: Zoho Mail (EU, free plan): mailbox `kk@qkix.eu`, alias `contact@qkix.eu`. DNS at GoDaddy: MX mx/mx2/mx3.zoho.eu, SPF `include:zohomail.eu`, DKIM `zmail._domainkey`, `zoho-verification` TXT, `_dmarc` p=quarantine.
