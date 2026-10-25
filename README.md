@@ -8,3 +8,5 @@ Static site for **qkix** games, served by GitHub Pages at <https://qkix.eu> (cus
 - `app-ads.txt` – to be added once the AdMob publisher ID exists
 
 Plain HTML + `style.css`, no build step (`.nojekyll`).
+
+E-mail: `contact@qkix.eu` is forwarded by ImprovMX (MX mx1/mx2.improvmx.com + SPF TXT at GoDaddy).
