@@ -1,6 +1,6 @@
 ---
 title: "Inchway – Privacy Policy"
-updated: "25 October 2026 (optional gameplay statistics)"
+updated: "25 October 2026"
 ---
 
 Inchway ("the app") is a game published by **qkix** ("we"). This policy explains what

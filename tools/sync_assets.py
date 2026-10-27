@@ -61,7 +61,7 @@ def policy(game):
     """docs/privacy-policy.md -> frontmatter (title, updated) + the body from the first section."""
     md = (ARCADE / game / "docs" / "privacy-policy.md").read_text(encoding="utf-8")
     title = re.search(r"^# (.+)$", md, re.M).group(1).strip()
-    updated = re.search(r"^_Last updated: (.+)_$", md, re.M).group(1).strip()
+    updated = re.search(r"^_Last updated: ([^(_]+)", md, re.M).group(1).strip()   # the date, not "(what changed)"
     body = md[md.index("\n", md.index("_Last updated")) + 1:].strip() + "\n"
     out = ROOT / "src" / "content" / "privacy" / f"{game}.md"
     out.write_text(f"---\ntitle: \"{title}\"\nupdated: \"{updated}\"\n---\n\n{body}", encoding="utf-8")
