@@ -1,0 +1,26 @@
+---
+// The closed-test sign-up page of a game in testing (Game.test links).
+import { T, href, type Game, type Lang } from "../data/site";
+import GameHead from "./GameHead.astro";
+
+interface Props { lang: Lang; game: Game }
+const { lang, game } = Astro.props;
+const t = T[lang];
+const links = [game.test!.group, game.test!.optIn, game.test!.store];
+const steps = [[t.t1, t.t1p, t.t1b], [t.t2, t.t2p, t.t2b], [t.t3, t.t3p, t.t3b]];
+---
+<GameHead lang={lang} game={game} title={t.t_title} line={t.t_lead.replace("{name}", game.name)} />
+<div class="wrap" style={`--accent:${game.accent};padding-block:26px 30px`}>
+  <div class="steps">
+    {steps.map(([h, p, b], i) => (
+      <div class="stepc"><span class="n">{i + 1}</span><h3>{h}</h3><p>{p}</p>
+        <a class={i === 2 ? "btn ghost" : "btn"} href={links[i]} target="_blank" rel="noopener">{b}</a></div>
+    ))}
+  </div>
+  <p class="warn" set:html={t.t_warn} />
+  <p class="note">{t.t_tip}</p>
+  <div class="tshots" data-shots>
+    {[1, 2, 3].map((n) => <img class="px" src={`/${game.id}/test/shot${n}.png`} alt="" loading="lazy">)}
+  </div>
+  <p style="margin-top:20px"><a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a> · <a href={href(lang, `${game.id}/`)}>{game.name}</a></p>
+</div>

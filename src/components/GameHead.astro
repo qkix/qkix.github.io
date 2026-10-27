@@ -1,0 +1,13 @@
+---
+// The banner on top of a game's pages: icon, title, status, a line, the feature graphic.
+import type { Game, Lang } from "../data/site";
+import Chip from "./Chip.astro";
+interface Props { lang: Lang; game: Game; title: string; line: string }
+const { lang, game, title, line } = Astro.props;
+---
+<div class="ghead" style={`--accent:${game.accent}`}><div class="wrap">
+  <div style="min-width:0"><div class="who"><img class="icon px" src={`/${game.id}/icon.png`} alt="" width="96" height="96">
+    <h1>{title}</h1><Chip lang={lang} status={game.status} /></div>
+    <p class="tagline">{line}</p></div>
+  <img class="art px" src={`/${game.id}/feature.png`} alt="" width="1024" height="500">
+</div></div>

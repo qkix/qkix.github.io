@@ -1,0 +1,38 @@
+---
+// Every page of the site, in both languages: English at /, Polish under /pl/.
+//   /  /<game>/  /<game>/privacy/  /<game>/test/ (games in a closed test)
+import Base from "../layouts/Base.astro";
+import Home from "../components/Home.astro";
+import GamePage from "../components/GamePage.astro";
+import Privacy from "../components/Privacy.astro";
+import Test from "../components/Test.astro";
+import { GAMES, LANGS, T, type Game, type Lang } from "../data/site";
+
+type View = "home" | "game" | "privacy" | "test";
+export function getStaticPaths() {
+  const pages: { path: string; view: View; game?: Game }[] = [{ path: "", view: "home" }];
+  for (const game of GAMES) {
+    pages.push({ path: `${game.id}/`, view: "game", game });
+    pages.push({ path: `${game.id}/privacy/`, view: "privacy", game });
+    if (game.test) pages.push({ path: `${game.id}/test/`, view: "test", game });
+  }
+  return LANGS.flatMap((lang) => pages.map((p) => ({
+    params: { slug: ((lang === "en" ? "" : `${lang}/`) + p.path).replace(/\/$/, "") || undefined },
+    props: { lang, ...p },
+  })));
+}
+interface Props { lang: Lang; path: string; view: View; game?: Game }
+const { lang, path, view, game } = Astro.props;
+const t = T[lang];
+const title = view === "game" ? game!.name
+  : view === "privacy" ? `${game!.name} – ${t.pp_title}`
+  : view === "test" ? `${game!.name} – ${t.t_title}` : undefined;
+const description = view === "game" || view === "test" ? game!.tag[lang] : undefined;
+const image = game ? `/${game.id}/feature.png` : undefined;
+---
+<Base lang={lang} path={path} title={title} description={description} image={image}>
+  {view === "home" && <Home lang={lang} />}
+  {view === "game" && <GamePage lang={lang} game={game!} />}
+  {view === "privacy" && <Privacy lang={lang} game={game!} />}
+  {view === "test" && <Test lang={lang} game={game!} />}
+</Base>

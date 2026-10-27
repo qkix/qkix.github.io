@@ -1,0 +1,41 @@
+---
+import { T, href, type Game, type Lang } from "../data/site";
+import GameHead from "./GameHead.astro";
+import Trailer from "./Trailer.astro";
+
+interface Props { lang: Lang; game: Game }
+const { lang, game } = Astro.props;
+const t = T[lang];
+const shotLang = game.shotLangs.includes(lang) ? lang : "en";
+---
+<GameHead lang={lang} game={game} title={game.name} line={game.tag[lang]} />
+<div class="wrap gbody" style={`--accent:${game.accent}`}>
+  <div style="min-width:0">
+    <p class="lead">{game.lead[lang]}</p>
+    <p class="eyebrow">{t.features}</p>
+    <ul class="feats">{game.feats[lang].map((f) => <li>{f}</li>)}</ul>
+    <Trailer lang={lang} game={game} style="margin-bottom:24px" />
+    <p class="eyebrow">{t.shots}</p>
+    <div class="shots" data-shots>
+      {game.shots.map((s) => <img class="px" src={`/${game.id}/shots/${shotLang}/${s}.png`} alt="" width="360" height="640" loading="lazy">)}
+    </div>
+  </div>
+  <aside class="store">
+    {game.test ? (
+      <>
+        <a class="play" href={href(lang, `${game.id}/test/`)}><canvas width="13" height="14" data-playicon></canvas>
+          <span><small>{t.play_small}</small><b>Google Play</b></span></a>
+        <a class="btn" href={href(lang, `${game.id}/test/`)}>{t.tester}</a>
+      </>
+    ) : (
+      <span class="play off"><canvas width="13" height="14" data-playicon></canvas>
+        <span><small>{t.play_soon}</small><b>Google Play</b></span></span>
+    )}
+    <div class="side">
+      <span><b>{t.info_platform}:</b> {t.info_platform_v}</span>
+      <span><b>{t.info_price}:</b> {t.info_price_v}</span>
+      <span><b>{t.info_langs}:</b> {t.info_langs_v}</span>
+      <a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a></div>
+    <a class="btn ghost" href={href(lang, "#games")}>← {t.back}</a>
+  </aside>
+</div>

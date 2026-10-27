@@ -1,0 +1,56 @@
+---
+import { GAMES, VIDEO_ORDER, SOCIALS, MAIL, T, href, type Lang } from "../data/site";
+import Chip from "./Chip.astro";
+import Trailer from "./Trailer.astro";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+---
+<div class="scene"><canvas id="scene" aria-label={t.scene_label}></canvas>
+  <span class="tag">{t.scene_tag}</span></div>
+<div class="wrap hero">
+  <h1 set:html={t.hero_h1} />
+  <div><p>{t.hero_p}</p>
+    <div class="btns"><a class="btn" href="#games">{t.hero_cta}</a>
+      <a class="btn ghost" href="#videos">{t.hero_cta2}</a></div></div>
+</div>
+
+<section class="block wrap" id="games"><p class="eyebrow">{t.games_eyebrow}</p><h2>{t.games_h2}</h2>
+  <div class="cards">
+    {GAMES.map((g) => (
+      <a class="card" style={`--accent:${g.accent}`} href={href(lang, `${g.id}/`)}>
+        <img class="art px" src={`/${g.id}/feature.png`} alt="" width="1024" height="500" loading="lazy">
+        <div class="body"><img class="icon px" src={`/${g.id}/icon.png`} alt="" width="56" height="56">
+          <h3>{g.name}</h3><Chip lang={lang} status={g.status} /><p>{g.tag[lang]}</p></div>
+      </a>
+    ))}
+  </div></section>
+
+<section class="block wrap" id="videos"><p class="eyebrow">{t.videos_eyebrow}</p><h2>{t.videos_h2}</h2>
+  <div class="videos">
+    {VIDEO_ORDER.map((id) => <Trailer lang={lang} game={GAMES.find((g) => g.id === id)!} />)}
+  </div></section>
+
+<section class="block wrap" id="about"><p class="eyebrow">{t.about_eyebrow}</p><h2>{t.about_h2}</h2>
+  <div class="about"><div><p>{t.about_p1}</p><p>{t.about_p2}</p><p>{t.about_p3}</p></div>
+    <div class="facts">
+      <div class="fact"><b>{GAMES.length}</b><span>{t.fact_games}</span></div>
+      <div class="fact"><b>10</b><span>{t.fact_langs}</span></div>
+      <div class="fact"><b>850</b><span>{t.fact_puzzles}</span></div>
+      <div class="fact"><b>0</b><span>{t.fact_energy}</span></div>
+    </div></div></section>
+
+<section class="block wrap" id="contact"><p class="eyebrow">{t.contact_eyebrow}</p><h2>{t.contact_h2}</h2>
+  <div class="contact">
+    <div class="mail"><a id="mail" href={`mailto:${MAIL}`}><code>{MAIL}</code></a>
+      <button class="btn ghost" data-copy={MAIL} data-target="mail" data-done={t.copied}>{t.copy}</button></div>
+    <div class="socials">
+      {SOCIALS.map((s) => (
+        <a class="social" href={s.url} target="_blank" rel="noopener"><canvas width="8" height="8" data-glyph={s.id} data-c={s.c}></canvas>
+          <span>{s.name}<small>{s.handle}</small></span></a>
+      ))}
+    </div>
+  </div></section>
+
+<script src="../scripts/diorama.js"></script>

@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import { T, href } from "../data/site";
+const t = T.en;
+---
+<Base lang="en" path="" title={t.nf_title} noindex>
+  <div class="wrap lost">
+    <img src="/img/sprites/friend_down_wave0.png" alt="" width="78" height="78">
+    <h1>{t.nf_title}</h1><p>{t.nf_p}</p>
+    <p lang="pl">{T.pl.nf_p}</p>
+    <a class="btn" href={href("en")}>{t.nf_cta}</a>
+  </div>
+</Base>

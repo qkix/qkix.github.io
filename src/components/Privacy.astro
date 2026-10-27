@@ -1,0 +1,26 @@
+---
+// A game's privacy policy: a short summary in the page's language, the binding English text
+// (src/content/privacy/<game>.md, from the game's docs/privacy-policy.md) with a contents list.
+import type { MarkdownInstance } from "astro";
+import { T, href, type Game, type Lang } from "../data/site";
+
+interface Props { lang: Lang; game: Game }
+const { lang, game } = Astro.props;
+const t = T[lang];
+const docs = import.meta.glob<MarkdownInstance<{ title: string; updated: string }>>("../content/privacy/*.md", { eager: true });
+const doc = docs[`../content/privacy/${game.id}.md`];
+const heads = doc.getHeadings().filter((h) => h.depth === 2);
+const { Content } = doc;
+---
+<div class="wrap doc" style={`--accent:${game.accent}`}>
+  <nav class="toc" aria-label={t.pp_toc}><b>{t.pp_toc}</b>
+    {heads.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}
+    <a href={href(lang, `${game.id}/`)} style="margin-top:12px;color:var(--gold)">← {t.pp_back}</a></nav>
+  <article style="min-width:0">
+    <div class="dochead"><img class="px" src={`/${game.id}/icon.png`} alt="" width="64" height="64"><h1>{game.name} – {t.pp_title}</h1>
+      <span>{t.pp_updated}: {doc.frontmatter.updated}</span></div>
+    <div class="short"><b>{t.pp_short}</b><ul>{t.pp_short_items.map((i) => <li>{i}</li>)}</ul></div>
+    {t.pp_note && <p class="note">{t.pp_note}</p>}
+    <div class="legal" lang="en"><Content /></div>
+  </article>
+</div>

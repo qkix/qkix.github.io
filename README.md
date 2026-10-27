@@ -1,12 +1,28 @@
 # qkix.github.io
 
-Static site for **qkix** games, served by GitHub Pages at <https://qkix.eu> (custom domain, `CNAME`; DNS at GoDaddy: 4x A + 4x AAAA to GitHub Pages, `www` CNAME qkix.github.io).
+The **qkix** website, https://qkix.eu: [Astro](https://astro.build), static, English at `/` and
+Polish under `/pl/`. GitHub Pages builds and publishes it on every push to `main`
+(`.github/workflows/deploy.yml`; Pages source = GitHub Actions; custom domain `public/CNAME`).
 
-- `index.html` – game list
-- `steer-clear/privacy/` – Steer Clear privacy policy (source text: `docs/privacy-policy.md`
-  in the steer-clear repo – keep both in sync)
-- `app-ads.txt` – to be added once the AdMob publisher ID exists
+```
+npm install
+npm run dev          # http://localhost:4321
+npm run build        # -> dist/
+npm run sync         # copy art, trailers and privacy policies from the games (../arcade)
+```
 
-Plain HTML + `style.css`, no build step (`.nojekyll`).
+- `src/data/site.ts` – every text (EN + PL), the games (status, screenshots, tester links), socials.
+- `src/pages/[...slug].astro` – all pages: `/`, `/<game>/`, `/<game>/privacy/`, `/<game>/test/` (+ `/pl/...`).
+- `src/content/privacy/<game>.md` – the policies (binding English text). Source: the game repo's
+  `docs/privacy-policy.md` - edit it there, then `npm run sync`.
+- `public/` – copied art (`tools/sync_assets.py`: sprites for the home page's diorama, icons, feature
+  graphics, store screenshots, trailers), the old `/steer-clear/` redirects, `CNAME`.
+- `app-ads.txt` (to `public/`) once the AdMob publisher ID exists.
 
-E-mail: Zoho Mail (EU, free plan): mailbox `kk@qkix.eu`, alias `contact@qkix.eu`. DNS at GoDaddy: MX mx/mx2/mx3.zoho.eu, SPF `include:zohomail.eu`, DKIM `zmail._domainkey`, `zoho-verification` TXT, `_dmarc` p=quarantine.
+Addresses already handed out stay valid: `/<game>/privacy/` (Play Console), `/inchway/test/`
+(testers), `/steer-clear/...` (redirects to Inchway). A Polish browser opening an English page
+is sent to the Polish one unless the visitor picked a language with the EN / PL switch.
+
+E-mail: Zoho Mail (EU, free plan): mailbox `kk@qkix.eu`, alias `contact@qkix.eu`. DNS at GoDaddy:
+4x A + 4x AAAA to GitHub Pages, `www` CNAME qkix.github.io; MX mx/mx2/mx3.zoho.eu, SPF
+`include:zohomail.eu`, DKIM `zmail._domainkey`, `zoho-verification` TXT, `_dmarc` p=quarantine.

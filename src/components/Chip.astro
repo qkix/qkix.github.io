@@ -1,0 +1,6 @@
+---
+import { T, type Lang, type Status } from "../data/site";
+interface Props { lang: Lang; status: Status }
+const { lang, status } = Astro.props;
+---
+<span class={`chip ${status}`}>{T[lang][`status_${status}`]}</span>

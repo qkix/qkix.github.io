@@ -1,0 +1,91 @@
+---
+// Every page: head (SEO, hreflang, social cards), the top bar, the footer, the screenshot lightbox.
+import "@fontsource/rubik/400.css";
+import "@fontsource/rubik/500.css";
+import "@fontsource/rubik/700.css";
+import "../styles/global.css";
+import { GAMES, SOCIALS, MAIL, T, LANGS, href, type Lang } from "../data/site";
+
+interface Props {
+  lang: Lang;
+  path: string;            // the page's path without the language prefix, e.g. "hoplow/privacy/"
+  title?: string;
+  description?: string;
+  image?: string;          // social card, from public/
+  noindex?: boolean;
+}
+const { lang, path, title, description, image = "/hoplow/feature.png", noindex = false } = Astro.props;
+const t = T[lang];
+const site = Astro.site!;
+const url = new URL(href(lang, path), site).href;
+const pageTitle = title ? `${title} – qkix` : t.title;
+const desc = description ?? t.description;
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{pageTitle}</title>
+  <meta name="description" content={desc}>
+  {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={url}>}
+  {!noindex && LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(href(l, path), site).href}>)}
+  {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(href("en", path), site).href}>}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/hoplow/icon.png">
+  <meta name="theme-color" content="#1c1f33">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="qkix">
+  <meta property="og:title" content={pageTitle}>
+  <meta property="og:description" content={desc}>
+  <meta property="og:url" content={url}>
+  <meta property="og:image" content={new URL(image, site).href}>
+  <meta property="og:locale" content={lang === "pl" ? "pl_PL" : "en_GB"}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@qkixgames">
+  <link rel="preload" href="/fonts/QkixPixel.ttf" as="font" type="font/ttf" crossorigin>
+  <script is:inline define:vars={{ lang, path }}>
+    // A Polish browser landing on an English page (a shared link) goes to the Polish one,
+    // unless the visitor picked a language with the switch before.
+    try {
+      const pick = localStorage.getItem("qkix-lang");
+      if (lang === "en" && !pick && (navigator.language || "").toLowerCase().startsWith("pl"))
+        location.replace("/pl/" + path + location.hash);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top"><div class="wrap">
+    <a class="logo" href={href(lang)}><i></i>QKIX</a>
+    <nav aria-label={t.nav_label}>
+      <a href={href(lang, "#games")}>{t.nav_games}</a>
+      <a href={href(lang, "#videos")}>{t.nav_videos}</a>
+      <a href={href(lang, "#about")}>{t.nav_about}</a>
+      <a href={href(lang, "#contact")}>{t.nav_contact}</a>
+    </nav>
+    <div class="lang" role="group" aria-label={t.lang_label}>
+      {LANGS.map((l) => <a href={href(l, path)} hreflang={l} data-lang={l} aria-current={l === lang ? "page" : undefined}>{l.toUpperCase()}</a>)}
+    </div>
+  </div></header>
+
+  <main id="main"><slot /></main>
+
+  <footer><div class="wrap">
+    <span>© 2026 qkix</span>
+    <span>{t.foot_privacy} {GAMES.map((g, i) => <>{i > 0 && ", "}<a href={href(lang, `${g.id}/privacy/`)}>{g.name}</a></>)}</span>
+    <span>{SOCIALS.map((s, i) => <>{i > 0 && " · "}<a href={s.url} target="_blank" rel="noopener">{s.name}</a></>)}</span>
+    <a href={`mailto:${MAIL}`}>{MAIL}</a>
+  </div></footer>
+
+  <div class="box" id="box" hidden>
+    <button class="x" id="box-close" aria-label={t.close}>×</button>
+    <button class="nav prev" id="box-prev" aria-label={t.prev}>‹</button><img class="px" id="box-img" alt="">
+    <button class="nav next" id="box-next" aria-label={t.next}>›</button>
+  </div>
+
+  <script>
+    import "../scripts/site";
+  </script>
+</body>
+</html>
