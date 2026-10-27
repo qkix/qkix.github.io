@@ -22,7 +22,7 @@ export interface Game {
 export const GAMES: Game[] = [
   {
     id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "dev",
-    shots: ["2_run", "3_fox", "6_tunnel", "5_win", "7_levels"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
+    shots: ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
     lead: { en: "Swipe and the bunny runs until something stops it – a rock, a bush, the edge of the field. Pick up every carrot, then dive into the burrow.",
