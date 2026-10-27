@@ -17,7 +17,7 @@ npm run sync         # copy art, trailers and privacy policies from the games (.
   `docs/privacy-policy.md` - edit it there, then `npm run sync`.
 - `public/` – copied art (`tools/sync_assets.py`: sprites for the home page's diorama, icons, feature
   graphics, store screenshots, trailers), the old `/steer-clear/` redirects, `CNAME`.
-- `app-ads.txt` (to `public/`) once the AdMob publisher ID exists.
+- `public/app-ads.txt` – AdMob publisher `pub-1589297262438867` (the Play listing's website must be https://qkix.eu).
 
 Addresses already handed out stay valid: `/<game>/privacy/` (Play Console), `/inchway/test/`
 (testers), `/steer-clear/...` (redirects to Inchway). A Polish browser opening an English page
