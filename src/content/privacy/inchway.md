@@ -1,6 +1,6 @@
 ---
 title: "Inchway – Privacy Policy"
-updated: "25 October 2026"
+updated: "28 October 2026"
 ---
 
 Inchway ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -8,9 +8,9 @@ information is processed when you play it.
 
 ## Information we collect
 
-We do not ask for your name, e-mail address or any account of our own. The only data that reaches
-our own server are the optional, anonymous gameplay statistics described below – and only if you
-agree to send them.
+We do not ask for your name, e-mail address or any account of our own. The only data that reach
+our own server are the optional, anonymous gameplay statistics and race ghosts described below –
+and only if you agree to send them or tap CHALLENGE.
 
 The app saves your **scores, the top-10 records list, your coins, workshop tuning, unlocked car paints, the
 selected paint and your sound/vibration settings** in a file on your device. Copies of this
@@ -49,6 +49,17 @@ automatically after 13 months**. The legal basis is your consent (GDPR Art. 6(1)
 Switching statistics off deletes the install ID and any events not yet sent from your device.
 Events already sent carry only the random install ID, so we cannot tell which of them are yours;
 they are deleted on schedule.
+
+## Race ghosts (CHALLENGE / RACE)
+
+When you tap **CHALLENGE** after a run, the app shows that run's race code and sends a "ghost" of
+the run to our server, stored under the code: your car's position across the road during the run,
+the distance, the world, the car paint and the game version. It contains no ID of any kind – not
+the statistics install ID, not your Google account – and nothing about your device. Anyone who
+types the code in **RACE** gets the ghost and drives against it, so share the code only with
+people you want to race. Nothing is sent before you tap CHALLENGE. Ghosts are stored on the same
+Cloudflare service as the statistics and **deleted automatically after 90 days**. The legal basis is
+your request (GDPR Art. 6(1)(b)): you asked the app to make the challenge.
 
 ## Purchases (Google Play)
 

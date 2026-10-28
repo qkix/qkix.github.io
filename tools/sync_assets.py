@@ -22,7 +22,7 @@ PUB = ROOT / "public"
 # game -> store screenshots shown on its page (store/screenshots/<lang>/<name>.png, en at the top)
 SHOTS = {
     "hoplow": ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"],
-    "inchway": ["2_drive", "6_emergency", "7_winter", "9_city", "10_garage"],
+    "inchway": ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"],
     "brick-tanks": ["2_battle", "6_boss", "4_winter", "5_night", "8_hangar"],
 }
 LANGS = ["en", "pl"]
