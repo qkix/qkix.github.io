@@ -32,7 +32,7 @@ export const GAMES: Game[] = [
   },
   {
     id: "inchway", name: "Inchway", accent: "#F5D46B", status: "test",
-    shots: ["2_drive", "6_emergency", "7_winter", "9_city", "10_garage"], shotLangs: ["en"], videoLangs: ["en"],
+    shots: ["2_drive", "6_emergency", "7_winter", "9_city", "10_garage"], shotLangs: ["en", "pl"], videoLangs: ["en"],
     tag: { en: "Dodge traffic, read the road, don't crash – a pixel-art lane runner.",
            pl: "Omijaj auta, czytaj drogę, nie rozbij się – pixelowa jazda po pasach." },
     lead: { en: "Steer with a slider and weave through traffic on a five-lane highway. Cars signal before they change lanes, so the road tells you what comes next – if you read it.",

@@ -68,8 +68,11 @@ def policy(game):
 
 
 def video(game, lang):
-    """build/trailer/trailer_<lang>.mp4 (1920x1080, make_trailer.py) -> 1280x720 for the web + a poster."""
+    """build/trailer/trailer_<lang>.mp4 (1920x1080, make_trailer.py; Inchway: build/reels/trailer.mp4,
+    English only) -> 1280x720 for the web + a poster."""
     src = ARCADE / game / "build" / "trailer" / f"trailer_{lang}.mp4"
+    if not src.exists() and lang == "en":
+        src = ARCADE / game / "build" / "reels" / "trailer.mp4"
     out = PUB / "video" / f"{game}_{lang}.mp4"
     if not src.exists():
         return out.exists()
