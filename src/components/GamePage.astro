@@ -1,4 +1,5 @@
 ---
+import { asset } from "../lib/asset";
 import { T, href, type Game, type Lang } from "../data/site";
 import GameHead from "./GameHead.astro";
 import Trailer from "./Trailer.astro";
@@ -17,7 +18,7 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
     <Trailer lang={lang} game={game} style="margin-bottom:24px" />
     <p class="eyebrow">{t.shots}</p>
     <div class="shots" data-shots>
-      {game.shots.map((s) => <img class="px" src={`/${game.id}/shots/${shotLang}/${s}.png`} alt="" width="360" height="640" loading="lazy">)}
+      {game.shots.map((s) => <img class="px" src={asset(`/${game.id}/shots/${shotLang}/${s}.png`)} alt="" width="360" height="640" loading="lazy">)}
     </div>
   </div>
   <aside class="store">

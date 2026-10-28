@@ -2,13 +2,13 @@
 // at 1 game pixel per canvas pixel and scaled up by whole numbers (CSS). Sprites: public/img/sprites
 // (tools/sync_assets.py copies them from the games).
 const NAMES = ["grass", "flowers0", "flowers1", "carrot", "shadow", "sparkle0", "sparkle", "heart", "bfly0", "bfly1",
-  "tree0", "tree1", "tree2", "tree3", "asphalt", "player", "car0", "car1", "car2", "car3", "brick", "bush", "tank",
+  "tree0", "tree1", "tree2", "tree3", "road", "player", "car0", "car1", "car2", "car3", "brick", "bush", "tank",
   ...["side", "left", "down"].flatMap(d => ["idle0", "idle1", "hop", "blink"].map(f => `bunny_${d}_${f}`)),
   "friend_side_idle0", "friend_side_hop", "friend_left_idle0", "friend_left_hop",
   ...["idle0", "idle1", "blink", "wave0", "wave1"].map(f => `friend_down_${f}`)];
-const IMG = {};
-for (const k of NAMES) { IMG[k] = new Image(); IMG[k].src = `/img/sprites/${k}.png`; }
 const cv = document.getElementById("scene");
+const IMG = {};
+for (const k of NAMES) { IMG[k] = new Image(); IMG[k].src = `/img/sprites/${k}.png?v=${cv.dataset.v || ""}`; }
 const cx = cv.getContext("2d");
 const H = 92;
 let W = 200, SC = 3, world = null, last = 0;
@@ -23,7 +23,7 @@ function layout() {
   build();
 }
 function build() {
-  const roadX = Math.round(W * (W < 260 ? 0.38 : 0.42)), roadW = 66;
+  const roadX = Math.round(W * (W < 260 ? 0.38 : 0.42)), roadW = 70;
   const mazeX = roadX + roadW + 8;
   const grass = [];
   for (let y = 0; y < Math.ceil(H / 16); y++) for (let x = 0; x < Math.ceil(W / 16); x++) grass.push((x * 7 + y * 13 + x * y) % 4);
@@ -58,7 +58,7 @@ function newCarrot() {
 }
 function step(dt) {
   const w = world;
-  w.scroll = (w.scroll + dt * 30) % 33;
+  w.scroll = (w.scroll + dt * 30) % 32;
   // the gold car overtakes: traffic drifts down the screen at one pace (so nobody rear-ends anybody),
   // a new car comes in at the top only where both lanes stay passable, the gold car moves over in time
   const TRAFFIC = 26, GAP = 46;
@@ -76,7 +76,7 @@ function step(dt) {
   const ahead = l => w.cars.some(c => c.lane === l && c.y + 28 > p.y - 30 && c.y < p.y + 28);
   const moving = Math.abs(p.x - p.tx) > 1;
   if (!moving && ahead(p.lane) && !ahead(1 - p.lane)) p.lane = 1 - p.lane;
-  p.tx = w.roadX + 8 + p.lane * 33;
+  p.tx = w.roadX + 13 + p.lane * 28;
   p.x = p.x ? p.x + (p.tx - p.x) * Math.min(1, dt * 4) : p.tx;
   if ((p.glint -= dt) <= 0) {                       // the gold paint twinkles
     p.glint = rnd(0.25, 0.6);
@@ -147,11 +147,8 @@ function draw(time) {
   cx.fillStyle = "#2b2f3a"; cx.fillRect(w.mazeX - 4, 0, W - w.mazeX + 4, H);
   cx.fillStyle = "#232631"; for (let y = 0; y < H; y += 12) for (let x = w.mazeX - 4; x < W; x += 12) if ((x + y) % 24 === 0) cx.fillRect(x, y, 12, 12);
   // the road
-  for (let y = -33; y < H + 33; y += 33) for (let i = 0; i < 2; i++) img("asphalt", w.roadX + i * 33, y + w.scroll);
-  cx.fillStyle = "#e8e8e8"; cx.fillRect(w.roadX, 0, 1, H); cx.fillRect(w.roadX + w.roadW - 1, 0, 1, H);
-  for (let y = -12 + (w.scroll * 1.2) % 12; y < H; y += 12) cx.fillRect(w.roadX + 33, Math.floor(y), 1, 6);
-  cx.fillStyle = "#6d6253"; cx.fillRect(w.roadX - 3, 0, 3, H); cx.fillRect(w.roadX + w.roadW, 0, 3, H);
-  for (const c of w.cars) img(c.k, w.roadX + 8 + c.lane * 33, c.y);
+  for (let y = -32; y < H + 32; y += 32) img("road", w.roadX, y + Math.floor(w.scroll) % 32);   // Inchway's own road, two lanes
+  for (const c of w.cars) img(c.k, w.roadX + 13 + c.lane * 28, c.y);
   img("player", w.player.x, w.player.y);
   // bricks, bushes, tank
   for (const br of w.bricks) if (br.alive) img("brick", br.x, br.y);

@@ -40,10 +40,21 @@ SPRITES = {
     **{f"friend_{d}_{f}": H + f"friend_grey_{d}_{f}.png"
        for d, fs in (("side", ("idle0", "hop")), ("left", ("idle0", "hop")),
                      ("down", ("idle0", "idle1", "blink", "wave0", "wave1"))) for f in fs},
-    "asphalt": I + "asphalt_tile.png", "player": I + "player_gold.png",
+    "player": I + "player_gold.png",
     **{f"car{i}": I + f"car_{c}.png" for i, c in enumerate(["white", "yellow", "green", "black"])},
     "brick": B + "brick.png", "bush": B + "trees.png", "tank": B + "tank_player.png",
 }
+
+
+def diorama_road():
+    """Inchway's classic road tile cut down to two lanes for the diorama (70x32): the left barrier,
+    shoulder and lane 0 (tile columns 13-46) next to the lane line, lane 4, shoulder and right barrier
+    (131-166). Lane centres at x 21 and 49 (diorama.js ROAD_LANES)."""
+    tile = Image.open(ARCADE / "inchway/assets/sprites/road_tile_classic_0.png").convert("RGBA")
+    out = Image.new("RGBA", (70, 32))
+    out.paste(tile.crop((13, 0, 47, 32)), (0, 0))
+    out.paste(tile.crop((131, 0, 167, 32)), (34, 0))
+    return out
 
 
 def save(im, path):
@@ -90,6 +101,7 @@ def main():
         sys.exit(f"no games under {ARCADE} - pass the arcade folder")
     for name, src in SPRITES.items():
         save(Image.open(ARCADE / src).convert("RGBA"), PUB / "img" / "sprites" / f"{name}.png")
+    save(diorama_road(), PUB / "img" / "sprites" / "road.png")
     (PUB / "fonts").mkdir(parents=True, exist_ok=True)
     shutil.copy(ARCADE / "inchway" / "assets" / "fonts" / "QkixPixel.ttf", PUB / "fonts" / "QkixPixel.ttf")
     for game, names in SHOTS.items():

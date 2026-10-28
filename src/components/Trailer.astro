@@ -1,4 +1,5 @@
 ---
+import { asset } from "../lib/asset";
 // A game's trailer (public/video, 1280x720) in the viewer's language if there is one; it loads and
 // plays only while on screen (scripts/site.ts).
 import { T, type Game, type Lang } from "../data/site";
@@ -7,7 +8,7 @@ const { lang, game, style } = Astro.props;
 const v = game.videoLangs.includes(lang) ? lang : game.videoLangs[0];
 ---
 <div class="vid wide" style={style}>
-  <video data-src={`/video/${game.id}_${v}.mp4`} poster={`/video/${game.id}_${v}.jpg`} width="1280" height="720"
+  <video data-src={asset(`/video/${game.id}_${v}.mp4`)} poster={asset(`/video/${game.id}_${v}.jpg`)} width="1280" height="720"
     muted loop playsinline controls preload="none" aria-label={`${game.name} – ${T[lang].trailer}`}></video>
   <div class="cap"><b>{game.name}</b><span>{T[lang].trailer}</span></div>
 </div>
