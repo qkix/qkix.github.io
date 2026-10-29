@@ -24,6 +24,7 @@ SHOTS = {
     "hoplow": ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"],
     "inchway": ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"],
     "brick-tanks": ["2_battle", "6_boss", "4_winter", "5_night", "8_hangar"],
+    "gloomdeep": ["2_dig", "3_ledges", "4_hint", "1_menu"],
 }
 LANGS = ["en", "pl"]
 

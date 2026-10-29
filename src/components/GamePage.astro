@@ -15,7 +15,7 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
     <p class="lead">{game.lead[lang]}</p>
     <p class="eyebrow">{t.features}</p>
     <ul class="feats">{game.feats[lang].map((f) => <li>{f}</li>)}</ul>
-    <Trailer lang={lang} game={game} style="margin-bottom:24px" />
+    {game.videoLangs.length > 0 && <Trailer lang={lang} game={game} style="margin-bottom:24px" />}
     <p class="eyebrow">{t.shots}</p>
     <div class="shots" data-shots>
       {game.shots.map((s) => <img class="px" src={asset(`/${game.id}/shots/${shotLang}/${s}.png`)} alt="" width="360" height="640" loading="lazy">)}

@@ -56,6 +56,16 @@ export const GAMES: Game[] = [
     feats: { en: ["A new maze every stage – no two runs are the same", "Light, fast, heavy, sniper and mine-laying tanks – and a boss every 5th stage", "Desert, winter ice and night battles lit by your headlights", "Daily missions and a daily map that is the same for everyone", "Upgrade the tank in the workshop, paint it in the hangar"],
              pl: ["Nowy labirynt w każdym etapie – żadna gra nie jest taka sama", "Lekkie, szybkie, ciężkie czołgi, snajperzy i minowce – a co 5 etapów boss", "Pustynia, zimowy lód i nocne bitwy w świetle reflektorów", "Misje dzienne i mapa dnia – ta sama dla wszystkich", "Ulepszenia w warsztacie, malowanie w hangarze"] },
   },
+  {
+    id: "gloomdeep", name: "Gloomdeep", accent: "#E8A54A", status: "dev",
+    shots: ["2_dig", "3_ledges", "4_hint", "1_menu"], shotLangs: ["en", "pl"], videoLangs: [],
+    tag: { en: "A dwarf, a pickaxe and a mine full of gems – a torchlit sliding puzzle.",
+           pl: "Krasnolud, kilof i kopalnia pełna klejnotów – przesuwana łamigłówka w blasku pochodni." },
+    lead: { en: "Swipe and the dwarf slides until something stops him – a pit prop, a stone column, the mine's wall. Gather every gem, then climb down the shaft. Harder than it looks: every level has one best route.",
+            pl: "Przesuń palcem, a krasnolud sunie, aż coś go zatrzyma – stempel, kamienna kolumna, ściana kopalni. Zbierz wszystkie klejnoty i zejdź szybem w dół. Trudniejsze, niż wygląda: każdy poziom ma jedną najlepszą drogę." },
+    feats: { en: ["Break cracked rock with your pickaxe", "Rotten boards hold you only once", "Mine carts, lava with steam vents and a creature that copies your moves", "Torchlit mine: shadows, drips, bats and a cart rattling by", "Dress your dwarf at the forge: beards, helmets, tunics and pickaxes"],
+             pl: ["Rozbijaj popękane skały kilofem", "Spróchniałe deski utrzymają cię tylko raz", "Wagoniki, lawa z kominami pary i stwór, który powtarza twoje ruchy", "Kopalnia w blasku pochodni: cienie, kapiąca woda, nietoperze i przejeżdżający wagonik", "Ubierz krasnoluda w kuźni: brody, hełmy, kurtki i kilofy"] },
+  },
 ];
 export const VIDEO_ORDER = ["inchway", "hoplow", "brick-tanks"];
 
@@ -77,7 +87,7 @@ const en = {
   hero_p: "qkix makes small, cozy pixel-art games for Android: quick to pick up, hard to put down. No timers, no energy bars, play offline.",
   hero_cta: "See the games", hero_cta2: "Watch trailers",
   test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Two games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone. Google needs 12 testers for 14 days before a game can launch for everyone.", test_btn: "Test {name}",
-  games_eyebrow: "Games", games_h2: "Three games, one arcade",
+  games_eyebrow: "Games", games_h2: "Four games, one arcade",
   videos_eyebrow: "Videos", videos_h2: "See them move",
   about_eyebrow: "About", about_h2: "A one-person studio",
   about_p1: "qkix is one developer in Poland making games you can play for a minute on the bus and still want to open a month later.",
@@ -115,7 +125,7 @@ const pl: typeof en = {
   hero_p: "qkix robi małe, przytulne gry pixel art na Androida: łatwo zacząć, trudno odłożyć. Bez limitów czasu i energii, gra offline.",
   hero_cta: "Zobacz gry", hero_cta2: "Obejrzyj trailery",
   test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Dwie gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem. Google wymaga 12 testerów przez 14 dni, zanim gra trafi do wszystkich.", test_btn: "Testuj {name}",
-  games_eyebrow: "Gry", games_h2: "Trzy gry, jeden salon",
+  games_eyebrow: "Gry", games_h2: "Cztery gry, jeden salon",
   videos_eyebrow: "Filmy", videos_h2: "Zobacz je w ruchu",
   about_eyebrow: "O nas", about_h2: "Jednoosobowe studio",
   about_p1: "qkix to jeden twórca z Polski, który robi gry na minutę w autobusie, do których chce się wracać miesiąc później.",
