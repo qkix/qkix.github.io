@@ -25,4 +25,5 @@ is sent to the Polish one unless the visitor picked a language with the EN / PL 
 
 E-mail: Zoho Mail (EU, free plan): mailbox `kk@qkix.eu`, alias `contact@qkix.eu`. DNS at GoDaddy:
 4x A + 4x AAAA to GitHub Pages, `www` CNAME qkix.github.io; MX mx/mx2/mx3.zoho.eu, SPF
-`include:zohomail.eu`, DKIM `zmail._domainkey`, `zoho-verification` TXT, `_dmarc` p=quarantine.
+`include:zohomail.eu`, DKIM `zmail._domainkey`, `zoho-verification` TXT, `_dmarc` p=quarantine, `google-site-verification` TXT (Google Search Console, domain property
+qkix.eu, verified 29 Oct 2026 - also verifies the website of the Play Console developer account; keep it).
