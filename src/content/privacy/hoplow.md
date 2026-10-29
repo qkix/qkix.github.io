@@ -1,6 +1,6 @@
 ---
 title: "Hoplow – Privacy Policy"
-updated: "27 October 2026"
+updated: "29 October 2026"
 ---
 
 Hoplow ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -8,50 +8,16 @@ information is processed when you play it.
 
 ## Information we collect
 
-We do not ask for your name, e-mail address or any account of our own. The only data that reaches
-our own server are the optional, anonymous gameplay statistics described below – and only if you
-agree to send them.
+Hoplow is made for players of all ages, **children included**, and is built so that it collects as
+little as possible. We do not ask for your name, e-mail address or any account of our own, and the
+app sends **no data to our own servers** – no gameplay statistics, no identifiers.
 
 The app saves your **progress (stars and fewest moves per level), your carrots, hints used,
 unlocked bunny furs and outfits and what your bunny wears, your daily-puzzle streak, the tutorial
 tips you have seen, your purchases (as a cache) and your sound / vibration / language settings**
-in a file on your device. Copies of this
-progress can be kept by Google, only in your own Google account:
-
-- **Android backup** – Android may include this file in your device backup to your Google
-  account and restore it when you reinstall the app. You control this in your device settings
-  (Settings → Google → Backup).
-- **Google Play Games** – if you use Play Games on your device, the app signs in to it
-  automatically and stores your progress (stars, carrots, furs, outfits, daily
-  streak) as a Play Games saved game, and submits your total stars to the game's leaderboard, where other players can see
-  it with your Play Games profile name. Google processes this under its privacy policy; you can
-  manage or delete Play Games data in the Play Games app / your Google account.
-
-## Gameplay statistics (optional)
-
-After your first solved level the app asks once whether you want to help improve the game by sending anonymous gameplay
-statistics. **Nothing is sent unless you answer YES**, and you can switch it off at any time
-with **STATS ON / OFF** in OPTIONS.
-
-If you agree, the app sends:
-
-- game events: levels started, solved, quit or lost to the fox (level, moves, undos, hints,
-  time, stars), worlds opened, the daily puzzle, hints (free, for carrots or for an ad), the
-  wardrobe (which fur or outfit you put on or bought with carrots), shop use (which product you
-  tapped or bought – never payment details), app start and session length;
-- the game version, the app language, the operating-system version and the device model;
-- a random install ID created by the app – it is not linked to your Google account, your
-  advertising ID or your device – and a random ID for each session.
-
-The events go to our server, run for us by **Cloudflare** (Cloudflare Workers and D1;
-<https://www.cloudflare.com/privacypolicy/>). It records the country derived from your IP address,
-but not the IP address itself. We use the statistics only to see how the game is played and what
-to improve – never for advertising – and we do not sell or share them. Events are **deleted
-automatically after 13 months**. The legal basis is your consent (GDPR Art. 6(1)(a)).
-
-Switching statistics off deletes the install ID and any events not yet sent from your device.
-Events already sent carry only the random install ID, so we cannot tell which of them are yours;
-they are deleted on schedule.
+in a file on your device. Android may include this file in your device backup to your Google
+account and restore it when you reinstall the app (**Android backup**; you control this in your
+device settings: Settings → Google → Backup). Nothing else leaves the device.
 
 ## Purchases (Google Play)
 
@@ -61,31 +27,30 @@ your Google account owns, so they can be restored on reinstall or on a new devic
 
 ## Advertising (Google AdMob)
 
-The app shows a banner ad provided by **Google AdMob**, and - only when you tap WATCH AD for a
-hint - a rewarded video ad. To serve and measure ads, Google may
-collect and process information from your device, such as:
+The app shows a banner ad provided by **Google AdMob**, and – only when you tap WATCH AD for a
+hint – a rewarded video ad. Because the app is for children too, **every ad request is marked as
+directed at children** (COPPA, "child-directed treatment") and **under the age of consent** (GDPR),
+and limited to ads rated suitable for general audiences (**G**). This means:
 
-- device identifiers, including the Android advertising ID,
-- your IP address and the approximate location derived from it,
-- information about the app and the device (model, OS version, app version, crash and
-  performance data),
-- interactions with ads.
+- **no personalised ads** and no remarketing – ads are chosen by the app and its content only;
+- the app **does not use the Android advertising ID** (the permission for it is removed);
+- Google still processes some technical information to show the ad, measure it and prevent fraud:
+  the IP address and the approximate location derived from it, information about the app and the
+  device (model, OS version, app version, crash and performance data) and interactions with ads.
 
 Google processes this information under its own privacy policy:
-<https://policies.google.com/privacy> and explains how it uses data from partner apps here:
-<https://policies.google.com/technologies/partner-sites>.
+<https://policies.google.com/privacy> and its policies for child-directed apps:
+<https://support.google.com/admob/answer/6223431>.
 
-**Consent (EEA, UK and Switzerland):** before any ads are requested, the app shows Google's
-consent form (User Messaging Platform). You can accept, refuse or choose purposes. You can change
-your choice at any time with the **PRIVACY** button in the app's menu.
-
-You can also reset or delete your advertising ID, or opt out of personalised ads, in your device
-settings (Settings → Google → Ads, or Settings → Privacy → Ads).
+You can remove all ads with the optional REMOVE ADS purchase.
 
 ## Children
 
-The app is not directed at children under 13, and we do not knowingly collect information from
-them.
+The app is designed for all ages, including children under 13, and follows the Google Play
+Families policy: we do not collect personal information from anyone, ads are non-personalised,
+child-directed and rated G, there are no chats and no links out of the game (except to the game's own Google Play page
+when an update is needed), and purchases always go through Google Play's own confirmation (which parents can
+protect with a password or Family Link). Parents with questions can write to contact@qkix.eu.
 
 ## Changes
 
