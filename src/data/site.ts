@@ -21,7 +21,7 @@ export interface Game {
 
 export const GAMES: Game[] = [
   {
-    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "dev",
+    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "test",
     shots: ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
@@ -29,6 +29,9 @@ export const GAMES: Game[] = [
             pl: "Przesuń palcem, a królik biegnie, aż coś go zatrzyma – kamień, krzak, skraj łąki. Zbierz wszystkie marchewki i wskocz do nory." },
     feats: { en: ["120 puzzles in 6 worlds and a new daily puzzle for two years", "Mud, a fox that follows you, moles, arrow stones and tunnels", "Stars for the fewest moves; undo as often as you like", "Dress the bunny up: hats, glasses, scarves and six furs", "Mushrooms grow, birds fly over, bunny friends come to wave"],
              pl: ["120 łamigłówek w 6 światach i nowa zagadka dnia przez dwa lata", "Błoto, lis, który idzie za tobą, krety, kamienie ze strzałką i tunele", "Gwiazdki za najmniej ruchów; cofaj, ile chcesz", "Przebierz królika: czapki, okulary, szaliki i sześć futerek", "Rosną grzyby, przelatują ptaki, przybiegają pomachać inne króliki"] },
+    test: { group: "https://groups.google.com/g/qkix-testers",
+            optIn: "https://play.google.com/apps/testing/eu.qkix.hoplow",
+            store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
     id: "inchway", name: "Inchway", accent: "#F5D46B", status: "test",
