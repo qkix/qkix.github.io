@@ -39,7 +39,7 @@ export const GAMES: Game[] = [
             pl: "Prowadzisz auto suwakiem i omijasz ruch na pięciopasmowej autostradzie. Auta włączają kierunkowskaz przed zmianą pasa – droga mówi, co się stanie, jeśli umiesz ją czytać." },
     feats: { en: ["Race a friend's ghost: share a code, they get the same road and race your car", "Breakdowns and road works are announced by a sign", "Ambulances, police and fire engines come from behind – make way", "Near-miss combos, coins and top-10 records", "Rain, snow, fog, night, tunnels and forks in four worlds", "Tune the car in the workshop, paint it in the garage"],
              pl: ["Wyścig z duchem kumpla: wyślij kod, on dostaje tę samą trasę i ściga się z twoim autem", "Awarie i roboty drogowe zapowiada znak", "Karetka, policja i straż nadjeżdżają z tyłu – zjedź im z drogi", "Combo za mijanie o włos, monety i top 10 rekordów", "Deszcz, śnieg, mgła, noc, tunele i rozjazdy w czterech światach", "Tuning w warsztacie, lakiery w garażu"] },
-    test: { group: "https://groups.google.com/g/inchway-testers",
+    test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.inchway",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
