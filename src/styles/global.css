@@ -1,4 +1,4 @@
-@font-face { font-family: "Qkix Pixel"; src: url(/fonts/QkixPixel.ttf) format("truetype"); font-display: block; }
+@font-face { font-family: "Qkix Pixel"; src: url(/fonts/QkixPixel.ttf?v=e9bc83e3) format("truetype"); font-display: block; }
 /* Layout: a live pixel diorama band (the three games in one world) opens the page; below it a calm
    dark arcade: game cards, videos in phone frames, about, contact. Game pages reuse the same parts.
    One deliberate dark look (the games' own UI colours), so no light theme. */
@@ -62,6 +62,12 @@ section.block { padding-block: 36px; }
 h2 { font-family: var(--pixel); font-weight: 400; font-size: clamp(18px, 2.6vw, 26px); margin: 0 0 20px; line-height: 1.4; }
 
 /* game cards */
+.testband { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: center; background: var(--panel); border: 2px solid var(--gold); border-radius: 10px; padding: 22px 24px; }
+.testband h2 { margin-top: 4px; }
+.testband p:last-child { color: var(--muted); margin: 0; }
+.testgames { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
+.testgames .btn { justify-content: flex-start; }
+.testgames img { border-radius: 4px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .card { background: var(--panel); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; border: 2px solid transparent; transition: transform 0.15s, border-color 0.15s; text-align: left; color: inherit; font: inherit; padding: 0; text-decoration: none; }
 .card:hover { transform: translateY(-4px); border-color: var(--accent); }
@@ -174,6 +180,7 @@ footer a { color: var(--muted); }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .hero, .videos, .about, .contact, .gbody, .ghead .wrap { grid-template-columns: minmax(0, 1fr); }
   .cards { grid-template-columns: minmax(0, 1fr); }
+  .testband { grid-template-columns: minmax(0, 1fr); }
   .card .art { aspect-ratio: 1024 / 420; object-fit: cover; }
 }
 @media (max-width: 520px) {
