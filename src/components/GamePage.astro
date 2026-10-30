@@ -27,7 +27,7 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
         <a class="play" href={href(lang, `${game.id}/test/`)}><canvas width="13" height="14" data-playicon></canvas>
           <span><small>{t.play_small}</small><b>Google Play</b></span></a>
         <a class="btn" href={href(lang, `${game.id}/test/`)}>{t.tester}</a>
-        {game.test.ios && <a class="play" href={game.test.ios} target="_blank" rel="noopener">
+        {game.test.ios && <a class="play" href={game.test.ios} target="_blank" rel="noopener"><canvas width="13" height="14" data-appleicon></canvas>
           <span><small>{t.ios_small}</small><b>TestFlight · iPhone</b></span></a>}
       </>
     ) : (

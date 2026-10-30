@@ -31,7 +31,7 @@ export const GAMES: Game[] = [
              pl: ["120 łamigłówek w 6 światach i nowa zagadka dnia przez dwa lata", "Błoto, lis, który idzie za tobą, krety, kamienie ze strzałką i tunele", "Gwiazdki za najmniej ruchów; cofaj, ile chcesz", "Przebierz królika: czapki, okulary, szaliki i sześć futerek", "Rosną grzyby, przelatują ptaki, przybiegają pomachać inne króliki"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.hoplow",
-            // ios: "https://testflight.apple.com/join/VVYUtheM",   // on once Beta App Review passes
+            ios: "https://testflight.apple.com/join/VVYUtheM",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
@@ -45,7 +45,7 @@ export const GAMES: Game[] = [
              pl: ["Wyścig z duchem kumpla: wyślij kod, on dostaje tę samą trasę i ściga się z twoim autem", "Awarie i roboty drogowe zapowiada znak", "Karetka, policja i straż nadjeżdżają z tyłu – zjedź im z drogi", "Combo za mijanie o włos, monety i top 10 rekordów", "Deszcz, śnieg, mgła, noc, tunele i rozjazdy w czterech światach", "Tuning w warsztacie, lakiery w garażu"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.inchway",
-            // ios: "https://testflight.apple.com/join/W53bVrXp",   // on once Beta App Review passes
+            ios: "https://testflight.apple.com/join/W53bVrXp",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {

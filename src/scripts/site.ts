@@ -60,6 +60,16 @@ document.querySelectorAll<HTMLCanvasElement>("canvas[data-playicon]").forEach((c
   }
 });
 
+// a pixel apple for the iPhone / TestFlight button (drawn here, like the play triangle - not Apple's badge)
+const APPLE = ["......##.....", ".....##......", ".....#.......", "..###..####..", ".###########.",
+  "##########...", "#########....", "#########....", "##########...", ".###########.", ".###########.",
+  "..#########..", "...###.###...", "............."];
+document.querySelectorAll<HTMLCanvasElement>("canvas[data-appleicon]").forEach((c) => {
+  const g = c.getContext("2d")!;
+  g.fillStyle = "#fff";
+  APPLE.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === "#") g.fillRect(x, y, 1, 1); }));
+});
+
 // copy the e-mail address (selects it where the clipboard is not allowed)
 document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((btn) => btn.addEventListener("click", () => {
   const text = btn.dataset.copy ?? "";
