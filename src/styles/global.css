@@ -67,6 +67,8 @@ h2 { font-family: var(--pixel); font-weight: 400; font-size: clamp(18px, 2.6vw, 
 .testband p:last-child { color: var(--muted); margin: 0; }
 .testgames { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
 .testgames .btn { justify-content: flex-start; }
+.testrow { display: flex; gap: 10px; flex-wrap: wrap; }
+.testrow .btn:first-child { flex: 1 1 auto; }
 .testgames img { border-radius: 4px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .card { background: var(--panel); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; border: 2px solid transparent; transition: transform 0.15s, border-color 0.15s; text-align: left; color: inherit; font: inherit; padding: 0; text-decoration: none; }

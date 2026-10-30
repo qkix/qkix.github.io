@@ -19,11 +19,14 @@ const t = T[lang];
 
 {GAMES.some((g) => g.test) && (
 <section class="block wrap" id="test"><div class="testband">
-  <div><p class="eyebrow">{t.test_eyebrow}</p><h2>{t.test_h2}</h2><p>{t.test_p}</p></div>
+  <div><p class="eyebrow">{t.test_eyebrow}</p><h2>{t.test_h2}</h2><p>{GAMES.some((g) => g.test?.ios) ? t.test_p_ios : t.test_p}</p></div>
   <div class="testgames">
     {GAMES.filter((g) => g.test).map((g) => (
-      <a class="btn" href={href(lang, `${g.id}/test/`)}><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
-        {t.test_btn.replace("{name}", g.name)}</a>
+      <div class="testrow">
+        <a class="btn" href={href(lang, `${g.id}/test/`)}><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
+          {t.test_btn.replace("{name}", g.name)}</a>
+        {g.test!.ios && <a class="btn ghost" href={g.test!.ios} target="_blank" rel="noopener">{t.test_btn_ios.replace("{name}", g.name)}</a>}
+      </div>
     ))}
   </div></div></section>
 )}

@@ -31,7 +31,7 @@ export const GAMES: Game[] = [
              pl: ["120 łamigłówek w 6 światach i nowa zagadka dnia przez dwa lata", "Błoto, lis, który idzie za tobą, krety, kamienie ze strzałką i tunele", "Gwiazdki za najmniej ruchów; cofaj, ile chcesz", "Przebierz królika: czapki, okulary, szaliki i sześć futerek", "Rosną grzyby, przelatują ptaki, przybiegają pomachać inne króliki"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.hoplow",
-            ios: "https://testflight.apple.com/join/VVYUtheM",
+            // ios: "https://testflight.apple.com/join/VVYUtheM",   // on once Beta App Review passes
             store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
@@ -45,7 +45,7 @@ export const GAMES: Game[] = [
              pl: ["Wyścig z duchem kumpla: wyślij kod, on dostaje tę samą trasę i ściga się z twoim autem", "Awarie i roboty drogowe zapowiada znak", "Karetka, policja i straż nadjeżdżają z tyłu – zjedź im z drogi", "Combo za mijanie o włos, monety i top 10 rekordów", "Deszcz, śnieg, mgła, noc, tunele i rozjazdy w czterech światach", "Tuning w warsztacie, lakiery w garażu"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.inchway",
-            ios: "https://testflight.apple.com/join/W53bVrXp",
+            // ios: "https://testflight.apple.com/join/W53bVrXp",   // on once Beta App Review passes
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {
@@ -88,7 +88,7 @@ const en = {
   hero_h1: "Tiny pixel games <em>for one thumb.</em>",
   hero_p: "qkix makes small, cozy pixel-art games for Android: quick to pick up, hard to put down. No timers, no energy bars, play offline.",
   hero_cta: "See the games", hero_cta2: "Watch trailers",
-  test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Two games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone. Google needs 12 testers for 14 days before a game can launch for everyone.", test_btn: "Test {name}",
+  test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Two games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone. Google needs 12 testers for 14 days before a game can launch for everyone.", test_p_ios: "Two games are in testing - free, before anyone else. On Android: join our testers group once, then tap Become a tester for each game (Google needs 12 testers for 14 days before a game can launch). On iPhone: one tap opens the game in Apple's TestFlight app.", test_btn_ios: "{name} on iPhone", ios_small: "Test on", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Test {name}",
   games_eyebrow: "Games", games_h2: "Four games, one arcade",
   videos_eyebrow: "Videos", videos_h2: "See them move",
   about_eyebrow: "About", about_h2: "A one-person studio",
@@ -130,7 +130,7 @@ const pl: typeof en = {
   hero_h1: "Małe pixelowe gry <em>na jeden kciuk.</em>",
   hero_p: "qkix robi małe, przytulne gry pixel art na Androida: łatwo zacząć, trudno odłożyć. Bez limitów czasu i energii, gra offline.",
   hero_cta: "Zobacz gry", hero_cta2: "Obejrzyj trailery",
-  test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Dwie gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem. Google wymaga 12 testerów przez 14 dni, zanim gra trafi do wszystkich.", test_btn: "Testuj {name}",
+  test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Dwie gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem. Google wymaga 12 testerów przez 14 dni, zanim gra trafi do wszystkich.", test_p_ios: "Dwie gry są w testach - za darmo, przed wszystkimi. Na Androidzie: dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” (Google wymaga 12 testerów przez 14 dni przed premierą). Na iPhonie: jedno kliknięcie otwiera grę w aplikacji TestFlight od Apple.", test_btn_ios: "{name} na iPhonie", ios_small: "Testuj w", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Testuj {name}",
   games_eyebrow: "Gry", games_h2: "Cztery gry, jeden salon",
   videos_eyebrow: "Filmy", videos_h2: "Zobacz je w ruchu",
   about_eyebrow: "O nas", about_h2: "Jednoosobowe studio",
