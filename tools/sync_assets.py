@@ -25,6 +25,7 @@ SHOTS = {
     "inchway": ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"],
     "brick-tanks": ["2_battle", "6_boss", "4_winter", "5_night", "8_hangar"],
     "gloomdeep": ["2_dig", "3_ledges", "4_hint", "1_menu"],
+    "crosswoven": ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"],
 }
 LANGS = ["en", "pl"]
 

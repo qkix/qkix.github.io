@@ -68,6 +68,16 @@ export const GAMES: Game[] = [
     feats: { en: ["Break cracked rock with your pickaxe", "Rotten boards hold you only once", "Mine carts, lava with steam vents and a creature that copies your moves", "Torchlit mine: shadows, drips, bats and a cart rattling by", "Dress your dwarf at the forge: beards, helmets, tunics and pickaxes"],
              pl: ["Rozbijaj popękane skały kilofem", "Spróchniałe deski utrzymają cię tylko raz", "Wagoniki, lawa z kominami pary i stwór, który powtarza twoje ruchy", "Kopalnia w blasku pochodni: cienie, kapiąca woda, nietoperze i przejeżdżający wagonik", "Ubierz krasnoluda w kuźni: brody, hełmy, kurtki i kilofy"] },
   },
+  {
+    id: "crosswoven", name: "Crosswoven", accent: "#D9545E", status: "dev",
+    shots: ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"], shotLangs: ["en", "pl"], videoLangs: [],
+    tag: { en: "Picture logic as cross-stitch – solve the grid, then watch it stitched thread by thread.",
+           pl: "Obrazki logiczne jako haft krzyżykowy – rozwiąż siatkę i patrz, jak wyszywa się nitka po nitce." },
+    lead: { en: "Fill the grid from the numbers beside each row and column. Every solved patch turns into a cross-stitched picture on linen and is sewn into your patchwork sampler. Calm and roomy: big squares, zoom for large patterns, hints that teach the logic.",
+            pl: "Wypełnij siatkę według liczb przy wierszach i kolumnach. Każda rozwiązana łatka zamienia się w wyhaftowany krzyżykami obrazek na lnie i trafia do twojego wzornika z łatek. Spokojnie i przestronnie: duże kratki, powiększanie dużych wzorów, podpowiedzi, które uczą logiki." },
+    feats: { en: ["Every solved patch is stitched in colour, thread by thread", "A patchwork sampler that fills up with your pictures and stars", "Tap a square or drag along a line; one switch for stitch and X", "Zoom and pan big 20×20 patterns", "Three to five hearts, stars for a clean solve, your best times"],
+             pl: ["Każda rozwiązana łatka wyszywa się w kolorze, nitka po nitce", "Wzornik z łatek, który zapełnia się twoimi obrazkami i gwiazdkami", "Stuknij kratkę albo przeciągnij po linii; jeden przełącznik: krzyżyk albo X", "Powiększanie i przesuwanie dużych wzorów 20×20", "Od trzech do pięciu serc, gwiazdki za czyste rozwiązanie, najlepsze czasy"] },
+  },
 ];
 export const VIDEO_ORDER = ["inchway", "hoplow", "brick-tanks"];
 
@@ -89,7 +99,7 @@ const en = {
   hero_p: "qkix makes small, cozy pixel-art games for Android: quick to pick up, hard to put down. No timers, no energy bars, play offline.",
   hero_cta: "See the games", hero_cta2: "Watch trailers",
   test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Two games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone. Google needs 12 testers for 14 days before a game can launch for everyone.", test_p_ios: "Two games are in testing - free, before anyone else. On Android: join our testers group once, then tap Become a tester for each game (Google needs 12 testers for 14 days before a game can launch). On iPhone: one tap opens the game in Apple's TestFlight app.", test_btn_ios: "{name} on iPhone", ios_small: "Test on", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Test {name}",
-  games_eyebrow: "Games", games_h2: "Four games, one arcade",
+  games_eyebrow: "Games", games_h2: "Five games, one arcade",
   videos_eyebrow: "Videos", videos_h2: "See them move",
   about_eyebrow: "About", about_h2: "A one-person studio",
   about_p1: "qkix is one developer in Poland making games you can play for a minute on the bus and still want to open a month later.",
@@ -131,7 +141,7 @@ const pl: typeof en = {
   hero_p: "qkix robi małe, przytulne gry pixel art na Androida: łatwo zacząć, trudno odłożyć. Bez limitów czasu i energii, gra offline.",
   hero_cta: "Zobacz gry", hero_cta2: "Obejrzyj trailery",
   test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Dwie gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem. Google wymaga 12 testerów przez 14 dni, zanim gra trafi do wszystkich.", test_p_ios: "Dwie gry są w testach - za darmo, przed wszystkimi. Na Androidzie: dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” (Google wymaga 12 testerów przez 14 dni przed premierą). Na iPhonie: jedno kliknięcie otwiera grę w aplikacji TestFlight od Apple.", test_btn_ios: "{name} na iPhonie", ios_small: "Testuj w", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Testuj {name}",
-  games_eyebrow: "Gry", games_h2: "Cztery gry, jeden salon",
+  games_eyebrow: "Gry", games_h2: "Pięć gier, jeden salon",
   videos_eyebrow: "Filmy", videos_h2: "Zobacz je w ruchu",
   about_eyebrow: "O nas", about_h2: "Jednoosobowe studio",
   about_p1: "qkix to jeden twórca z Polski, który robi gry na minutę w autobusie, do których chce się wracać miesiąc później.",
