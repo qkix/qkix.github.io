@@ -31,6 +31,7 @@ export const GAMES: Game[] = [
              pl: ["120 łamigłówek w 6 światach i nowa zagadka dnia przez dwa lata", "Błoto, lis, który idzie za tobą, krety, kamienie ze strzałką i tunele", "Gwiazdki za najmniej ruchów; cofaj, ile chcesz", "Przebierz królika: czapki, okulary, szaliki i sześć futerek", "Rosną grzyby, przelatują ptaki, przybiegają pomachać inne króliki"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.hoplow",
+            ios: "https://testflight.apple.com/join/VVYUtheM",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
