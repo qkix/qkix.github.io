@@ -16,7 +16,7 @@ export interface Game {
   tag: Record<Lang, string>;
   lead: Record<Lang, string>;
   feats: Record<Lang, string[]>;
-  test?: { group: string; optIn: string; store: string };
+  test?: { group: string; optIn: string; store: string; ios?: string };   // ios: the TestFlight public link
 }
 
 export const GAMES: Game[] = [
@@ -44,6 +44,7 @@ export const GAMES: Game[] = [
              pl: ["Wyścig z duchem kumpla: wyślij kod, on dostaje tę samą trasę i ściga się z twoim autem", "Awarie i roboty drogowe zapowiada znak", "Karetka, policja i straż nadjeżdżają z tyłu – zjedź im z drogi", "Combo za mijanie o włos, monety i top 10 rekordów", "Deszcz, śnieg, mgła, noc, tunele i rozjazdy w czterech światach", "Tuning w warsztacie, lakiery w garażu"] },
     test: { group: "https://groups.google.com/g/qkix-testers",
             optIn: "https://play.google.com/apps/testing/eu.qkix.inchway",
+            ios: "https://testflight.apple.com/join/W53bVrXp",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {
@@ -107,6 +108,10 @@ const en = {
     "Ads come from Google AdMob; in the EEA, UK and Switzerland you choose your consent first. Purchases go through Google Play."],
   pp_note: "", pp_back: "Back to the game",
   t_title: "Become a tester", t_lead: "Help us launch {name} on Google Play: play it before anyone else - free, on an Android phone.",
+  t_lead_ios: "Help us launch {name}: play it before anyone else - free, on an Android phone or an iPhone.",
+  t_android: "On Android", t_iphone: "On iPhone",
+  ti_p: "Install Apple's TestFlight app from the App Store, then open the invite on the iPhone - that's it, no group to join.",
+  ti_b: "Join on TestFlight", ti_store: "Get TestFlight",
   t1: "Join the testers group", t1p: "Sign in with the Google account your Play Store uses and tap Join group.", t1b: "Join the group",
   t2: "Become a tester", t2p: "On Google Play's test page tap Become a tester - with the same account.", t2b: "Become a tester",
   t3: "Install the game", t3p: "Get it from the Play Store - the link is on the page from step 2, or here.", t3b: "Google Play",
@@ -145,6 +150,10 @@ const pl: typeof en = {
     "Reklamy z Google AdMob; w EOG, Wielkiej Brytanii i Szwajcarii najpierw wybierasz zgodę. Zakupy obsługuje Google Play."],
   pp_note: "Pełna treść polityki jest po angielsku - to wersja wiążąca.", pp_back: "Wróć do gry",
   t_title: "Zostań testerem", t_lead: "Pomóż nam wydać {name} w Google Play: zagraj przed premierą - za darmo, na telefonie z Androidem.",
+  t_lead_ios: "Pomóż nam wydać {name}: zagraj przed premierą - za darmo, na telefonie z Androidem albo na iPhonie.",
+  t_android: "Na Androidzie", t_iphone: "Na iPhonie",
+  ti_p: "Zainstaluj aplikację TestFlight od Apple z App Store, a potem otwórz zaproszenie na iPhonie - i gotowe, bez zapisywania do grupy.",
+  ti_b: "Dołącz w TestFlight", ti_store: "Pobierz TestFlight",
   t1: "Dołącz do grupy testerów", t1p: "Zaloguj się kontem Google, którego używasz w Sklepie Play, i kliknij „Dołącz do grupy”.", t1b: "Dołącz do grupy",
   t2: "Zostań testerem", t2p: "Na stronie testów Google Play kliknij „Zostań testerem” - tym samym kontem.", t2b: "Zostań testerem",
   t3: "Zainstaluj grę", t3p: "Pobierz ją ze Sklepu Play - link jest na stronie z kroku 2 albo tutaj.", t3b: "Google Play",

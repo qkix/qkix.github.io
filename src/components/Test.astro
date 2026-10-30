@@ -11,8 +11,17 @@ const links = [game.test!.group, game.test!.optIn, game.test!.store];
 const shotLang = game.shotLangs.includes(lang) ? lang : "en";
 const steps = [[t.t1, t.t1p, t.t1b], [t.t2, t.t2p, t.t2b], [t.t3, t.t3p, t.t3b]];
 ---
-<GameHead lang={lang} game={game} title={t.t_title} line={t.t_lead.replace("{name}", game.name)} />
+<GameHead lang={lang} game={game} title={t.t_title} line={(game.test!.ios ? t.t_lead_ios : t.t_lead).replace("{name}", game.name)} />
 <div class="wrap" style={`--accent:${game.accent};padding-block:26px 30px`}>
+  {game.test!.ios && (
+    <h2 class="eyebrow" style="margin:0 0 10px">{t.t_iphone}</h2>
+    <div class="steps" style="margin-bottom:26px">
+      <div class="stepc"><span class="n">1</span><h3>TestFlight</h3><p>{t.ti_p}</p>
+        <a class="btn" href={game.test!.ios} target="_blank" rel="noopener">{t.ti_b}</a>
+        <a class="btn ghost" href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener" style="margin-top:8px">{t.ti_store}</a></div>
+    </div>
+    <h2 class="eyebrow" style="margin:0 0 10px">{t.t_android}</h2>
+  )}
   <div class="steps">
     {steps.map(([h, p, b], i) => (
       <div class="stepc"><span class="n">{i + 1}</span><h3>{h}</h3><p>{p}</p>
