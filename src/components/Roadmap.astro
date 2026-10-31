@@ -1,0 +1,117 @@
+---
+// A game's public roadmap (from its ROADMAP.md, served as JSON by the qkix-community Worker) and the
+// "Suggest an idea" form. Both live in the browser: a new ROADMAP.md shows up without rebuilding the site.
+import { T, href, COMMUNITY_API, type Game, type Lang } from "../data/site";
+import GameHead from "./GameHead.astro";
+
+interface Props { lang: Lang; game: Game }
+const { lang, game } = Astro.props;
+const t = T[lang];
+const labels = { now: t.rm_now, next: t.rm_next, later: t.rm_later, done: t.rm_done, ideas: t.rm_ideas };
+const sizes = { S: t.rm_small, M: t.rm_medium, L: t.rm_large };
+---
+<GameHead lang={lang} game={game} title={t.rm_title} line={t.rm_lead.replace("{name}", game.name)} />
+<div class="wrap roadmap" style={`--accent:${game.accent};padding-block:26px 34px`}
+  data-api={COMMUNITY_API} data-game={game.id} data-lang={lang}
+  data-labels={JSON.stringify(labels)} data-sizes={JSON.stringify(sizes)}
+  data-msg={JSON.stringify({ empty: t.rm_empty, error: t.rm_error, updated: t.rm_updated, sent: t.idea_sent,
+    fail: t.idea_fail, slow: t.idea_slow, links: t.idea_links, length: t.idea_length, version: t.rm_version, inGame: t.cm_in_game })}>
+  <div class="rmtabs" role="tablist">
+    <button class="rmtab" role="tab" aria-selected="true" data-tab="plan">{t.rm_tab_plan}</button>
+    <button class="rmtab" role="tab" aria-selected="false" data-tab="done">{t.rm_tab_done}</button>
+  </div>
+  <div class="rmcols" data-cols data-panel="plan"><p class="note">{t.rm_loading}</p></div>
+  <div class="rmdone" data-done data-panel="done" hidden></div>
+  <p class="note" data-updated></p>
+
+  <section class="community">
+    <h2>{t.cm_h2}</h2>
+    <div class="cmlist" data-community></div>
+    <div class="cmnext"><p>{t.cm_next}</p><a class="btn ghost" href="#idea">{t.idea_h2}</a></div>
+  </section>
+
+  <section class="ideabox" id="idea">
+    <h2>{t.idea_h2}</h2>
+    <p class="note">{t.idea_p.replace("{name}", game.name)}</p>
+    <form data-idea novalidate>
+      <label>{t.idea_text}<textarea name="text" required minlength="10" maxlength="500" rows="4"></textarea></label>
+      <div class="ideatwo">
+        <label>{t.idea_name}<input name="name" maxlength="40" autocomplete="nickname"></label>
+        <label>{t.idea_email}<input name="email" type="email" maxlength="120" autocomplete="email"></label>
+      </div>
+      <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+      <div data-turnstile></div>
+      <p class="note small">{t.idea_privacy} <a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a></p>
+      <button class="btn" type="submit">{t.idea_send}</button>
+      <p class="ideamsg" data-msg role="status"></p>
+    </form>
+  </section>
+  <p style="margin-top:20px"><a href={href(lang, `${game.id}/`)}>{game.name}</a></p>
+</div>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>(".roadmap")) {
+    const api = root.dataset.api!, game = root.dataset.game!, lang = root.dataset.lang!;
+    const labels = JSON.parse(root.dataset.labels!), sizes = JSON.parse(root.dataset.sizes!);
+    const msg = JSON.parse(root.dataset.msg!);
+    const cols = root.querySelector<HTMLElement>("[data-cols]")!;
+    const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+    const done = root.querySelector<HTMLElement>("[data-done]")!;
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>("[data-tab]")];
+    const show = (name: string) => {
+      for (const b of tabs) b.setAttribute("aria-selected", String(b.dataset.tab === name));
+      for (const p of root.querySelectorAll<HTMLElement>("[data-panel]")) p.hidden = p.dataset.panel !== name;
+    };
+    for (const b of tabs) b.addEventListener("click", () => { show(b.dataset.tab!); history.replaceState(null, "", b.dataset.tab === "done" ? "#done" : location.pathname); });
+    if (location.hash === "#done") show("done");
+    type Item = { title: string; size: string; status: string; version?: string; date?: string };
+    fetch(`${api}/v1/roadmap/${game}`).then((r) => (r.ok ? r.json() : Promise.reject(r.status))).then((d) => {
+      const part = (lang !== "en" && d[lang]) || d.en;
+      const shipped: Item[] = part.sections.filter((s: { id: string }) => s.id === "done").flatMap((s: { items: Item[] }) => s.items);
+      const byVersion = new Map<string, Item[]>();
+      for (const i of shipped) byVersion.set(i.version || "", [...(byVersion.get(i.version || "") || []), i]);
+      done.innerHTML = [...byVersion].map(([v, items]) => `
+        <div class="rmver"><h3>${v ? esc(msg.version + " " + v) : ""}${items[0].date ? `<small>${esc(new Date(items[0].date).toLocaleDateString(lang))}</small>` : ""}</h3>
+          <ul>${items.map((i) => `<li>${esc(i.title)}</li>`).join("")}</ul></div>`).join("") || `<p class="note">${esc(msg.empty)}</p>`;
+      root.querySelector("[data-community]")!.innerHTML = (part.community || []).map((c: { idea: string; from: string; status: string }) => `
+        <div class="cmcard"><p>“${esc(c.idea)}”</p><small>${esc(c.from)}${/^\d+\.\d+/.test(c.status) ? ` · ${esc(msg.inGame)} ${esc(c.status)}` : c.status ? ` · ${esc(c.status)}` : ""}</small></div>`).join("");
+      cols.innerHTML = part.sections.filter((s: { id: string }) => s.id !== "done").map((s: { id: string; items: Item[] }) => `
+        <div class="rmcol rm-${esc(s.id)}"><h2>${esc(labels[s.id] || s.id)}</h2><ul>${s.items.map((i) => `
+          <li><span>${esc(i.title)}</span>${i.size ? `<small>${esc(sizes[i.size] || i.size)}</small>` : ""}</li>`).join("")}
+        </ul></div>`).join("") || `<p class="note">${esc(msg.empty)}</p>`;
+      root.querySelector("[data-updated]")!.textContent = `${msg.updated} ${new Date(d.updated).toLocaleDateString(lang)}`;
+    }).catch((e) => { cols.innerHTML = `<p class="note">${esc(e === 404 ? msg.empty : msg.error)}</p>`; });
+
+    const form = root.querySelector<HTMLFormElement>("[data-idea]")!;
+    const out = root.querySelector<HTMLElement>("[data-msg]")!;
+    const shown = Date.now();
+    let turnstile = "";
+    fetch(`${api}/v1/config`).then((r) => r.json()).then((c) => {
+      if (!c.turnstile) return;
+      (window as any).onTurnstile = (tok: string) => { turnstile = tok; };
+      const box = root.querySelector<HTMLElement>("[data-turnstile]")!;
+      box.innerHTML = `<div class="cf-turnstile" data-sitekey="${esc(c.turnstile)}" data-callback="onTurnstile" data-theme="dark" data-language="${esc(lang)}"></div>`;
+      const s = document.createElement("script");
+      s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }).catch(() => {});
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const f = new FormData(form);
+      const text = String(f.get("text") || "").trim();
+      if (text.length < 10 || text.length > 500) { out.textContent = msg.length; return; }
+      const button = form.querySelector("button")!;
+      button.disabled = true;
+      try {
+        const r = await fetch(`${api}/v1/idea`, { method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ game, text, name: f.get("name"), email: f.get("email"), lang, hp: f.get("website"), t: shown, turnstile }) });
+        const d = await r.json().catch(() => ({}));
+        if (r.ok) { out.textContent = msg.sent; form.reset(); return; }
+        out.textContent = d.error === "slow down" || d.error === "busy" ? msg.slow : d.error === "no links" ? msg.links
+          : d.error === "length" ? msg.length : msg.fail;
+      } catch { out.textContent = msg.fail; }
+      finally { button.disabled = false; }
+    });
+  }
+</script>

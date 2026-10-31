@@ -17,11 +17,12 @@ export interface Game {
   lead: Record<Lang, string>;
   feats: Record<Lang, string[]>;
   test?: { group: string; optIn: string; store: string; ios?: string };   // ios: the TestFlight public link
+  roadmap?: boolean;   // has a public roadmap (its ROADMAP.md, `just roadmap <game>`): /<game>/roadmap/ + the idea form
 }
 
 export const GAMES: Game[] = [
   {
-    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "test",
+    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "test", roadmap: true,
     shots: ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
@@ -92,6 +93,8 @@ export const SOCIALS = [
   { id: "x", name: "X", handle: "@qkixgames", url: "https://x.com/qkixgames", c: "#ffffff" },
 ];
 export const MAIL = "contact@qkix.eu";
+// qkix-community Worker (arcade/community): the games' roadmaps (JSON) and the players' ideas.
+export const COMMUNITY_API = "https://qkix-community.qkix.workers.dev";
 
 const en = {
   title: "qkix – tiny pixel games for one thumb",
@@ -122,6 +125,16 @@ const en = {
     "Anonymous gameplay statistics only if you say YES - and you can switch them off in OPTIONS.",
     "Ads come from Google AdMob; in the EEA, UK and Switzerland you choose your consent first. Purchases go through Google Play."],
   pp_note: "", pp_back: "Back to the game",
+  rm_title: "Roadmap", rm_lead: "What we're making next for {name} - and your ideas for it.", rm_link: "Roadmap & ideas", cm_h2: "Players' ideas", cm_next: "Your idea could be next - the good ones go here, with your name.", cm_in_game: "in the game since", rm_tab_plan: "Coming up", rm_tab_done: "Already in the game", rm_version: "Version", rm_see: "See the roadmap", rm_band: "Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
+  rm_now: "Now", rm_next: "Coming soon", rm_later: "Later", rm_done: "Done", rm_ideas: "Ideas",
+  rm_small: "small", rm_medium: "medium", rm_large: "big", rm_loading: "Loading the roadmap…",
+  rm_empty: "No roadmap yet - but ideas are welcome below.", rm_error: "The roadmap didn't load - try again later.", rm_updated: "Updated",
+  idea_h2: "Suggest an idea", idea_p: "What would make {name} better for you? We read every idea; the good ones go on the roadmap with your name.",
+  idea_text: "Your idea", idea_name: "Name or nickname (optional, shown with the idea)", idea_email: "E-mail (optional, only if you'd like an answer)",
+  idea_privacy: "We keep your idea, and your e-mail only if you give it, to answer you. No ads, no lists.", idea_send: "Send the idea",
+  idea_sent: "Thank you! Your idea is with us.", idea_fail: "That didn't go through - please try again in a minute.",
+  idea_slow: "Thanks - that's enough ideas for now, try again in an hour.", idea_links: "Please leave out links.",
+  idea_length: "Please write 10-500 characters.",
   t_title: "Become a tester", t_lead: "Help us launch {name} on Google Play: play it before anyone else - free, on an Android phone.",
   t_lead_ios: "Help us launch {name}: play it before anyone else - free, on an Android phone or an iPhone.",
   t_android: "On Android", t_iphone: "On iPhone",
@@ -164,6 +177,16 @@ const pl: typeof en = {
     "Anonimowe statystyki gry tylko, jeśli zgodzisz się na TAK - wyłączysz je w OPCJACH.",
     "Reklamy z Google AdMob; w EOG, Wielkiej Brytanii i Szwajcarii najpierw wybierasz zgodę. Zakupy obsługuje Google Play."],
   pp_note: "Pełna treść polityki jest po angielsku - to wersja wiążąca.", pp_back: "Wróć do gry",
+  rm_title: "Plany", rm_lead: "Co szykujemy w {name} - i twoje pomysły.", rm_link: "Plany i pomysły", cm_h2: "Pomysły graczy", cm_next: "Twój pomysł może być następny - dobre trafiają tutaj, z twoim podpisem.", cm_in_game: "w grze od", rm_tab_plan: "Co szykujemy", rm_tab_done: "Już w grze", rm_version: "Wersja", rm_see: "Zobacz plany", rm_band: "Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz.",
+  rm_now: "Teraz", rm_next: "Wkrótce", rm_later: "Później", rm_done: "Zrobione", rm_ideas: "Pomysły",
+  rm_small: "małe", rm_medium: "średnie", rm_large: "duże", rm_loading: "Wczytuję plany…",
+  rm_empty: "Plany jeszcze nie są gotowe - ale pomysły już przyjmujemy.", rm_error: "Nie udało się wczytać planów - spróbuj później.", rm_updated: "Aktualizacja",
+  idea_h2: "Zaproponuj pomysł", idea_p: "Co sprawiłoby, że {name} byłby dla ciebie lepszy? Czytamy każdy pomysł; dobre trafiają do planów z twoim podpisem.",
+  idea_text: "Twój pomysł", idea_name: "Imię lub nick (opcjonalnie, pojawi się przy pomyśle)", idea_email: "E-mail (opcjonalnie, tylko jeśli chcesz odpowiedź)",
+  idea_privacy: "Przechowujemy pomysł, a e-mail tylko wtedy, gdy go podasz - żeby odpowiedzieć. Żadnych reklam ani list.", idea_send: "Wyślij pomysł",
+  idea_sent: "Dziękujemy! Pomysł do nas dotarł.", idea_fail: "Nie udało się wysłać - spróbuj za chwilę.",
+  idea_slow: "Dzięki - na razie wystarczy, spróbuj za godzinę.", idea_links: "Bez linków, proszę.",
+  idea_length: "Napisz od 10 do 500 znaków.",
   t_title: "Zostań testerem", t_lead: "Pomóż nam wydać {name} w Google Play: zagraj przed premierą - za darmo, na telefonie z Androidem.",
   t_lead_ios: "Pomóż nam wydać {name}: zagraj przed premierą - za darmo, na telefonie z Androidem albo na iPhonie.",
   t_android: "Na Androidzie", t_iphone: "Na iPhonie",

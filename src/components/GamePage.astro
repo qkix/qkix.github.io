@@ -20,6 +20,16 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
     <div class="shots" data-shots>
       {game.shots.map((s) => <img class="px" src={asset(`/${game.id}/shots/${shotLang}/${s}.png`)} alt="" width="360" height="640" loading="lazy">)}
     </div>
+    {game.roadmap && (
+      <div class="rmband">
+        <div><p class="eyebrow">{t.rm_title}</p>
+          <p>{t.rm_band.replace("{name}", game.name)}</p></div>
+        <div class="rmbtns">
+          <a class="btn" href={href(lang, `${game.id}/roadmap/`)}>{t.rm_see}</a>
+          <a class="btn ghost" href={href(lang, `${game.id}/roadmap/#idea`)}>{t.idea_h2}</a>
+        </div>
+      </div>
+    )}
   </div>
   <aside class="store">
     {game.test ? (
@@ -38,6 +48,7 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
       <span><b>{t.info_platform}:</b> {game.test?.ios ? t.info_platform_ios : t.info_platform_v}</span>
       <span><b>{t.info_price}:</b> {t.info_price_v}</span>
       <span><b>{t.info_langs}:</b> {t.info_langs_v}</span>
+      {game.roadmap && <a href={href(lang, `${game.id}/roadmap/`)}>{t.rm_link}</a>}
       <a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a></div>
     <a class="btn ghost" href={href(lang, "#games")}>← {t.back}</a>
   </aside>

@@ -199,3 +199,48 @@ footer a { color: var(--muted); }
 .lost h1 { font-family: var(--pixel); font-weight: 400; font-size: clamp(22px, 4vw, 36px); margin: 0; text-shadow: 3px 3px 0 #12141f; }
 .lost p { color: var(--muted); margin: 0; }
 .lost img { width: 78px; image-rendering: pixelated; }
+
+/* roadmap (Roadmap.astro) */
+.rmcols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.rmcol { background: var(--panel); border-radius: 10px; padding: 16px 18px; border-top: 4px solid var(--panel-2); }
+.rmcol.rm-now { border-top-color: var(--gold); }
+.rmcol.rm-next { border-top-color: var(--accent, var(--gold)); }
+.rmcol h2 { font-family: var(--pixel); font-size: 16px; margin: 0 0 10px; }
+.rmcol ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rmcol li { background: var(--panel-2); border-radius: 6px; padding: 9px 11px; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.rmcol li small { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.ideabox { margin-top: 30px; background: var(--panel); border: 2px solid var(--gold); border-radius: 10px; padding: 20px 22px; max-width: 760px; }
+.ideabox h2 { font-family: var(--pixel); font-size: 18px; margin: 0 0 6px; }
+.ideabox form { display: grid; gap: 12px; margin-top: 12px; }
+.ideabox label { display: grid; gap: 5px; font-size: 14px; color: var(--muted); }
+.ideabox textarea, .ideabox input { font: 400 16px var(--body); color: var(--ink); background: var(--night); border: 2px solid var(--panel-2); border-radius: 6px; padding: 9px 11px; width: 100%; box-sizing: border-box; }
+.ideabox textarea:focus, .ideabox input:focus { border-color: var(--gold); outline: none; }
+.ideatwo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ideabox .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.ideabox .btn { justify-self: start; }
+.ideamsg { margin: 0; color: var(--gold); min-height: 1.4em; }
+.note.small { font-size: 13px; margin: 0; }
+@media (max-width: 860px) { .rmcols { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .ideatwo { grid-template-columns: minmax(0, 1fr); } }
+.rmband { margin-top: 26px; background: var(--panel); border: 2px solid var(--accent, var(--gold)); border-radius: 10px; padding: 18px 20px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.rmband p:last-child { margin: 0; color: var(--muted); }
+.rmbtns { display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 640px) { .rmband { grid-template-columns: minmax(0, 1fr); } .rmbtns { flex-direction: row; flex-wrap: wrap; } }
+.rmtabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.rmtab { font: 500 15px var(--body); color: var(--muted); background: var(--panel); border: 2px solid var(--panel-2); border-radius: 6px; padding: 8px 16px; cursor: pointer; }
+.rmtab[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--night); }
+.rmdone { display: grid; gap: 14px; max-width: 760px; }
+.rmver { background: var(--panel); border-radius: 10px; padding: 14px 18px; border-left: 4px solid var(--accent, var(--gold)); }
+.rmver h3 { font-family: var(--pixel); font-size: 14px; margin: 0 0 8px; display: flex; gap: 12px; align-items: baseline; }
+.rmver h3 small { font-family: var(--body); font-size: 13px; color: var(--muted); }
+.rmver ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.community { margin-top: 30px; max-width: 760px; }
+.community h2 { font-family: var(--pixel); font-size: 18px; margin: 0 0 12px; }
+.cmlist { display: grid; gap: 10px; }
+.cmcard { background: var(--panel); border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--gold); }
+.cmcard p { margin: 0 0 4px; }
+.cmcard small { color: var(--muted); }
+.cmnext { margin-top: 12px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; border: 2px dashed var(--panel-2); border-radius: 10px; padding: 12px 16px; }
+.cmnext p { margin: 0; color: var(--muted); flex: 1 1 260px; }
+
+[data-panel][hidden] { display: none; }
