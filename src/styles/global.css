@@ -62,13 +62,12 @@ section.block { padding-block: 36px; }
 h2 { font-family: var(--pixel); font-weight: 400; font-size: clamp(18px, 2.6vw, 26px); margin: 0 0 20px; line-height: 1.4; }
 
 /* game cards */
-.testband { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: center; background: var(--panel); border: 2px solid var(--gold); border-radius: 10px; padding: 22px 24px; }
+.testband { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; align-items: center; background: var(--panel); border: 2px solid var(--gold); border-radius: 10px; padding: 22px 24px; }
 .testband h2 { margin-top: 4px; }
 .testband p:last-child { color: var(--muted); margin: 0; }
-.testgames { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
+.testgames { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px 10px; align-items: stretch; }
 .testgames .btn { justify-content: flex-start; }
-.testrow { display: flex; gap: 10px; flex-wrap: wrap; }
-.testrow .btn:first-child { flex: 1 1 auto; }
+.testrow { display: contents; }   /* the game's button and its iPhone button share the grid's two columns */
 .testgames img { border-radius: 4px; }
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .card { background: var(--panel); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; border: 2px solid transparent; transition: transform 0.15s, border-color 0.15s; text-align: left; color: inherit; font: inherit; padding: 0; text-decoration: none; }
@@ -186,6 +185,7 @@ footer a { color: var(--muted); }
   .card .art { aspect-ratio: 1024 / 420; object-fit: cover; }
 }
 @media (max-width: 520px) {
+  .testgames { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .socials { grid-template-columns: minmax(0, 1fr); }
   .top nav { order: 3; width: 100%; margin-left: 0; }
   .lang { margin-left: auto; }
