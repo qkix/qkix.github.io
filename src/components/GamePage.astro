@@ -23,7 +23,7 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
     {game.roadmap && (
       <div class="rmband">
         <div><p class="eyebrow">{t.rm_title}</p>
-          <p>{t.rm_band.replace("{name}", game.name)}</p></div>
+          <p>{(game.rmBand?.[lang] ?? t.rm_band).replace("{name}", game.name)}</p></div>
         <div class="rmbtns">
           <a class="btn" href={href(lang, `${game.id}/roadmap/`)}>{t.rm_see}</a>
           <a class="btn ghost" href={href(lang, `${game.id}/roadmap/#idea`)}>{t.idea_h2}</a>

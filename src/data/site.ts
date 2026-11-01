@@ -18,11 +18,14 @@ export interface Game {
   feats: Record<Lang, string[]>;
   test?: { group: string; optIn: string; store: string; ios?: string };   // ios: the TestFlight public link
   roadmap?: boolean;   // has a public roadmap (its ROADMAP.md, `just roadmap <game>`): /<game>/roadmap/ + the idea form
+  rmBand?: Record<Lang, string>;   // the roadmap band's line on the game page ({name}); else the generic T.rm_band
 }
 
 export const GAMES: Game[] = [
   {
     id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "test", roadmap: true,
+    rmBand: { en: "Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
+              pl: "Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["2_run", "3_fox", "8_wardrobe", "6_tunnel", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
@@ -36,7 +39,9 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
-    id: "inchway", name: "Inchway", accent: "#F5D46B", status: "test",
+    id: "inchway", name: "Inchway", accent: "#F5D46B", status: "test", roadmap: true,
+    rmBand: { en: "Launch on 14 November, power-ups, achievements, new worlds and cars… see what's coming to {name} and tell us what you'd like.",
+              pl: "Premiera 14 listopada, bonusy na drodze, osiągnięcia, nowe światy i auta… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"], shotLangs: ["en", "pl"], videoLangs: ["en"],
     tag: { en: "Dodge traffic, read the road, don't crash – a pixel-art lane runner.",
            pl: "Omijaj auta, czytaj drogę, nie rozbij się – pixelowa jazda po pasach." },
@@ -125,7 +130,7 @@ const en = {
     "Anonymous gameplay statistics only if you say YES - and you can switch them off in OPTIONS.",
     "Ads come from Google AdMob; in the EEA, UK and Switzerland you choose your consent first. Purchases go through Google Play."],
   pp_note: "", pp_back: "Back to the game",
-  rm_title: "Roadmap", rm_lead: "What we're making next for {name} - and your ideas for it.", rm_link: "Roadmap & ideas", cm_h2: "Players' ideas", cm_next: "Your idea could be next - the good ones go here, with your name.", cm_in_game: "in the game since", rm_tab_plan: "Coming up", rm_tab_done: "Already in the game", rm_version: "Version", rm_see: "See the roadmap", rm_band: "Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
+  rm_title: "Roadmap", rm_lead: "What we're making next for {name} - and your ideas for it.", rm_link: "Roadmap & ideas", cm_h2: "Players' ideas", cm_next: "Your idea could be next - the good ones go here, with your name.", cm_in_game: "in the game since", rm_tab_plan: "Coming up", rm_tab_done: "Already in the game", rm_version: "Version", rm_see: "See the roadmap", rm_band: "See what's coming to {name} and tell us what you'd like.",
   rm_now: "Now", rm_next: "Coming soon", rm_later: "Later", rm_done: "Done", rm_ideas: "Ideas",
   rm_small: "small", rm_medium: "medium", rm_large: "big", rm_loading: "Loading the roadmap…",
   rm_empty: "No roadmap yet - but ideas are welcome below.", rm_error: "The roadmap didn't load - try again later.", rm_updated: "Updated",
@@ -177,7 +182,7 @@ const pl: typeof en = {
     "Anonimowe statystyki gry tylko, jeśli zgodzisz się na TAK - wyłączysz je w OPCJACH.",
     "Reklamy z Google AdMob; w EOG, Wielkiej Brytanii i Szwajcarii najpierw wybierasz zgodę. Zakupy obsługuje Google Play."],
   pp_note: "Pełna treść polityki jest po angielsku - to wersja wiążąca.", pp_back: "Wróć do gry",
-  rm_title: "Plany", rm_lead: "Co szykujemy w {name} - i twoje pomysły.", rm_link: "Plany i pomysły", cm_h2: "Pomysły graczy", cm_next: "Twój pomysł może być następny - dobre trafiają tutaj, z twoim podpisem.", cm_in_game: "w grze od", rm_tab_plan: "Co szykujemy", rm_tab_done: "Już w grze", rm_version: "Wersja", rm_see: "Zobacz plany", rm_band: "Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz.",
+  rm_title: "Plany", rm_lead: "Co szykujemy w {name} - i twoje pomysły.", rm_link: "Plany i pomysły", cm_h2: "Pomysły graczy", cm_next: "Twój pomysł może być następny - dobre trafiają tutaj, z twoim podpisem.", cm_in_game: "w grze od", rm_tab_plan: "Co szykujemy", rm_tab_done: "Już w grze", rm_version: "Wersja", rm_see: "Zobacz plany", rm_band: "Zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz.",
   rm_now: "Teraz", rm_next: "Wkrótce", rm_later: "Później", rm_done: "Zrobione", rm_ideas: "Pomysły",
   rm_small: "małe", rm_medium: "średnie", rm_large: "duże", rm_loading: "Wczytuję plany…",
   rm_empty: "Plany jeszcze nie są gotowe - ale pomysły już przyjmujemy.", rm_error: "Nie udało się wczytać planów - spróbuj później.", rm_updated: "Aktualizacja",
