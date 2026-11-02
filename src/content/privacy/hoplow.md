@@ -1,6 +1,6 @@
 ---
 title: "Hoplow – Privacy Policy"
-updated: "29 October 2026"
+updated: "2 November 2026"
 ---
 
 Hoplow ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -17,13 +17,29 @@ unlocked bunny furs and outfits and what your bunny wears, your daily-puzzle str
 tips you have seen, your purchases (as a cache) and your sound / vibration / language settings**
 in a file on your device. Android may include this file in your device backup to your Google
 account and restore it when you reinstall the app (**Android backup**; you control this in your
-device settings: Settings → Google → Backup). Nothing else leaves the device.
+device settings: Settings → Google → Backup). Beyond that, only the services below receive data.
 
-## Purchases (Google Play)
+## Saved progress and leaderboard (Google Play Games, Apple)
+
+- **Google Play Games (Android)** – if you use Play Games on your device, the app signs in to it
+  automatically, stores your progress as a Play Games saved game and submits your total points to the
+  game's leaderboard, where other players can see them with your Play Games profile name. Google
+  processes this under its privacy policy; you can manage or delete Play Games data in the Play Games
+  app / your Google account.
+- **Game Center and iCloud (iPhone)** – if you are signed in to Game Center, the app submits your total
+  points to the game's leaderboard, where other players can see them with your Game Center name. Your
+  progress is kept in your own iCloud account, so it can come back on reinstall or on another device.
+  Apple processes this under its privacy policy: <https://www.apple.com/legal/privacy/>. You control
+  both in your device's settings.
+
+We do not receive this data.
+
+## Purchases (Google Play, App Store)
 
 Optional in-app purchases (removing ads, the cozy pack with every fur and outfit) are processed entirely by **Google
-Play**. We never see your payment details; the app only learns from Google Play which products
-your Google account owns, so they can be restored on reinstall or on a new device.
+Play** on Android and by the **App Store** on iPhone. We never see your payment details; the app only learns from
+the store which products your account owns, so they can be restored on reinstall or on a new device
+(on iPhone with RESTORE PURCHASES in OPTIONS).
 
 ## Advertising (Google AdMob)
 
@@ -33,7 +49,8 @@ directed at children** (COPPA, "child-directed treatment") and **under the age o
 and limited to ads rated suitable for general audiences (**G**). This means:
 
 - **no personalised ads** and no remarketing – ads are chosen by the app and its content only;
-- the app **does not use the Android advertising ID** (the permission for it is removed);
+- the app **does not use the Android advertising ID** (the permission for it is removed) and on iPhone
+  **does not ask for permission to track you**;
 - Google still processes some technical information to show the ad, measure it and prevent fraud:
   the IP address and the approximate location derived from it, information about the app and the
   device (model, OS version, app version, crash and performance data) and interactions with ads.
@@ -48,9 +65,11 @@ You can remove all ads with the optional REMOVE ADS purchase.
 
 The app is designed for all ages, including children under 13, and follows the Google Play
 Families policy: we do not collect personal information from anyone, ads are non-personalised,
-child-directed and rated G, there are no chats and no links out of the game (except to the game's own Google Play page
-when an update is needed), and purchases always go through Google Play's own confirmation (which parents can
-protect with a password or Family Link). Parents with questions can write to contact@qkix.eu.
+child-directed and rated G, there are no chats, and purchases always go through the store's own confirmation
+(which parents can protect with a password, Family Link or Apple's Ask to Buy). The game's own links lead only to store
+pages (rating this game, the other qkix games under OUR GAMES, an update). SHARE after a daily puzzle opens your device's
+share sheet with a picture and a short text, and only when you tap it; nothing goes to us. Parents with questions
+can write to contact@qkix.eu.
 
 ## Changes
 
