@@ -1,6 +1,6 @@
 ---
 title: "Crosswoven – Privacy Policy"
-updated: "30 October 2026"
+updated: "2 November 2026"
 ---
 
 Crosswoven ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -21,7 +21,8 @@ progress can be kept by Google, only in your own Google account:
   account and restore it when you reinstall the app. You control this in your device settings
   (Settings → Google → Backup).
 - **Google Play Games** – if you use Play Games on your device, the app signs in to it
-  automatically and stores your progress (the patches you solved) as a Play Games saved game.
+  automatically and stores your progress (the patches you solved) as a Play Games saved game, and submits your total
+  stars to the game's leaderboard, where other players can see them with your Play Games profile name.
   Google processes this under its privacy policy; you can manage or delete Play Games data in the
   Play Games app / your Google account.
 

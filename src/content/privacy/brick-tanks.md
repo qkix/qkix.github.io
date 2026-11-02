@@ -1,6 +1,6 @@
 ---
 title: "Brick Tanks – Privacy Policy"
-updated: "25 October 2026"
+updated: "2 November 2026"
 ---
 
 Brick Tanks ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -12,7 +12,7 @@ We do not ask for your name, e-mail address or any account of our own. The only 
 our own server are the optional, anonymous gameplay statistics described below – and only if you
 agree to send them.
 
-The app saves your **best score, furthest stage, your coins, workshop upgrades, unlocked tank paints, the selected
+The app saves your **best score, furthest stage, campaign medals, daily reward streak, your coins, workshop upgrades, unlocked tank paints, the selected
 paint, daily missions, the daily map's best score, your purchases (as a cache) and your sound /
 vibration / language settings** in a file on your device. Copies of this
 progress can be kept by Google, only in your own Google account:
