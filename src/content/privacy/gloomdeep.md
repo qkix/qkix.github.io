@@ -1,6 +1,6 @@
 ---
 title: "Gloomdeep – Privacy Policy"
-updated: "29 October 2026"
+updated: "3 November 2026"
 ---
 
 Gloomdeep ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -12,20 +12,25 @@ We do not ask for your name, e-mail address or any account of our own. The only 
 our own server are the optional, anonymous gameplay statistics described below – and only if you
 agree to send them.
 
-The app saves your **progress (stars and fewest moves per level), your gold, hints used,
-the beards, helmets, pickaxes and lamps you unlocked and what your dwarf wears, your daily-puzzle streak, the tutorial
+The app saves your **progress (medals and fewest moves per level), your gold, hints used,
+the beards, helmets, pickaxes and lamps you unlocked and what your dwarf wears, your daily-puzzle calendar and streak, the tutorial
 tips you have seen, your purchases (as a cache) and your sound / vibration / language settings**
 in a file on your device. Copies of this
-progress can be kept by Google, only in your own Google account:
+progress can be kept by Google or Apple, only in your own account:
 
 - **Android backup** – Android may include this file in your device backup to your Google
   account and restore it when you reinstall the app. You control this in your device settings
   (Settings → Google → Backup).
 - **Google Play Games** – if you use Play Games on your device, the app signs in to it
-  automatically and stores your progress (stars, gold, unlocked looks, daily
-  streak) as a Play Games saved game, and submits your total stars to the game's leaderboard, where other players can see
+  automatically and stores your progress (medals, gold, unlocked looks, daily
+  streak) as a Play Games saved game, and submits your total points to the game's leaderboard, where other players can see
   it with your Play Games profile name. Google processes this under its privacy policy; you can
   manage or delete Play Games data in the Play Games app / your Google account.
+- **Game Center and iCloud (iPhone)** – if you are signed in to Game Center, the app submits your total
+  points to the game's leaderboard, where other players can see them with your Game Center name. Your
+  progress is kept in your own iCloud account, so it can come back on reinstall or on another device.
+  Apple processes this under its privacy policy: <https://www.apple.com/legal/privacy/>. You control
+  both in your iPhone's settings.
 
 ## Gameplay statistics (optional)
 
@@ -36,7 +41,7 @@ with **STATS ON / OFF** in OPTIONS.
 If you agree, the app sends:
 
 - game events: levels started, solved, quit or lost (to the Gloom or the lava) (level, moves, undos, hints,
-  time, stars), worlds opened, the daily puzzle, hints (free, for gold or for an ad), the
+  time, points), worlds opened, the daily puzzle, hints (free, for gold or for an ad), the
   forge (which look you put on or bought with gold), double gold for an ad, shop use (which product you
   tapped or bought – never payment details), app start and session length;
 - the game version, the app language, the operating-system version and the device model;
@@ -53,11 +58,12 @@ Switching statistics off deletes the install ID and any events not yet sent from
 Events already sent carry only the random install ID, so we cannot tell which of them are yours;
 they are deleted on schedule.
 
-## Purchases (Google Play)
+## Purchases (Google Play, App Store)
 
 Optional in-app purchases (removing ads, the forge pack with every look) are processed entirely by **Google
-Play**. We never see your payment details; the app only learns from Google Play which products
-your Google account owns, so they can be restored on reinstall or on a new device.
+Play** on Android and by the **App Store** on iPhone. We never see your payment details; the app only learns from
+the store which products your account owns, so they can be restored on reinstall or on a new device
+(on iPhone with RESTORE PURCHASES in OPTIONS).
 
 ## Advertising (Google AdMob)
 
