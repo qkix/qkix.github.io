@@ -1,6 +1,6 @@
 ---
 title: "Inchway – Privacy Policy"
-updated: "28 October 2026"
+updated: "3 November 2026"
 ---
 
 Inchway ("the app") is a game published by **qkix** ("we"). This policy explains what
@@ -14,7 +14,7 @@ and only if you agree to send them or tap CHALLENGE.
 
 The app saves your **scores, the top-10 records list, your coins, workshop tuning, unlocked car paints, the
 selected paint and your sound/vibration settings** in a file on your device. Copies of this
-progress can be kept by Google, only in your own Google account:
+progress can be kept by Google or Apple, only in your own account:
 
 - **Android backup** – Android may include this file in your device backup to your Google
   account and restore it when you reinstall the app. You control this in your device settings
@@ -24,6 +24,11 @@ progress can be kept by Google, only in your own Google account:
   saved game, and submits your best score to the game's leaderboard, where other players can see
   it with your Play Games profile name. Google processes this under its privacy policy; you can
   manage or delete Play Games data in the Play Games app / your Google account.
+- **Game Center and iCloud (iPhone)** – if you are signed in to Game Center, the app submits your best
+  score to the game's leaderboard, where other players can see it with your Game Center name, and records
+  your achievements. Your progress is kept in your own iCloud account, so it can come back on reinstall
+  or on another device. Apple processes this under its privacy policy:
+  <https://www.apple.com/legal/privacy/>. You control both in your device's settings.
 
 ## Gameplay statistics (optional)
 
@@ -61,10 +66,10 @@ people you want to race. Nothing is sent before you tap CHALLENGE. Ghosts are st
 Cloudflare service as the statistics and **deleted automatically after 90 days**. The legal basis is
 your request (GDPR Art. 6(1)(b)): you asked the app to make the challenge.
 
-## Purchases (Google Play)
+## Purchases (Google Play, App Store)
 
-Optional in-app purchases (removing ads, a car paint pack) are processed entirely by **Google
-Play**. We never see your payment details; the app only learns from Google Play which products
+Optional in-app purchases (removing ads, a car paint pack, a world pack) are processed entirely by **Google
+Play** or Apple's **App Store**. We never see your payment details; the app only learns from the store which products
 your Google account owns, so they can be restored on reinstall or on a new device.
 
 ## Advertising (Google AdMob)
