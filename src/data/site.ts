@@ -55,7 +55,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {
-    id: "brick-tanks", name: "Brick Tanks", accent: "#E0664C", status: "soon",
+    id: "brick-tanks", name: "Brick Tanks", accent: "#E0664C", status: "test",
     shots: ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Guard your flag in a brick maze – a one-thumb pixel tank battle.",
            pl: "Broń flagi w ceglanym labiryncie – pixelowa bitwa czołgów na jeden kciuk." },
@@ -63,6 +63,10 @@ export const GAMES: Game[] = [
             pl: "Jedziesz joystickiem pod mapą – czołg strzela sam. Wrogie czołgi nadciągają z góry: rozbijaj ceglane mury, chowaj się w krzakach i nie pozwól im dotrzeć do flagi." },
     feats: { en: ["40 campaign stages in 4 chapters: classic, desert sandstorms, winter ice, night battles in your headlights", "A bronze, silver or gold medal on every stage; all gold in a chapter wins a paint you can't buy", "Light, fast, heavy, sniper and mine-laying tanks – and a huge boss every 5th stage", "Bomb, shield, steel walls, stars, freeze and extra tanks", "Daily missions, a daily reward, a daily map and an endless mode", "Upgrade your tank in the hangar and paint it"],
              pl: ["40 etapów kampanii w 4 rozdziałach: klasyka, burze piaskowe na pustyni, zimowy lód, nocne bitwy w świetle reflektorów", "Brązowy, srebrny albo złoty medal na każdym etapie; komplet złota w rozdziale daje kolor, którego nie da się kupić", "Lekkie, szybkie, ciężkie czołgi, snajperzy i minerzy – a co piąty etap wielki boss", "Bomba, tarcza, stalowe mury, gwiazdki, zamrożenie i dodatkowe czołgi", "Misje dnia, nagroda dnia, mapa dnia i tryb bez końca", "Ulepszaj czołg w hangarze i maluj go"] },
+    test: { group: "https://groups.google.com/g/qkix-testers",
+            optIn: "https://play.google.com/apps/testing/eu.qkix.bricktanks",
+            ios: "https://testflight.apple.com/join/2zZwj19U",
+            store: "https://play.google.com/store/apps/details?id=eu.qkix.bricktanks" },
   },
   {
     id: "gloomdeep", name: "Gloomdeep", accent: "#E8A54A", status: "test",
