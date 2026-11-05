@@ -9,7 +9,7 @@ const NAMES = ["grass", "flowers0", "flowers1", "carrot", "shadow", "sparkle0", 
   "friend_side_idle0", "friend_side_hop", "friend_left_idle0", "friend_left_hop",
   ...["idle0", "idle1", "blink", "wave0", "wave1"].map(f => `friend_down_${f}`),
   "mfloor", "mwall", "torch0", "torch1", "torch2", "glow", "gem0", "gem1", "gem2", "rock", "rockshadow", "dshadow", "crystals",
-  ...["side", "left"].flatMap(d => [0, 1, 2, 3].map(f => `dwarf_${d}_run${f}`)), ...[0, 1, 2, 3].map(f => `dwarf_down_idle${f}`),
+  ...["side", "left", "up", "down"].flatMap(d => [0, 1, 2, 3].map(f => `dwarf_${d}_run${f}`)), ...[0, 1, 2, 3].map(f => `dwarf_down_idle${f}`),
   "table", "cat0", "cat1", "spool", "yarn", "thimble"];
 const cv = document.getElementById("scene");
 const tag = cv.parentElement.querySelector(".tag");
@@ -106,17 +106,19 @@ function meadow(x0, w) {
   };
 }
 
-// ---- Inchway: the gold car overtakes on a two-lane road through the meadow
+// ---- Inchway: the gold car overtakes on a two-lane road through the meadow; the verges scroll with the road
 function highway(x0, w) {
-  const roadX = x0 + Math.floor((w - 70) / 2), grass = [], trees = [];
-  for (let y = 0; y < Math.ceil(H / 16); y++) for (let x = 0; x < Math.ceil(w / 16) + 1; x++) grass.push((x * 5 + y * 11 + x * y) % 4);
+  const roadX = x0 + Math.floor((w - 70) / 2), grass = [], trees = [], ROWS = Math.ceil(H / 16) + 1, SPEED = 30;
+  for (let y = 0; y < ROWS; y++) for (let x = 0; x < Math.ceil(w / 16) + 1; x++) grass.push((x * 5 + y * 11 + x * y) % 4);
   for (const side of [x0 - 8, roadX + 70 - 4]) if (roadX - x0 > 6)
-    for (let y = -8; y < H; y += Math.floor(rnd(26, 36))) trees.push({x: side + Math.floor(rnd(0, 4)), y, v: Math.floor(rnd(0, 4))});
-  const s = {scroll: 0, cars: [{lane: 0, y: 4, k: "car1"}, {lane: 1, y: -60, k: "car2"}], spawn: 1.2, fx: [],
+    for (let y = -40; y < H; y += Math.floor(rnd(26, 36))) trees.push({x: side + Math.floor(rnd(0, 4)), y, v: Math.floor(rnd(0, 4))});
+  const s = {scroll: 0, off: 0, cars: [{lane: 0, y: 4, k: "car1"}, {lane: 1, y: -60, k: "car2"}], spawn: 1.2, fx: [],
     player: {lane: 1, x: 0, tx: 0, y: H - 34, glint: 0}};
   return {
     step(dt) {
-      s.scroll = (s.scroll + dt * 30) % 32;
+      s.scroll = (s.scroll + dt * SPEED) % 32;
+      s.off += dt * SPEED;
+      for (const tr of trees) if ((tr.y += dt * SPEED) > H) tr.y -= H + 40;     // a tree gone at the bottom comes back at the top
       // traffic drifts down the screen at one pace (so nobody rear-ends anybody), a new car comes in at
       // the top only where both lanes stay passable, the gold car moves over in time
       const TRAFFIC = 26, GAP = 46;
@@ -144,9 +146,11 @@ function highway(x0, w) {
       for (const c of s.cars) if (c.lane === p.lane && Math.abs(p.x - p.tx) < 2 && c.y + 28 > p.y - 2 && c.y < p.y) c.y = p.y - 30;
     },
     draw() {
-      const cols = Math.ceil(w / 16) + 1;
-      if (IMG.grass.complete) for (let y = 0, n = 0; y < Math.ceil(H / 16); y++) for (let x = 0; x < cols; x++, n++)
-        cx.drawImage(IMG.grass, grass[n] * 16, 0, 16, 16, x0 + x * 16, y * 16, 16, 16);
+      const cols = Math.ceil(w / 16) + 1, shift = Math.floor(s.off) % 16, top = Math.floor(s.off / 16);
+      if (IMG.grass.complete) for (let r = 0; r < ROWS; r++) {
+        const row = ((r - top) % ROWS + ROWS) % ROWS;
+        for (let x = 0; x < cols; x++) cx.drawImage(IMG.grass, grass[row * cols + x] * 16, 0, 16, 16, x0 + x * 16, (r - 1) * 16 + shift, 16, 16);
+      }
       for (let y = -32; y < H + 32; y += 32) img("road", roadX, y + Math.floor(s.scroll) % 32);   // Inchway's own road, two lanes
       for (const c of s.cars) img(c.k, roadX + 13 + c.lane * 28, c.y);
       img("player", s.player.x, s.player.y);
@@ -217,16 +221,16 @@ function maze(x0, w) {
   };
 }
 
-// ---- Gloomdeep: the dwarf runs for gems along a torch-lit gallery
+// ---- Gloomdeep: the dwarf runs for gems about a torch-lit gallery, along and then across, as on the game's tiles
 function mine(x0, w) {
-  const x1 = x0 + w, floorY = 52;                  // the dwarf's feet
+  const x1 = x0 + w, TOP = 50, BOTTOM = H - 4;     // where the dwarf's feet can go
   const torches = [];
   for (let x = x0 + 14; x < x1 - 8; x += 44) torches.push(x + Math.floor(rnd(-3, 3)));
   const rocks = w > 110 ? [{x: x0 + Math.floor(w * 0.5) - 12, y: H - 26}] : [];
   const s = {fx: [], gem: null, wait: 0,
-    dwarf: {x: x0 + Math.floor(w / 2) - 12, face: "side", run: 0, idle: 1},
+    dwarf: {x: x0 + Math.floor(w / 2) - 12, y: 56, face: "side", run: 0, idle: 1},
     crystals: {x: x1 - 30, y: H - 22}};
-  const newGem = () => { s.gem = {x: x0 + 6 + Math.floor(rnd(0, w - 22)), y: floorY - 12, t: 0}; };
+  const newGem = () => { s.gem = {x: x0 + 6 + Math.floor(rnd(0, w - 22)), y: Math.floor(rnd(TOP, BOTTOM)) - 12, t: 0}; };
   newGem();
   return {
     step(dt) {
@@ -234,9 +238,10 @@ function mine(x0, w) {
       if (!s.gem && (s.wait -= dt) <= 0) newGem();
       if (s.gem) {
         s.gem.t += dt;
-        const dx = s.gem.x - 6 - d.x;
+        const dx = s.gem.x - 6 - d.x, dy = s.gem.y + 12 - d.y, v = 40 * dt;
         if (d.idle > 0) d.idle -= dt;
-        else if (Math.abs(dx) > 1) { d.face = dx > 0 ? "side" : "left"; d.x += Math.sign(dx) * Math.min(Math.abs(dx), 40 * dt); d.run += dt; }
+        else if (Math.abs(dx) > 1) { d.face = dx > 0 ? "side" : "left"; d.x += Math.sign(dx) * Math.min(Math.abs(dx), v); d.run += dt; }
+        else if (Math.abs(dy) > 1) { d.face = dy > 0 ? "down" : "up"; d.y += Math.sign(dy) * Math.min(Math.abs(dy), v); d.run += dt; }
         else {
           for (let i = 0; i < 6; i++) s.fx.push({k: "sparkle", x: s.gem.x + 3, y: s.gem.y, vx: rnd(-24, 24), vy: rnd(-40, -10), t: 0});
           s.gem = null; s.wait = rnd(0.6, 1.2); d.idle = s.wait;
@@ -254,13 +259,16 @@ function mine(x0, w) {
       for (const tx of torches) img("glow", tx + 3 - 14, 12 - 14 + Math.round(Math.sin(time / 180 + tx)));
       cx.restore();
       for (const tx of torches) img("torch" + Math.floor(time / 140 + tx) % 3, tx, 4);
-      for (const r of rocks) { img("rockshadow", r.x + 4, r.y + 4); img("rock", r.x, r.y); }
-      img("crystals", s.crystals.x, s.crystals.y);
       if (s.gem) img("gem" + Math.floor(s.gem.t * 6) % 3, s.gem.x, s.gem.y + Math.round(Math.sin(s.gem.t * 4)));
-      const d = s.dwarf;
-      img("dshadow", d.x + 6, floorY - 2);
-      const k = d.idle > 0 || !s.gem ? `dwarf_down_idle${Math.floor(time / 200) % 4}` : `dwarf_${d.face}_run${Math.floor(d.run * 10) % 4}`;
-      img(k, d.x, floorY - 30);
+      const d = s.dwarf, things = [];                // back to front by where they stand
+      for (const r of rocks) things.push({foot: r.y + 18, draw: () => { img("rockshadow", r.x + 4, r.y + 4); img("rock", r.x, r.y); }});
+      things.push({foot: s.crystals.y + 18, draw: () => img("crystals", s.crystals.x, s.crystals.y)});
+      things.push({foot: d.y, draw: () => {
+        img("dshadow", d.x + 6, d.y - 2);
+        const k = d.idle > 0 || !s.gem ? `dwarf_down_idle${Math.floor(time / 200) % 4}` : `dwarf_${d.face}_run${Math.floor(d.run * 10) % 4}`;
+        img(k, d.x, Math.floor(d.y) - 30);
+      }});
+      for (const t of things.sort((a, b) => a.foot - b.foot)) t.draw();
       for (const p of s.fx) img(p.k, p.x, p.y);
     },
   };
