@@ -31,6 +31,7 @@ LANGS = ["en", "pl"]
 
 # the home page's diorama: site name -> game sprite
 H, I, B = "hoplow/assets/sprites/", "inchway/assets/sprites/", "brick-tanks/assets/sprites/"
+G, C = "gloomdeep/assets/sprites/", "crosswoven/assets/sprites/"
 SPRITES = {
     "grass": H + "outer_meadow.png", "flowers0": H + "flowers_meadow_0.png", "flowers1": H + "flowers_meadow_1.png",
     "carrot": H + "carrot.png", "shadow": H + "shadow.png", "sparkle0": H + "sparkle_0.png",
@@ -46,6 +47,14 @@ SPRITES = {
     **{f"car{i}": I + f"car_{c}.png" for i, c in enumerate(["white", "yellow", "green", "black"])},
     "brick": B + "brick.png", "bush": B + "trees.png", "tank": B + "tank_player.png",
     "earth": B + "ground.png", "brickfront": B + "brick_front.png",
+    "mfloor": G + "ground_galleries.png", "mwall": G + "wall_galleries.png",
+    **{f"torch{i}": G + f"wall_torch_{i}.png" for i in range(3)}, "glow": G + "glow_torch.png",
+    **{f"gem{i}": G + f"gem_{i}.png" for i in range(3)}, "rock": G + "pick_rock.png",
+    "rockshadow": G + "shadow_pick_rock.png", "dshadow": G + "shadow.png", "crystals": G + "prop_galleries_crystals_3.png",
+    **{f"dwarf_{d}_run{i}": G + f"dwarf_{d}_run{i}.png" for d in ("side", "left") for i in range(4)},
+    **{f"dwarf_down_idle{i}": G + f"dwarf_down_idle{i}.png" for i in range(4)},
+    "table": C + "table.png", "cat0": C + "cat_sleep_0.png", "cat1": C + "cat_sleep_1.png",
+    "spool": C + "spool_red.png", "yarn": C + "yarn_ball_0.png", "thimble": C + "thimble.png",
 }
 
 

@@ -1,5 +1,5 @@
 @font-face { font-family: "Qkix Pixel"; src: url(/fonts/QkixPixel.ttf?v=e9bc83e3) format("truetype"); font-display: block; }
-/* Layout: a live pixel diorama band (the three games in one world) opens the page; below it a calm
+/* Layout: a live pixel diorama band (our games in panels, taking turns) opens the page; below it a calm
    dark arcade: game cards, videos in phone frames, about, contact. Game pages reuse the same parts.
    One deliberate dark look (the games' own UI colours), so no light theme. */
 :root {
@@ -44,7 +44,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* the diorama */
 .scene { position: relative; background: #3c6e2c; border-bottom: 4px solid #12141f; }
 .scene canvas { display: block; width: 100%; }
-.scene .tag { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 12px; font-family: var(--pixel); font-size: 10px; color: #fff; background: rgba(18, 20, 31, 0.75); padding: 6px 8px; border-radius: 4px; }
+.scene .tag { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 12px; font-family: var(--pixel); font-size: 10px; color: #fff; background: rgba(18, 20, 31, 0.75); padding: 6px 8px; border-radius: 4px; max-width: calc(100% - 32px); line-height: 1.5; }
 
 /* hero copy */
 .hero { padding-block: 44px 28px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: end; }

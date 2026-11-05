@@ -9,7 +9,7 @@ const { lang } = Astro.props;
 const t = T[lang];
 ---
 <div class="scene"><canvas id="scene" data-v={folderVersion("img/sprites")} aria-label={t.scene_label}></canvas>
-  <span class="tag">{t.scene_tag}</span></div>
+  <span class="tag" data-live={t.scene_live}>{t.scene_tag}</span></div>
 <div class="wrap hero">
   <h1 set:html={t.hero_h1} />
   <div><p>{t.hero_p}</p>
