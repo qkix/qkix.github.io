@@ -109,16 +109,17 @@ function meadow(x0, w) {
 // ---- Inchway: the gold car overtakes on a two-lane road through the meadow; the verges scroll with the road
 function highway(x0, w) {
   const roadX = x0 + Math.floor((w - 70) / 2), grass = [], trees = [], ROWS = Math.ceil(H / 16) + 1, SPEED = 30;
+  const TREE_GAP = 32, TREES = 5;                   // one tree a tree's height apart, the column a loop longer than the panel
   for (let y = 0; y < ROWS; y++) for (let x = 0; x < Math.ceil(w / 16) + 1; x++) grass.push((x * 5 + y * 11 + x * y) % 4);
   for (const side of [x0 - 8, roadX + 70 - 4]) if (roadX - x0 > 6)
-    for (let y = -40; y < H; y += Math.floor(rnd(26, 36))) trees.push({x: side + Math.floor(rnd(0, 4)), y, v: Math.floor(rnd(0, 4))});
+    for (let i = 0; i < TREES; i++) trees.push({x: side + Math.floor(rnd(0, 4)), y: -48 + i * TREE_GAP, v: Math.floor(rnd(0, 4))});
   const s = {scroll: 0, off: 0, cars: [{lane: 0, y: 4, k: "car1"}, {lane: 1, y: -60, k: "car2"}], spawn: 1.2, fx: [],
     player: {lane: 1, x: 0, tx: 0, y: H - 34, glint: 0}};
   return {
     step(dt) {
       s.scroll = (s.scroll + dt * SPEED) % 32;
       s.off += dt * SPEED;
-      for (const tr of trees) if ((tr.y += dt * SPEED) > H) tr.y -= H + 40;     // a tree gone at the bottom comes back at the top
+      for (const tr of trees) if ((tr.y += dt * SPEED) > -48 + TREES * TREE_GAP) tr.y -= TREES * TREE_GAP;   // gone at the bottom, back at the top
       // traffic drifts down the screen at one pace (so nobody rear-ends anybody), a new car comes in at
       // the top only where both lanes stay passable, the gold car moves over in time
       const TRAFFIC = 26, GAP = 46;
@@ -155,7 +156,7 @@ function highway(x0, w) {
       for (const c of s.cars) img(c.k, roadX + 13 + c.lane * 28, c.y);
       img("player", s.player.x, s.player.y);
       for (const f of s.fx) img(f.k, f.x, f.y);
-      for (const tr of trees) img("tree" + tr.v, tr.x, tr.y);
+      for (const tr of [...trees].sort((a, b) => a.y - b.y)) img("tree" + tr.v, tr.x, tr.y);   // the nearer (lower) one in front
     },
   };
 }
