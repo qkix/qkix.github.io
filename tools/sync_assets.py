@@ -45,6 +45,7 @@ SPRITES = {
     "player": I + "player_gold.png",
     **{f"car{i}": I + f"car_{c}.png" for i, c in enumerate(["white", "yellow", "green", "black"])},
     "brick": B + "brick.png", "bush": B + "trees.png", "tank": B + "tank_player.png",
+    "earth": B + "ground.png", "brickfront": B + "brick_front.png",
 }
 
 

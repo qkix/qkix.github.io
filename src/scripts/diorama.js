@@ -2,7 +2,7 @@
 // at 1 game pixel per canvas pixel and scaled up by whole numbers (CSS). Sprites: public/img/sprites
 // (tools/sync_assets.py copies them from the games).
 const NAMES = ["grass", "flowers0", "flowers1", "carrot", "shadow", "sparkle0", "sparkle", "heart", "bfly0", "bfly1",
-  "tree0", "tree1", "tree2", "tree3", "road", "player", "car0", "car1", "car2", "car3", "brick", "bush", "tank",
+  "tree0", "tree1", "tree2", "tree3", "road", "player", "car0", "car1", "car2", "car3", "brick", "bush", "tank", "earth", "brickfront",
   ...["side", "left", "down"].flatMap(d => ["idle0", "idle1", "hop", "blink"].map(f => `bunny_${d}_${f}`)),
   "friend_side_idle0", "friend_side_hop", "friend_left_idle0", "friend_left_hop",
   ...["idle0", "idle1", "blink", "wave0", "wave1"].map(f => `friend_down_${f}`)];
@@ -143,18 +143,25 @@ function draw(time) {
   for (let y = 0, n = 0; y < Math.ceil(H / 16); y++) for (let x = 0; x < Math.ceil(W / 16); x++, n++)
     if (IMG.grass.complete) cx.drawImage(IMG.grass, w.grass[n] * 16, 0, 16, 16, x * 16, y * 16, 16, 16);
   for (const d of w.deco) img(d.k, d.x, d.y);
-  // the maze's dark floor
-  cx.fillStyle = "#2b2f3a"; cx.fillRect(w.mazeX - 4, 0, W - w.mazeX + 4, H);
-  cx.fillStyle = "#232631"; for (let y = 0; y < H; y += 12) for (let x = w.mazeX - 4; x < W; x += 12) if ((x + y) % 24 === 0) cx.fillRect(x, y, 12, 12);
+  // the maze's battlefield: Brick Tanks' earth, tiled
+  if (IMG.earth.complete) for (let y = 0; y < H; y += 96) for (let x = w.mazeX - 4; x < W; x += 96) cx.drawImage(IMG.earth, x, y);
   // the road
   for (let y = -32; y < H + 32; y += 32) img("road", w.roadX, y + Math.floor(w.scroll) % 32);   // Inchway's own road, two lanes
   for (const c of w.cars) img(c.k, w.roadX + 13 + c.lane * 28, c.y);
   img("player", w.player.x, w.player.y);
   // bricks, bushes, tank
-  for (const br of w.bricks) if (br.alive) img("brick", br.x, br.y);
+  // walls with height, as in the game: a shadow to the south east, the face under the lowest brick
+  cx.fillStyle = "rgba(13,8,5,0.32)";
+  const wall = (x, y) => w.bricks.some(o => o.alive && o.x === x && o.y === y);
+  for (const br of w.bricks) if (br.alive && !wall(br.x, br.y + 12)) cx.fillRect(br.x + 2, br.y + 12, 12, 3);
+  for (const br of w.bricks) if (br.alive) {
+    img("brick", br.x, br.y);
+    if (!wall(br.x, br.y + 12)) img("brickfront", br.x, br.y + 9);
+  }
   if (w.tank.shell) { cx.fillStyle = "#ffe36b"; cx.fillRect(Math.floor(w.tank.shell.x), Math.floor(w.tank.shell.y), 2, 3); }
   const tk = w.tank, dir = w.tank.aim > 0 ? 0 : tk.dir;
-  if (IMG.tank.complete) cx.drawImage(IMG.tank, tk.f * 12, dir * 12, 12, 12, Math.floor(tk.x), tk.y, 12, 12);
+  cx.fillStyle = "rgba(13,8,5,0.32)"; cx.fillRect(Math.floor(tk.x) + 2, tk.y + 3, 10, 10);   // stands on the ground
+  if (IMG.tank.complete) cx.drawImage(IMG.tank, tk.f * 14, dir * 14, 14, 14, Math.floor(tk.x) - 1, tk.y - 1, 14, 14);   // 14 px frames
   for (const bu of w.bushes) img("bush", bu.x, bu.y);
   // carrot, bunny
   if (w.carrot) { img("shadow", w.carrot.x, w.carrot.y + 10); img("carrot", w.carrot.x, w.carrot.y + Math.round(Math.sin(time / 300))); }
