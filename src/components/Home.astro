@@ -17,11 +17,11 @@ const t = T[lang];
       <a class="btn ghost" href="#videos">{t.hero_cta2}</a></div></div>
 </div>
 
-{GAMES.some((g) => g.test) && (
+{GAMES.some((g) => g.test && g.status !== "live") && (
 <section class="block wrap" id="test"><div class="testband">
   <div><p class="eyebrow">{t.test_eyebrow}</p><h2>{t.test_h2}</h2><p>{GAMES.some((g) => g.test?.ios) ? t.test_p_ios : t.test_p}</p></div>
   <div class="testgames">
-    {GAMES.filter((g) => g.test).map((g) => (
+    {GAMES.filter((g) => g.test && g.status !== "live").map((g) => (
       <div class="testrow">
         <a class="btn" href={href(lang, `${g.id}/test/`)}><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
           {t.test_btn.replace("{name}", g.name)}</a>

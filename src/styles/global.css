@@ -78,6 +78,7 @@ h2 { font-family: var(--pixel); font-weight: 400; font-size: clamp(18px, 2.6vw, 
 .card h3 { font-family: var(--pixel); font-weight: 400; font-size: 15px; margin: 0; color: var(--accent); }
 .card p { margin: 6px 0 0; color: var(--muted); font-size: 15px; grid-column: 1 / -1; }
 .chip { font-family: var(--pixel); font-size: 9px; padding: 4px 6px; border-radius: 4px; justify-self: start; background: var(--panel-2); color: var(--muted); }
+.chip.live { background: #1f4f6b; color: #b9e6ff; }
 .chip.test { background: #2f5d3a; color: #b6f3b6; }
 .chip.soon { background: #5a4a22; color: var(--gold); }
 .chip.dev { background: #4a2f5a; color: #e7c3ff; }
