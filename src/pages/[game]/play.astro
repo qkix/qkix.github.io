@@ -1,0 +1,26 @@
+---
+// /<game>/play/ - a short link straight to the game's Google Play listing, for every game that is out
+// (status "live"). YouTube makes links in Shorts descriptions clickable for our own domain but not for
+// play.google.com (owner, 8 Nov 2026), so shorts and posts link here and this page forwards at once.
+import { GAMES } from "../../data/site";
+
+export function getStaticPaths() {
+  return GAMES.filter((g) => g.status === "live" && g.test?.store).map((g) => ({ params: { game: g.id }, props: { game: g } }));
+}
+const { game } = Astro.props;
+const store = game.test!.store;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{game.name} on Google Play</title>
+  <meta http-equiv="refresh" content={`0; url=${store}`}>
+  <link rel="canonical" href={store}>
+  <script is:inline define:vars={{ store }}>location.replace(store);</script>
+  <style>body{background:#171a24;color:#fff;font:16px system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#f5d46b}</style>
+</head>
+<body><p><a href={store}>{game.name} on Google Play</a></p></body>
+</html>
