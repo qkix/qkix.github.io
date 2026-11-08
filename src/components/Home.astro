@@ -13,7 +13,10 @@ const t = T[lang];
 <div class="wrap hero">
   <h1 set:html={t.hero_h1} />
   <div><p>{t.hero_p}</p>
-    <div class="btns"><a class="btn" href="#games">{t.hero_cta}</a>
+    <div class="btns">{GAMES.filter((g) => g.status === "live" && g.test).map((g) => (
+        <a class="btn" href={g.test!.store} target="_blank" rel="noopener"><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
+          {t.live_btn.replace("{name}", g.name)}</a>))}
+      <a class={GAMES.some((g) => g.status === "live") ? "btn ghost" : "btn"} href="#games">{t.hero_cta}</a>
       <a class="btn ghost" href="#videos">{t.hero_cta2}</a></div></div>
 </div>
 
