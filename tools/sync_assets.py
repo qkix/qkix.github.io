@@ -127,6 +127,9 @@ def main():
                     save(scaled(folder / f"{n}.png", 360), PUB / game / "shots" / lang / f"{n}.png")
             if not video(game, lang) and lang == "en":
                 print(f"warning: no trailer for {game} (build/trailer/trailer_en.mp4)")
+        thumb = ARCADE / game / "build" / "thumbnail.png"     # the YouTube trailer's thumbnail (tools/make_thumbnail.py)
+        if thumb.exists():
+            shutil.copy(thumb, PUB / "video" / f"{game}_thumb.png")
         policy(game)
     print("OK")
 

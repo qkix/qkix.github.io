@@ -1,14 +1,35 @@
 ---
 import { asset } from "../lib/asset";
-// A game's trailer (public/video, 1280x720) in the viewer's language if there is one; it loads and
-// plays only while on screen (scripts/site.ts).
+// A game's trailer. With game.youtube: the YouTube video, loaded only when tapped (no YouTube request before
+// that - privacy, speed), from youtube-nocookie.com; the poster is our own frame. Else the file in public/video
+// (1280x720) in the viewer's language if there is one; it loads and plays only while on screen (scripts/site.ts).
 import { T, type Game, type Lang } from "../data/site";
 interface Props { lang: Lang; game: Game; style?: string }
 const { lang, game, style } = Astro.props;
 const v = game.videoLangs.includes(lang) ? lang : game.videoLangs[0];
+const poster = asset(game.youtube ? `/video/${game.id}_thumb.png` : `/video/${game.id}_${v}.jpg`);   // YouTube: the thumbnail (inchway/tools/make_thumbnail.py)
 ---
 <div class="vid wide" style={style}>
-  <video data-src={asset(`/video/${game.id}_${v}.mp4`)} poster={asset(`/video/${game.id}_${v}.jpg`)} width="1280" height="720"
-    muted loop playsinline controls preload="none" aria-label={`${game.name} – ${T[lang].trailer}`}></video>
+  {game.youtube ? (
+    <button class="yt" type="button" data-yt={game.youtube} aria-label={`${game.name} – ${T[lang].yt_play}`}
+      style={`background-image:url(${poster})`}><span class="ytplay" aria-hidden="true"></span></button>
+  ) : (
+    <video data-src={asset(`/video/${game.id}_${v}.mp4`)} poster={poster} width="1280" height="720"
+      muted loop playsinline controls preload="none" aria-label={`${game.name} – ${T[lang].trailer}`}></video>
+  )}
   <div class="cap"><b>{game.name}</b><span>{T[lang].trailer}</span></div>
 </div>
+<script is:inline>
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest && e.target.closest("button.yt");
+    if (!b || b.dataset.done) return;
+    b.dataset.done = "1";
+    const f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.yt + "?autoplay=1&rel=0&playsinline=1";
+    f.title = b.getAttribute("aria-label");
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    f.className = "ytframe";
+    b.replaceWith(f);
+  }, { once: false });
+</script>
