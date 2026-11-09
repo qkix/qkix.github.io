@@ -56,7 +56,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {
-    id: "brick-tanks", name: "Brick Tanks", accent: "#E0664C", status: "test",
+    id: "brick-tanks", name: "Brick Tanks", accent: "#E0664C", status: "live",
     shots: ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Guard your bunker in a brick maze – a one-thumb pixel tank battle.",
            pl: "Broń bunkra w ceglanym labiryncie – pixelowa bitwa czołgów na jeden kciuk." },
