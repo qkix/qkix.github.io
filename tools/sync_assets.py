@@ -26,6 +26,7 @@ SHOTS = {
     "brick-tanks": ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"],
     "gloomdeep": ["2_dig", "10_dark", "6_workings", "8_forge", "9_guide"],
     "crosswoven": ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"],
+    "layerfall": ["2_play", "3_clear", "6_hold", "4_wide", "5_chaos"],
 }
 LANGS = ["en", "pl"]
 

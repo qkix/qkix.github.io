@@ -97,6 +97,19 @@ export const GAMES: Game[] = [
             ios: "https://testflight.apple.com/join/7TTRqjYG",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.crosswoven" },
   },
+  {
+    id: "layerfall", name: "Layerfall", accent: "#4FD6E8", status: "test",
+    shots: ["2_play", "3_clear", "6_hold", "4_wide", "5_chaos"], shotLangs: ["en"], videoLangs: [],
+    tag: { en: "Drop and turn blocks into a deep 3D well – fill a layer and it clears.",
+           pl: "Wrzucaj i obracaj klocki w głębokiej studni 3D – pełna warstwa znika." },
+    lead: { en: "You look down into a deep well. Blocks fall in one at a time: swipe to move them, tap a pill to turn them on any of three axes – every pill shows your block turning, so you always know what happens. Fill a whole layer and it clears; the stack rises, the pace with it.",
+            pl: "Patrzysz w głąb studni. Klocki spadają pojedynczo: przesuwaj je palcem, obracaj pigułkami w trzech osiach – każda pigułka pokazuje, jak obróci się twój klocek, więc zawsze wiesz, co się stanie. Wypełnij całą warstwę, a zniknie; stos rośnie, tempo razem z nim." },
+    feats: { en: ["Four pits: FLAT, 3D, WIDE and CHAOS with a rising floor", "Turn on three axes with one thumb; hold a pill to preview the turn", "A short tutorial with four set pieces", "Pick your start speed, a best score for every pit", "Pixel art and chiptune sound, no account"],
+             pl: ["Cztery studnie: PŁASKA, 3D, SZEROKA i CHAOS z rosnącym dnem", "Obroty w trzech osiach jednym kciukiem; przytrzymaj pigułkę, żeby zobaczyć obrót", "Krótki samouczek w czterech krokach", "Wybierz tempo startowe, rekord dla każdej studni", "Pixel art i chiptune, bez konta"] },
+    test: { group: "https://groups.google.com/g/qkix-testers",
+            optIn: "https://play.google.com/apps/testing/eu.qkix.layerfall",
+            store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
+  },
 ];
 export const VIDEO_ORDER = ["inchway", "hoplow", "brick-tanks"];
 
