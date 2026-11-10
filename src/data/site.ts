@@ -85,7 +85,7 @@ export const GAMES: Game[] = [
   },
   {
     id: "crosswoven", name: "Crosswoven", accent: "#D9545E", status: "live",
-    shots: ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"], shotLangs: ["en", "pl"], videoLangs: [],
+    shots: ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Picture logic as cross-stitch – solve the grid, then watch it stitched thread by thread.",
            pl: "Obrazki logiczne jako haft krzyżykowy – rozwiąż siatkę i patrz, jak wyszywa się nitka po nitce." },
     lead: { en: "Fill the grid from the numbers beside each row and column. Every solved patch turns into a cross-stitched picture on linen and is sewn into your patchwork sampler. Calm and roomy: big squares, zoom for large patterns, hints that teach the logic.",
