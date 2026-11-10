@@ -111,7 +111,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
   },
 ];
-export const VIDEO_ORDER = ["inchway", "hoplow", "brick-tanks"];
+export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven"];   // released games; add Hoplow / Gloomdeep on their launch day
 
 export const SOCIALS = [
   { id: "youtube", name: "YouTube", handle: "@qkixgames", url: "https://www.youtube.com/@qkixgames", c: "#ff3b3b" },
@@ -133,8 +133,8 @@ const en = {
   hero_h1: "Tiny pixel games <em>for one thumb.</em>",
   hero_p: "qkix makes small, cozy pixel-art games for Android and iPhone: quick to pick up, hard to put down. No timers, no energy bars, play offline.",
   hero_cta: "See the games", hero_cta2: "Watch trailers",
-  test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Four games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone.", test_p_ios: "Four games are in testing - free, before anyone else. On Android: join our testers group once, then tap Become a tester for each game. On iPhone: one tap opens the game in Apple's TestFlight app.", test_btn_ios: "{name} on iPhone", ios_small: "Test on", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Test {name}", live_btn: "Get {name} on Google Play",
-  games_eyebrow: "Games", games_h2: "Five games, one arcade",
+  test_eyebrow: "Closed test", test_h2: "Play before the launch", test_p: "Our newest games are in Google Play's closed test. Join our testers group once, then tap Become a tester for each game - free, on any Android phone.", test_p_ios: "Our newest games are in testing - free, before anyone else. On Android: join our testers group once, then tap Become a tester for each game. On iPhone: one tap opens the game in Apple's TestFlight app.", test_btn_ios: "{name} on iPhone", ios_small: "Test on", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Test {name}", live_btn: "Get {name} on Google Play", live_eyebrow: "Out now on Google Play",
+  games_eyebrow: "Games", games_h2: "Six games, one arcade",
   videos_eyebrow: "Videos", videos_h2: "See them move",
   about_eyebrow: "About", about_h2: "A one-person studio",
   about_p1: "qkix is one developer in Poland making games you can play for a minute on the bus and still want to open a month later.",
@@ -186,8 +186,8 @@ const pl: typeof en = {
   hero_h1: "Małe pixelowe gry <em>na jeden kciuk.</em>",
   hero_p: "qkix robi małe, przytulne gry pixel art na Androida i iPhone'a: łatwo zacząć, trudno odłożyć. Bez limitów czasu i energii, gra offline.",
   hero_cta: "Zobacz gry", hero_cta2: "Obejrzyj trailery",
-  test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Cztery gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem.", test_p_ios: "Cztery gry są w testach - za darmo, przed wszystkimi. Na Androidzie: dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem”. Na iPhonie: jedno kliknięcie otwiera grę w aplikacji TestFlight od Apple.", test_btn_ios: "{name} na iPhonie", ios_small: "Testuj w", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Testuj {name}", live_btn: "Pobierz {name} z Google Play",
-  games_eyebrow: "Gry", games_h2: "Pięć gier, jeden salon",
+  test_eyebrow: "Zamknięte testy", test_h2: "Zagraj przed premierą", test_p: "Nasze najnowsze gry są w zamkniętych testach Google Play. Dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem” - za darmo, na każdym telefonie z Androidem.", test_p_ios: "Nasze najnowsze gry są w testach - za darmo, przed wszystkimi. Na Androidzie: dołączasz raz do grupy testerów, a potem przy każdej grze klikasz „Zostań testerem”. Na iPhonie: jedno kliknięcie otwiera grę w aplikacji TestFlight od Apple.", test_btn_ios: "{name} na iPhonie", ios_small: "Testuj w", info_platform_ios: "Android, iPhone (TestFlight)", test_btn: "Testuj {name}", live_btn: "Pobierz {name} z Google Play", live_eyebrow: "Już w Google Play",
+  games_eyebrow: "Gry", games_h2: "Sześć gier, jeden salon",
   videos_eyebrow: "Filmy", videos_h2: "Zobacz je w ruchu",
   about_eyebrow: "O nas", about_h2: "Jednoosobowe studio",
   about_p1: "qkix to jeden twórca z Polski, który robi gry na minutę w autobusie, do których chce się wracać miesiąc później.",
