@@ -84,7 +84,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.gloomdeep" },
   },
   {
-    id: "crosswoven", name: "Crosswoven", accent: "#D9545E", status: "test",
+    id: "crosswoven", name: "Crosswoven", accent: "#D9545E", status: "live",
     shots: ["2_board", "4_solved", "5_sampler", "1_menu", "6_big"], shotLangs: ["en", "pl"], videoLangs: [],
     tag: { en: "Picture logic as cross-stitch – solve the grid, then watch it stitched thread by thread.",
            pl: "Obrazki logiczne jako haft krzyżykowy – rozwiąż siatkę i patrz, jak wyszywa się nitka po nitce." },
