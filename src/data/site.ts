@@ -70,8 +70,8 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.bricktanks" },
   },
   {
-    id: "gloomdeep", name: "Gloomdeep", accent: "#E8A54A", status: "test",
-    shots: ["2_dig", "10_dark", "6_workings", "8_forge", "9_guide"], shotLangs: ["en", "pl"], videoLangs: [],
+    id: "gloomdeep", name: "Gloomdeep", accent: "#E8A54A", status: "live",
+    shots: ["2_dig", "10_dark", "6_workings", "8_forge", "9_guide"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "A dwarf, a pickaxe and a mine that gets darker the deeper you go – a sliding puzzle by lamplight.",
            pl: "Krasnolud, kilof i kopalnia, która ciemnieje z każdym metrem – przesuwana łamigłówka w świetle lampy." },
     lead: { en: "Swipe and the dwarf slides until something stops him – a wall, a boulder, a mine cart. Grab every gem, then the shaft takes you deeper. Harder than it looks: every level has a shortest route, and the gold gem is for finding it.",
@@ -111,7 +111,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
   },
 ];
-export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven"];   // released games; add Hoplow / Gloomdeep on their launch day
+export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven", "gloomdeep"];   // released games; add Hoplow / Gloomdeep on their launch day
 
 export const SOCIALS = [
   { id: "youtube", name: "YouTube", handle: "@qkixgames", url: "https://www.youtube.com/@qkixgames", c: "#ff3b3b" },
