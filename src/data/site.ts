@@ -71,7 +71,7 @@ export const GAMES: Game[] = [
   },
   {
     id: "gloomdeep", name: "Gloomdeep", accent: "#E8A54A", status: "live",
-    shots: ["2_dig", "10_dark", "6_workings", "8_forge", "9_guide"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "SyCrGaT6gZU",
+    shots: ["2_dig", "10_dark", "6_workings", "8_forge", "9_guide"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "5yCrGaT6gZU",
     tag: { en: "A dwarf, a pickaxe and a mine that gets darker the deeper you go – a sliding puzzle by lamplight.",
            pl: "Krasnolud, kilof i kopalnia, która ciemnieje z każdym metrem – przesuwana łamigłówka w świetle lampy." },
     lead: { en: "Swipe and the dwarf slides until something stops him – a wall, a boulder, a mine cart. Grab every gem, then the shaft takes you deeper. Harder than it looks: every level has a shortest route, and the gold gem is for finding it.",
