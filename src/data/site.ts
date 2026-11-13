@@ -57,7 +57,7 @@ export const GAMES: Game[] = [
   },
   {
     id: "brick-tanks", name: "Rubblers", accent: "#E0664C", status: "live",
-    shots: ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "1BHbHuYiLW4",
+    shots: ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "LyP1miTzP7M",
     tag: { en: "Guard your bunker in a brick maze – a one-thumb pixel tank battle.",
            pl: "Broń bunkra w ceglanym labiryncie – pixelowa bitwa czołgów na jeden kciuk." },
     lead: { en: "Drive with the stick under the map – your tank fires by itself. Enemy tanks pour in from the top: blast through brick walls, hide in the trees and never let them reach your bunker.",
