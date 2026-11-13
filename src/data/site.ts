@@ -56,7 +56,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.inchway" },
   },
   {
-    id: "brick-tanks", name: "Brick Tanks", accent: "#E0664C", status: "live",
+    id: "brick-tanks", name: "Rubblers", accent: "#E0664C", status: "live",
     shots: ["1_campaign", "2_battle", "3_desert", "6_boss", "5_night"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "1BHbHuYiLW4",
     tag: { en: "Guard your bunker in a brick maze – a one-thumb pixel tank battle.",
            pl: "Broń bunkra w ceglanym labiryncie – pixelowa bitwa czołgów na jeden kciuk." },
@@ -125,7 +125,7 @@ export const COMMUNITY_API = "https://qkix-community.qkix.workers.dev";
 
 const en = {
   title: "qkix – tiny pixel games for one thumb",
-  description: "qkix makes small, cozy pixel-art games for Android and iPhone: Hoplow, Inchway, Crosswoven and Brick Tanks.",
+  description: "qkix makes small, cozy pixel-art games for Android and iPhone: Hoplow, Inchway, Crosswoven and Rubblers.",
   nav_games: "Games", nav_videos: "Videos", nav_about: "About", nav_contact: "Contact",
   scene_label: "Live scenes from our games taking turns: a bunny on a meadow, cars on a highway, a tank in a brick maze, a dwarf in a mine, a patch being stitched",
   scene_tag: "Live: our games, taking turns",
@@ -178,7 +178,7 @@ const en = {
 };
 const pl: typeof en = {
   title: "qkix – małe pixelowe gry na jeden kciuk",
-  description: "qkix robi małe, przytulne gry pixel art na Androida i iPhone'a: Hoplow, Inchway, Crosswoven i Brick Tanks.",
+  description: "qkix robi małe, przytulne gry pixel art na Androida i iPhone'a: Hoplow, Inchway, Crosswoven i Rubblers.",
   nav_games: "Gry", nav_videos: "Filmy", nav_about: "O nas", nav_contact: "Kontakt",
   scene_label: "Scenki z naszych gier na zmianę: królik na łące, auta na autostradzie, czołg w ceglanym labiryncie, krasnolud w kopalni, wyszywana łatka",
   scene_tag: "Na żywo: nasze gry na zmianę",

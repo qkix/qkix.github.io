@@ -1,5 +1,5 @@
 // The home page's live diorama: a strip of panels, one game in each (Hoplow's meadow, Inchway's highway,
-// Brick Tanks' battlefield, Gloomdeep's mine, Crosswoven's table). Two or three panels fit; every
+// Rubblers' battlefield, Gloomdeep's mine, Crosswoven's table). Two or three panels fit; every
 // ROTATE seconds one panel blows up in a pixel blast and the next game takes its place, so all five
 // come round. Drawn at 1 game pixel per canvas pixel and scaled up by whole numbers (CSS).
 // Sprites: public/img/sprites (tools/sync_assets.py copies them from the games).
@@ -21,7 +21,7 @@ const ROTATE = [15, 20];          // s a panel stays before the next game blows 
 const BLAST = 1.0;                // s of the blast; the new game shows from its half
 const SEAM = "#12141f";           // the line between panels (the band's own bottom border)
 const BOOM = ["#ffffff", "#ffec96", "#faaa3c", "#dc5028", "#5a3c32"];
-const TITLES = {meadow: "Hoplow", highway: "Inchway", maze: "Brick Tanks", mine: "Gloomdeep", table: "Crosswoven"};
+const TITLES = {meadow: "Hoplow", highway: "Inchway", maze: "Rubblers", mine: "Gloomdeep", table: "Crosswoven"};
 let W = 200, SC = 3, last = 0, panels = [], queue = [], next = 0, turn = 0;
 const rnd = (a, b) => a + Math.random() * (b - a);
 const pick = a => a[Math.floor(Math.random() * a.length)];
@@ -161,7 +161,7 @@ function highway(x0, w) {
   };
 }
 
-// ---- Brick Tanks: a tank patrols under a brick wall and knocks out its nearest bricks
+// ---- Rubblers: a tank patrols under a brick wall and knocks out its nearest bricks
 function maze(x0, w) {
   const bricks = [], bushes = [];
   const left = x0 + 4, cols = Math.max(2, Math.floor((w - 8) / 12));

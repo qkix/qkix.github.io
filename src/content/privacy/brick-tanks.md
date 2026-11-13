@@ -1,9 +1,9 @@
 ---
-title: "Brick Tanks – Privacy Policy"
+title: "Rubblers – Privacy Policy"
 updated: "2 November 2026"
 ---
 
-Brick Tanks ("the app") is a game published by **qkix** ("we"). This policy explains what
+Rubblers ("the app") is a game published by **qkix** ("we"). This policy explains what
 information is processed when you play it.
 
 ## Information we collect
