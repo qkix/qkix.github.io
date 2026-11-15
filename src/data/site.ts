@@ -110,6 +110,16 @@ export const GAMES: Game[] = [
             optIn: "https://play.google.com/apps/testing/eu.qkix.layerfall",
             store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
   },
+  {
+    id: "windlayers", name: "Windlayers", accent: "#E8584A", status: "soon",
+    shots: ["1_menu", "2_wind", "3_deliver", "4_night", "6_album"], shotLangs: ["en"], videoLangs: [],
+    tag: { en: "A hot-air balloon post: ride the wind layers and drop the mail on every house.",
+           pl: "Balonowa poczta: łap warstwy wiatru i zrzucaj listy na każdy dom." },
+    lead: { en: "A balloon has no steering wheel – only the wind, and every height blows its own way. Climb into the layer that takes you where the mail must go, sink into the one that brings you back, drop the letters on the houses with red flags and land softly on the yellow field before the gas runs out.",
+            pl: "Balon nie ma kierownicy – ma tylko wiatr, a każda wysokość wieje w swoją stronę. Wznieś się do warstwy, która niesie cię tam, gdzie czeka poczta, opadnij do tej, która cię zawróci, zrzuć listy na domy z czerwonymi flagami i wyląduj miękko na żółtym polu, zanim skończy się gaz." },
+    feats: { en: ["One thumb: hold for the burner, pull down to let the air out", "A new map every flight and TODAY'S FLIGHT, the same for everyone", "Four seasons and four times of day, winter nights under the moon", "A stamp album, coins for new envelopes, baskets and scarves", "Pixel art and calm music, no account, play offline"],
+             pl: ["Jeden kciuk: przytrzymaj palnik, pociągnij w dół, żeby wypuścić powietrze", "Nowa mapa w każdym locie i LOT DNIA, ten sam dla wszystkich", "Cztery pory roku i cztery pory dnia, zimowe noce pod księżycem", "Album znaczków, monety na nowe powłoki, kosze i szaliki", "Pixel art i spokojna muzyka, bez konta, gra offline"] },
+  },
 ];
 export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven", "gloomdeep", "hoplow"];   // released games; add each on its launch day
 
@@ -145,7 +155,7 @@ const en = {
   status_live: "On Google Play", status_test: "Closed test", status_soon: "Coming soon", status_dev: "In development",
   play_small: "Get it on", play_soon: "Soon on", info_platform_live: "Android", tester: "Become a tester", trailer: "Trailer", yt_play: "Play the trailer (YouTube)",
   back: "All games", privacy: "Privacy policy", features: "What's inside", shots: "Screenshots",
-  info_platform: "Platform", info_platform_v: "Android and iPhone (soon)", info_price: "Price", info_price_v: "Free, cosmetic in-app purchases",
+  info_platform: "Platform", info_platform_v: "Android", info_price: "Price", info_price_v: "Free, cosmetic in-app purchases",
   info_langs: "Languages", info_langs_v: "EN PL ES PT DE FR IT RU TR ID",
   foot_privacy: "Privacy:",
   pp_title: "Privacy Policy", pp_updated: "Last updated", pp_toc: "On this page", pp_short: "In short",
@@ -198,7 +208,7 @@ const pl: typeof en = {
   status_live: "W Google Play", status_test: "Zamknięte testy", status_soon: "Wkrótce", status_dev: "W produkcji",
   play_small: "Pobierz z", play_soon: "Wkrótce w", info_platform_live: "Android", tester: "Zostań testerem", trailer: "Trailer", yt_play: "Odtwórz trailer (YouTube)",
   back: "Wszystkie gry", privacy: "Polityka prywatności", features: "Co w środku", shots: "Zrzuty ekranu",
-  info_platform: "Platforma", info_platform_v: "Android i iPhone (wkrótce)", info_price: "Cena", info_price_v: "Za darmo, zakupy wyglądu w grze",
+  info_platform: "Platforma", info_platform_v: "Android", info_price: "Cena", info_price_v: "Za darmo, zakupy wyglądu w grze",
   info_langs: "Języki", info_langs_v: "EN PL ES PT DE FR IT RU TR ID",
   foot_privacy: "Prywatność:",
   pp_title: "Polityka prywatności", pp_updated: "Ostatnia zmiana", pp_toc: "Na tej stronie", pp_short: "W skrócie",
