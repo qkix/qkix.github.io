@@ -24,9 +24,9 @@ export interface Game {
 
 export const GAMES: Game[] = [
   {
-    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "test", roadmap: true,
-    rmBand: { en: "Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
-              pl: "Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
+    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "live", roadmap: true,
+    rmBand: { en: "Out now on Google Play. Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
+              pl: "Już w Google Play. Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["2_run", "3_fox", "8_wardrobe", "6_calendar", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
@@ -41,8 +41,8 @@ export const GAMES: Game[] = [
   },
   {
     id: "inchway", name: "Inchway", accent: "#F5D46B", status: "live", roadmap: true,
-    rmBand: { en: "Out now on Google Play, the App Store soon. Power-ups, achievements, new worlds and cars… see what's coming to {name} and tell us what you'd like.",
-              pl: "Już w Google Play, w App Store wkrótce. Bonusy na drodze, osiągnięcia, nowe światy i auta… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
+    rmBand: { en: "Out now on Google Play. Power-ups, achievements, new worlds and cars… see what's coming to {name} and tell us what you'd like.",
+              pl: "Już w Google Play. Bonusy na drodze, osiągnięcia, nowe światy i auta… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"], shotLangs: ["en", "pl"], videoLangs: ["en"], youtube: "-Zg7OfHHc7I",
     tag: { en: "Dodge traffic, read the road, don't crash – a pixel-art lane runner.",
            pl: "Omijaj auta, czytaj drogę, nie rozbij się – pixelowa jazda po pasach." },
@@ -143,7 +143,7 @@ const en = {
   fact_games: "games", fact_langs: "languages in every game", fact_puzzles: "puzzles in Hoplow", fact_energy: "energy bars or timers",
   contact_eyebrow: "Contact", contact_h2: "Say hi", copy: "Copy", copied: "Copied",
   status_live: "On Google Play", status_test: "Closed test", status_soon: "Coming soon", status_dev: "In development",
-  play_small: "Get it on", play_soon: "Soon on", info_platform_live: "Android, iPhone soon", tester: "Become a tester", trailer: "Trailer", yt_play: "Play the trailer (YouTube)",
+  play_small: "Get it on", play_soon: "Soon on", info_platform_live: "Android", tester: "Become a tester", trailer: "Trailer", yt_play: "Play the trailer (YouTube)",
   back: "All games", privacy: "Privacy policy", features: "What's inside", shots: "Screenshots",
   info_platform: "Platform", info_platform_v: "Android and iPhone (soon)", info_price: "Price", info_price_v: "Free, cosmetic in-app purchases",
   info_langs: "Languages", info_langs_v: "EN PL ES PT DE FR IT RU TR ID",
@@ -196,7 +196,7 @@ const pl: typeof en = {
   fact_games: "gry", fact_langs: "języków w każdej grze", fact_puzzles: "łamigłówek w Hoplow", fact_energy: "pasków energii i limitów",
   contact_eyebrow: "Kontakt", contact_h2: "Napisz do nas", copy: "Kopiuj", copied: "Skopiowano",
   status_live: "W Google Play", status_test: "Zamknięte testy", status_soon: "Wkrótce", status_dev: "W produkcji",
-  play_small: "Pobierz z", play_soon: "Wkrótce w", info_platform_live: "Android, iPhone wkrótce", tester: "Zostań testerem", trailer: "Trailer", yt_play: "Odtwórz trailer (YouTube)",
+  play_small: "Pobierz z", play_soon: "Wkrótce w", info_platform_live: "Android", tester: "Zostań testerem", trailer: "Trailer", yt_play: "Odtwórz trailer (YouTube)",
   back: "Wszystkie gry", privacy: "Polityka prywatności", features: "Co w środku", shots: "Zrzuty ekranu",
   info_platform: "Platforma", info_platform_v: "Android i iPhone (wkrótce)", info_price: "Cena", info_price_v: "Za darmo, zakupy wyglądu w grze",
   info_langs: "Języki", info_langs_v: "EN PL ES PT DE FR IT RU TR ID",
