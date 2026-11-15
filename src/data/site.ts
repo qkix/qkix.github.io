@@ -27,7 +27,7 @@ export const GAMES: Game[] = [
     id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "live", roadmap: true,
     rmBand: { en: "Out now on Google Play. Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
               pl: "Już w Google Play. Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
-    shots: ["2_run", "3_fox", "8_wardrobe", "6_calendar", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"],
+    shots: ["2_run", "3_fox", "8_wardrobe", "6_calendar", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "KyHVkzWpypE",
     tag: { en: "Swipe the bunny home! Cozy sliding puzzles, carrots, foxes and hats to collect.",
            pl: "Przesuń królika do nory! Przytulne łamigłówki, marchewki, lisy i czapeczki." },
     lead: { en: "Swipe and the bunny runs until something stops it – a rock, a bush, the edge of the field. Pick up every carrot, then dive into the burrow.",
@@ -111,7 +111,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
   },
 ];
-export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven", "gloomdeep"];   // released games; add Hoplow / Gloomdeep on their launch day
+export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven", "gloomdeep", "hoplow"];   // released games; add each on its launch day
 
 export const SOCIALS = [
   { id: "youtube", name: "YouTube", handle: "@qkixgames", url: "https://www.youtube.com/@qkixgames", c: "#ff3b3b" },
