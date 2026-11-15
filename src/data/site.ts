@@ -119,6 +119,10 @@ export const GAMES: Game[] = [
             pl: "Balon nie ma kierownicy – ma tylko wiatr, a każda wysokość wieje w swoją stronę. Wznieś się do warstwy, która niesie cię tam, gdzie czeka poczta, opadnij do tej, która cię zawróci, zrzuć listy na domy z czerwonymi flagami i wyląduj miękko na żółtym polu, zanim skończy się gaz." },
     feats: { en: ["One thumb: hold for the burner, pull down to let the air out", "A new map every flight and TODAY'S FLIGHT, the same for everyone", "Four seasons and four times of day, winter nights under the moon", "A stamp album, coins for new envelopes, baskets and scarves", "Pixel art and calm music, no account, play offline"],
              pl: ["Jeden kciuk: przytrzymaj palnik, pociągnij w dół, żeby wypuścić powietrze", "Nowa mapa w każdym locie i LOT DNIA, ten sam dla wszystkich", "Cztery pory roku i cztery pory dnia, zimowe noce pod księżycem", "Album znaczków, monety na nowe powłoki, kosze i szaliki", "Pixel art i spokojna muzyka, bez konta, gra offline"] },
+    test: { group: "https://groups.google.com/g/qkix-testers",
+            optIn: "https://play.google.com/apps/testing/eu.qkix.windlayers",
+            ios: "https://testflight.apple.com/join/VCbJBzYM",
+            store: "https://play.google.com/store/apps/details?id=eu.qkix.windlayers" },
   },
 ];
 export const VIDEO_ORDER = ["inchway", "brick-tanks", "crosswoven", "gloomdeep", "hoplow"];   // released games; add each on its launch day
