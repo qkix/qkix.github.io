@@ -82,6 +82,19 @@ def scaled(src, width):
     return im.resize((width, round(im.height * width / im.width)), Image.NEAREST)
 
 
+def animated(src, width, path):
+    """An APNG, nearest-neighbour to `width` frame by frame, its timing kept (the card's art moves)."""
+    im = Image.open(src)
+    frames, durs = [], []
+    for i in range(im.n_frames):
+        im.seek(i)
+        fr = im.convert("RGB")
+        frames.append(fr.resize((width, round(fr.height * width / fr.width)), Image.NEAREST))
+        durs.append(im.info.get("duration", 100))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    frames[0].save(path, save_all=True, append_images=frames[1:], duration=durs, loop=0, optimize=True)
+
+
 def policy(game):
     """docs/privacy-policy.md -> frontmatter (title, updated) + the body from the first section."""
     md = (ARCADE / game / "docs" / "privacy-policy.md").read_text(encoding="utf-8")
@@ -121,7 +134,11 @@ def main():
     for game, names in SHOTS.items():
         store = ARCADE / game / "store"
         save(scaled(store / "icon_512.png", 256), PUB / game / "icon.png")
-        save(scaled(store / "feature_graphic.png", 1024), PUB / game / "feature.png")
+        anim = store / "feature_anim.png"                 # an APNG (Layerfall's logo plays): every frame scaled
+        if anim.exists():
+            animated(anim, 768, PUB / game / "feature.png")
+        else:
+            save(scaled(store / "feature_graphic.png", 1024), PUB / game / "feature.png")
         for lang in LANGS:
             folder = store / "screenshots" / ("" if lang == "en" else lang)
             for n in names:

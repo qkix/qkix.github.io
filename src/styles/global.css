@@ -136,7 +136,7 @@ footer a { color: var(--muted); }
 .feats { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 10px; }
 .feats li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px; color: var(--ink); }
 .feats li::before { content: ""; width: 8px; height: 8px; margin-top: 9px; background: var(--accent); box-shadow: 2px 2px 0 #12141f; }
-.shots { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+.shots { display: flex; gap: 14px; overflow-x: auto; padding: 8px 6px 12px; margin: -8px -6px 0; scroll-padding-inline: 6px; scroll-snap-type: x mandatory; }   /* room for the hover lift and the focus ring: a scroller clips both axes */
 .shots img { width: 200px; flex: none; border-radius: 10px; border: 3px solid #12141f; scroll-snap-align: start; cursor: zoom-in; transition: transform 0.15s; }
 .shots img:hover { transform: translateY(-3px); }
 .box[hidden] { display: none; }
