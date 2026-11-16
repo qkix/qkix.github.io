@@ -111,7 +111,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.layerfall" },
   },
   {
-    id: "windlayers", name: "Windlayers", accent: "#E8584A", status: "soon",
+    id: "windlayers", name: "Windlayers", accent: "#E8584A", status: "test",
     shots: ["1_menu", "2_wind", "3_deliver", "4_night", "6_album"], shotLangs: ["en"], videoLangs: [],
     tag: { en: "A hot-air balloon post: ride the wind layers and drop the mail on every house.",
            pl: "Balonowa poczta: łap warstwy wiatru i zrzucaj listy na każdy dom." },
