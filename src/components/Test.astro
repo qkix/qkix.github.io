@@ -33,5 +33,5 @@ const steps = [[t.t1, t.t1p, t.t1b], [t.t2, t.t2p, t.t2b], [t.t3, t.t3p, t.t3b]]
   <div class="tshots" data-shots>
     {game.shots.slice(0, 3).map((s) => <img class="px" src={asset(`/${game.id}/shots/${shotLang}/${s}.png`)} alt="" width="360" height="640" loading="lazy">)}
   </div>
-  <p style="margin-top:20px"><a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a> · <a href={href(lang, `${game.id}/`)}>{game.name}</a></p>
+  <p style="margin-top:20px"><a href={href(lang, `games/${game.id}/privacy-policy/`)}>{t.privacy}</a> · <a href={href(lang, `games/${game.id}/`)}>{game.name}</a></p>
 </div>

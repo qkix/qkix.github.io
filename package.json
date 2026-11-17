@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync": "python3 tools/sync_assets.py"
+    "sync": "python3 tools/sync_assets.py && python3 tools/sync_plugins.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

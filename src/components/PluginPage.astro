@@ -1,0 +1,49 @@
+---
+// /strapi-plugins/<id>/: one plugin - its header (logo, one line, install, links, numbers), its screenshot, then its own
+// README from the repo (English; src/content/plugins/<id>.md, tools/sync_plugins.py) with a contents list.
+import type { MarkdownInstance } from "astro";
+import { T, href, type Lang } from "../data/site";
+import { PLUGIN_META, REPO, COFFEE, type Plugin } from "../data/plugins";
+
+interface Props { lang: Lang; plugin: Plugin }
+const { lang, plugin: p } = Astro.props;
+const t = T[lang];
+const m = PLUGIN_META[p.id];
+const docs = import.meta.glob<MarkdownInstance<Record<string, never>>>("../content/plugins/*.md", { eager: true });
+const doc = docs[`../content/plugins/${p.id}.md`];
+const heads = doc.getHeadings().filter((h) => h.depth === 2 && !/table of contents/i.test(h.text));
+const { Content } = doc;
+const fmt = (n: number | null) => (n ?? 0).toLocaleString(lang === "pl" ? "pl-PL" : "en-GB");
+const npm = `https://www.npmjs.com/package/${p.pkg}`;
+const latest = m.changelog[0];
+---
+<section class="dv-phead" style={`--accent:${p.accent}`}><div class="wrap">
+  <a class="dv-back" href={href(lang, "strapi-plugins/")}>← {t.pl_all}</a>
+  <div class="dv-ptitle"><img src={`/strapi-plugins/${p.id}/logo.svg`} alt="" width="64" height="64">
+    <div><h1>{p.name}</h1><p class="dv-lead">{p.tag[lang]}</p></div></div>
+  <div class="dv-install"><code>npm install {p.pkg}</code>
+    <button class="dv-btn ghost" data-copy={`npm install ${p.pkg}`} data-done={t.copied}>{t.copy}</button></div>
+  <div class="btns">
+    <a class="dv-btn" href={npm} target="_blank" rel="noopener">{t.pl_npm}</a>
+    <a class="dv-btn ghost" href={`${REPO}/tree/main/packages/${p.pkg.replace("@qkix/", "")}`} target="_blank" rel="noopener">{t.pl_github}</a>
+  </div>
+  <dl class="dv-stats">
+    <div><dt>{t.pl_version}</dt><dd>{m.version}</dd></div>
+    <div><dt>{t.pl_month}</dt><dd>{fmt(m.monthly)}</dd></div>
+    <div><dt>Strapi</dt><dd>v5</dd></div>
+    <div><dt>License</dt><dd>MIT</dd></div>
+  </dl>
+</div></section>
+
+<div class="wrap dv-doc">
+  <aside>
+    <nav class="dv-toc" aria-label={t.pl_docs}><b>{t.pl_docs}</b>{heads.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}</nav>
+    {m.packages.length > 1 && <div class="dv-side"><b>{t.pl_packages}</b>
+      {m.packages.map((pk) => <a href={`https://www.npmjs.com/package/@qkix/${pk}`} target="_blank" rel="noopener"><code>@qkix/{pk}</code><small>{fmt(m.downloads[pk])}</small></a>)}</div>}
+    {latest && latest.notes.length > 0 && <div class="dv-side"><b>{t.pl_latest}: {latest.version}</b>
+      <ul>{latest.notes.map((n) => <li set:html={n.replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")} />)}</ul></div>}
+    <div class="dv-side"><p>{t.pl_issue}</p><a href={`${REPO}/issues`} target="_blank" rel="noopener">GitHub issues →</a>
+      <p>{t.pl_support}</p><a href={COFFEE} target="_blank" rel="noopener">{t.pl_coffee} →</a></div>
+  </aside>
+  <article class="dv-md"><p><img src={`/strapi-plugins/${p.id}/${p.shot}`} alt={p.name}></p><Content /></article>
+</div>

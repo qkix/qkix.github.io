@@ -13,11 +13,13 @@ interface Props {
   description?: string;
   image?: string;          // social card, from public/
   noindex?: boolean;
+  style?: "studio" | "games" | "dev";   // which world the page belongs to: the home, the arcade, the plugins
+  canonical?: string;      // another page that is the real address of this one (the old /<game>/privacy/)
 }
-const { lang, path, title, description, image = "/hoplow/feature.png", noindex = false } = Astro.props;
+const { lang, path, title, description, image = "/hoplow/feature.png", noindex = false, style = "games", canonical } = Astro.props;
 const t = T[lang];
 const site = Astro.site!;
-const url = new URL(href(lang, path), site).href;
+const url = new URL(href(lang, canonical ?? path), site).href;
 const pageTitle = title ? `${title} – qkix` : t.title;
 const desc = description ?? t.description;
 ---
@@ -29,10 +31,10 @@ const desc = description ?? t.description;
   <title>{pageTitle}</title>
   <meta name="description" content={desc}>
   {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={url}>}
-  {!noindex && LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(href(l, path), site).href}>)}
-  {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(href("en", path), site).href}>}
+  {!noindex && LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(href(l, canonical ?? path), site).href}>)}
+  {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(href("en", canonical ?? path), site).href}>}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/hoplow/icon.png">
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
   <meta name="theme-color" content="#1c1f33">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="qkix">
@@ -54,14 +56,14 @@ const desc = description ?? t.description;
     } catch (e) {}
   </script>
 </head>
-<body>
+<body data-style={style}>
   <a class="skip" href="#main">Skip to content</a>
   <header class="top"><div class="wrap">
-    <a class="logo" href={href(lang)}><i></i>QKIX</a>
+    <a class="logo" href={href(lang)} aria-label="qkix"><img src={style === "dev" ? "/brand/lockup.svg" : "/brand/lockup-dark.svg"} alt="qkix" width="102" height="37"></a>
     <nav aria-label={t.nav_label}>
-      <a href={href(lang, "#games")}>{t.nav_games}</a>
-      <a href={href(lang, "#videos")}>{t.nav_videos}</a>
-      <a href={href(lang, "#about")}>{t.nav_about}</a>
+      <a href={href(lang, "games/")} aria-current={style === "games" ? "true" : undefined}>{t.nav_games}</a>
+      <a href={href(lang, "strapi-plugins/")} aria-current={style === "dev" ? "true" : undefined}>{t.nav_plugins}</a>
+      {style === "games" && <a href={href(lang, "games/#videos")}>{t.nav_videos}</a>}
       <a href={href(lang, "#contact")}>{t.nav_contact}</a>
     </nav>
     <div class="lang" role="group" aria-label={t.lang_label}>
@@ -73,7 +75,10 @@ const desc = description ?? t.description;
 
   <footer><div class="wrap">
     <span>© 2026 qkix</span>
-    <span>{t.foot_privacy} {GAMES.map((g, i) => <>{i > 0 && ", "}<a href={href(lang, `${g.id}/privacy/`)}>{g.name}</a></>)}</span>
+    <a href={href(lang, "games/")}>{t.nav_games}</a>
+    <a href={href(lang, "strapi-plugins/")}>{t.nav_plugins}</a>
+    <a href="https://github.com/qkix" target="_blank" rel="noopener">GitHub</a>
+    {style !== "dev" && <span>{t.foot_privacy} {GAMES.map((g, i) => <>{i > 0 && ", "}<a href={href(lang, `games/${g.id}/privacy-policy/`)}>{g.name}</a></>)}</span>}
     <span>{SOCIALS.map((s, i) => <>{i > 0 && " · "}<a href={s.url} target="_blank" rel="noopener">{s.name}</a></>)}</span>
     <a href={`mailto:${MAIL}`}>{MAIL}</a>
   </div></footer>

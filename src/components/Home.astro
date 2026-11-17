@@ -29,7 +29,7 @@ const t = T[lang];
   <div class="testgames">
     {GAMES.filter((g) => g.test && g.status !== "live").map((g) => (
       <div class="testrow">
-        <a class="btn" href={href(lang, `${g.id}/test/`)}><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
+        <a class="btn" href={href(lang, `games/${g.id}/test/`)}><img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="28" height="28">
           {t.test_btn.replace("{name}", g.name)}</a>
         {g.test!.ios && <a class="btn ghost" href={g.test!.ios} target="_blank" rel="noopener">{t.test_btn_ios.replace("{name}", g.name)}</a>}
       </div>
@@ -40,7 +40,7 @@ const t = T[lang];
 <section class="block wrap" id="games"><p class="eyebrow">{t.games_eyebrow}</p><h2>{t.games_h2}</h2>
   <div class="cards">
     {GAMES.map((g) => (
-      <a class="card" style={`--accent:${g.accent}`} href={href(lang, `${g.id}/`)}>
+      <a class="card" style={`--accent:${g.accent}`} href={href(lang, `games/${g.id}/`)}>
         <img class="art px" src={asset(`/${g.id}/feature.png`)} alt="" width="1024" height="500" loading="lazy">
         <div class="body"><img class="icon px" src={asset(`/${g.id}/icon.png`)} alt="" width="56" height="56">
           <h3>{g.name}</h3><Chip lang={lang} status={g.status} /><p>{g.tag[lang]}</p></div>

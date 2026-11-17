@@ -1,0 +1,58 @@
+---
+// qkix.eu's home: the studio - who makes what - and two doors, the games (pixel, playful) and the Strapi plugins
+// (clean, for developers). Each door looks like the world behind it.
+import { asset } from "../lib/asset";
+import { GAMES, SOCIALS, MAIL, T, href, type Lang } from "../data/site";
+import { PLUGINS, PLUGIN_META } from "../data/plugins";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const live = GAMES.filter((g) => g.status === "live").length;
+const monthly = Object.values(PLUGIN_META).reduce((n, m) => n + m.monthly, 0);
+const dl = (Math.round(monthly / 100) / 10).toLocaleString(lang === "pl" ? "pl-PL" : "en-GB") + "k";
+---
+<section class="st-hero"><div class="wrap">
+  <img class="st-mark" src="/brand/mark.svg" alt="" width="132" height="132">
+  <div>
+    <h1 set:html={t.st_h1} />
+    <p>{t.st_p}</p>
+  </div>
+</div></section>
+
+<section class="wrap st-doors">
+  <a class="door door-games" href={href(lang, "games/")}>
+    <div class="door-art">{GAMES.slice(0, 6).map((g) => <img class="px" src={asset(`/${g.id}/icon.png`)} alt="" width="64" height="64">)}</div>
+    <p class="eyebrow">{t.st_games_eyebrow}</p>
+    <h2>{t.st_games_h}</h2>
+    <p>{t.st_games_p}</p>
+    <p class="door-stat">{t.st_games_stat.replace("{n}", String(GAMES.length)).replace("{live}", String(live))}</p>
+    <span class="btn">{t.st_games_cta} →</span>
+  </a>
+  <a class="door door-plugins" href={href(lang, "strapi-plugins/")}>
+    <div class="door-art">{PLUGINS.map((p) => <img src={`/strapi-plugins/${p.id}/logo.svg`} alt="" width="44" height="44">)}</div>
+    <p class="eyebrow">{t.st_plugins_eyebrow}</p>
+    <h2>{t.st_plugins_h}</h2>
+    <p>{t.st_plugins_p}</p>
+    <p class="door-stat">{t.st_plugins_stat.replace("{n}", String(PLUGINS.length)).replace("{dl}", dl)}</p>
+    <span class="btn">{t.st_plugins_cta} →</span>
+  </a>
+</section>
+
+<section class="block wrap" id="about"><p class="eyebrow">{t.st_how_eyebrow}</p><h2>{t.st_how_h}</h2>
+  <ol class="st-how">{t.st_how.map((line: string) => <li>{line}</li>)}</ol>
+</section>
+
+<section class="block wrap" id="contact"><p class="eyebrow">{t.contact_eyebrow}</p><h2>{t.contact_h2}</h2>
+  <div class="contact">
+    <div class="mail"><a id="mail" href={`mailto:${MAIL}`}><code>{MAIL}</code></a>
+      <button class="btn ghost" data-copy={MAIL} data-target="mail" data-done={t.copied}>{t.copy}</button></div>
+    <div class="socials">
+      {SOCIALS.map((s) => (
+        <a class="social" href={s.url} target="_blank" rel="noopener"><canvas width="8" height="8" data-glyph={s.id} data-c={s.c}></canvas>
+          <span>{s.name}<small>{s.handle}</small></span></a>
+      ))}
+      <a class="social" href="https://github.com/qkix" target="_blank" rel="noopener"><canvas width="8" height="8" data-glyph="gh" data-c="#f7f1df"></canvas>
+        <span>GitHub<small>qkix</small></span></a>
+    </div>
+  </div></section>

@@ -16,7 +16,7 @@ const { Content } = doc;
 <div class="wrap doc" style={`--accent:${game.accent}`}>
   <nav class="toc" aria-label={t.pp_toc}><b>{t.pp_toc}</b>
     {heads.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}
-    <a href={href(lang, `${game.id}/`)} style="margin-top:12px;color:var(--gold)">← {t.pp_back}</a></nav>
+    <a href={href(lang, `games/${game.id}/`)} style="margin-top:12px;color:var(--gold)">← {t.pp_back}</a></nav>
   <article style="min-width:0">
     <div class="dochead"><img class="px" src={asset(`/${game.id}/icon.png`)} alt="" width="64" height="64"><h1>{game.name} – {t.pp_title}</h1>
       <span>{t.pp_updated}: {doc.frontmatter.updated}</span></div>

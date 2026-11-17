@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- qkix avatar: navy square, safe inside a circle crop -->
+  <rect width="512" height="512" rx="0" fill="#1c1f33"/>
+  <path fill="#f7f1df" d="M124.96 124.96h78v78h-78zM202.96 124.96h78v78h-78zM280.96 124.96h78v78h-78zM124.96 202.96h78v78h-78zM280.96 202.96h78v78h-78zM124.96 280.96h78v78h-78zM202.96 280.96h78v78h-78z"/>
+  <path fill="#f0a500" d="M309.04 309.04h78v78h-78z"/>
+</svg>

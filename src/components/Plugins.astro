@@ -1,0 +1,42 @@
+---
+// /strapi-plugins/: the six products, for developers - a clean light page (body[data-style=dev]), not the arcade.
+import { T, href, type Lang } from "../data/site";
+import { PLUGINS, PLUGIN_META, REPO, NPM_ORG, COFFEE } from "../data/plugins";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const fmt = (n: number) => n.toLocaleString(lang === "pl" ? "pl-PL" : "en-GB");
+---
+<section class="dv-hero"><div class="wrap">
+  <p class="dv-eyebrow">{t.pl_eyebrow}</p>
+  <h1>{t.pl_h1}</h1>
+  <p class="dv-lead">{t.pl_p}</p>
+  <div class="btns">
+    <a class="dv-btn" href={REPO} target="_blank" rel="noopener">{t.pl_github}</a>
+    <a class="dv-btn ghost" href={NPM_ORG} target="_blank" rel="noopener">{t.pl_npm}</a>
+  </div>
+</div></section>
+
+<section class="wrap dv-grid">
+  {PLUGINS.map((p) => {
+    const m = PLUGIN_META[p.id];
+    return (
+      <a class="dv-card" style={`--accent:${p.accent}`} href={href(lang, `strapi-plugins/${p.id}/`)}>
+        <div class="dv-shot"><img src={`/strapi-plugins/${p.id}/${p.shot}`} alt="" loading="lazy"></div>
+        <div class="dv-body">
+          <div class="dv-name"><img src={`/strapi-plugins/${p.id}/logo.svg`} alt="" width="36" height="36">
+            <h2>{p.name}</h2><span class="dv-ver">v{m.version}</span></div>
+          <p>{p.tag[lang]}</p>
+          <ul>{p.points[lang].map((pt) => <li>{pt}</li>)}</ul>
+          <p class="dv-meta">{fmt(m.monthly)} {t.pl_month}</p>
+        </div>
+      </a>
+    );
+  })}
+</section>
+
+<section class="wrap dv-support">
+  <p>{t.pl_support}</p>
+  <a class="dv-btn" href={COFFEE} target="_blank" rel="noopener">{t.pl_coffee}</a>
+</section>

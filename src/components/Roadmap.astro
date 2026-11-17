@@ -41,12 +41,12 @@ const sizes = { S: t.rm_small, M: t.rm_medium, L: t.rm_large };
       </div>
       <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
       <div data-turnstile></div>
-      <p class="note small">{t.idea_privacy} <a href={href(lang, `${game.id}/privacy/`)}>{t.privacy}</a></p>
+      <p class="note small">{t.idea_privacy} <a href={href(lang, `games/${game.id}/privacy-policy/`)}>{t.privacy}</a></p>
       <button class="btn" type="submit">{t.idea_send}</button>
       <p class="ideamsg" data-msg role="status"></p>
     </form>
   </section>
-  <p style="margin-top:20px"><a href={href(lang, `${game.id}/`)}>{game.name}</a></p>
+  <p style="margin-top:20px"><a href={href(lang, `games/${game.id}/`)}>{game.name}</a></p>
 </div>
 
 <script>
