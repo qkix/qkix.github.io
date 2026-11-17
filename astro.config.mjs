@@ -12,6 +12,6 @@ export default defineConfig({
   integrations: [sitemap({ filter: (page) => {
     const p = new URL(page).pathname.replace(/^\/pl\//, "/");
     if (p.includes("/steer-clear/") || p.startsWith("/g/") || p.startsWith("/sp/")) return false;
-    return p === "/" || p.startsWith("/games/") || p.startsWith("/strapi-plugins/");
+    return p === "/" || p === "/privacy-policy/" || p.startsWith("/games/") || p.startsWith("/strapi-plugins/");
   } })],
 });

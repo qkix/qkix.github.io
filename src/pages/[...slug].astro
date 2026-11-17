@@ -16,13 +16,14 @@ import Test from "../components/Test.astro";
 import Roadmap from "../components/Roadmap.astro";
 import Plugins from "../components/Plugins.astro";
 import PluginPage from "../components/PluginPage.astro";
+import SitePrivacy from "../components/SitePrivacy.astro";
 import { GAMES, LANGS, T, href, type Game, type Lang } from "../data/site";
 import { PLUGINS, type Plugin } from "../data/plugins";
 
-type View = "studio" | "games" | "game" | "privacy" | "test" | "roadmap" | "plugins" | "plugin" | "moved";
+type View = "siteprivacy" | "studio" | "games" | "game" | "privacy" | "test" | "roadmap" | "plugins" | "plugin" | "moved";
 interface Page { path: string; view: View; game?: Game; plugin?: Plugin; to?: string; canonical?: string }
 export function getStaticPaths() {
-  const pages: Page[] = [{ path: "", view: "studio" }, { path: "games/", view: "games" }, { path: "strapi-plugins/", view: "plugins" }];
+  const pages: Page[] = [{ path: "", view: "studio" }, { path: "privacy-policy/", view: "siteprivacy" }, { path: "games/", view: "games" }, { path: "strapi-plugins/", view: "plugins" }];
   for (const game of GAMES) {
     const at = `games/${game.id}/`;
     pages.push({ path: at, view: "game", game });
@@ -56,6 +57,7 @@ const title = view === "game" ? game!.name
   : view === "privacy" ? `${game!.name} – ${t.pp_title}`
   : view === "test" ? `${game!.name} – ${t.t_title}`
   : view === "roadmap" ? `${game!.name} – ${t.rm_title}`
+  : view === "siteprivacy" ? t.pp_title
   : view === "games" ? t.games_title
   : view === "plugins" ? t.plugins_title
   : view === "plugin" ? `${plugin!.name} – ${t.plugin_suffix}` : undefined;
@@ -84,6 +86,7 @@ const style = view === "plugins" || view === "plugin" ? "dev" : view === "studio
 ) : (
 <Base lang={lang} path={path} title={title} description={description} image={image} style={style} canonical={canonical}>
   {view === "studio" && <Studio lang={lang} />}
+  {view === "siteprivacy" && <SitePrivacy lang={lang} />}
   {view === "games" && <Home lang={lang} />}
   {view === "game" && <GamePage lang={lang} game={game!} />}
   {view === "privacy" && <Privacy lang={lang} game={game!} />}

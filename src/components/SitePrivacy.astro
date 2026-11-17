@@ -1,0 +1,24 @@
+---
+// /privacy-policy/: the websites' own policy (qkix.eu + play.qkix.eu: hosting, the browser games' local saves,
+// Google AdSense with its consent message) - the address given in AdSense's privacy message. English text.
+import type { MarkdownInstance } from "astro";
+import { T, href, type Lang } from "../data/site";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang];
+const docs = import.meta.glob<MarkdownInstance<{ title: string; updated: string }>>("../content/site-privacy.md", { eager: true });
+const doc = Object.values(docs)[0];
+const heads = doc.getHeadings().filter((h) => h.depth === 2);
+const { Content } = doc;
+---
+<div class="wrap doc" style="--accent:#f0a500">
+  <nav class="toc" aria-label={t.pp_toc}><b>{t.pp_toc}</b>
+    {heads.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}
+    <a href={href(lang)} style="margin-top:12px;color:var(--gold)">← qkix</a></nav>
+  <article style="min-width:0">
+    <h1>{doc.frontmatter.title}</h1>
+    <p class="small">{doc.frontmatter.updated}{lang === "pl" ? " · Tekst wiążący jest po angielsku." : ""}</p>
+    <Content />
+  </article>
+</div>
