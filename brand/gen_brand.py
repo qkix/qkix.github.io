@@ -118,6 +118,13 @@ def main():
     lock = png(*files["lockup-dark"][:3], 760)
     card.alpha_composite(lock, ((1200 - lock.width) // 2, (630 - lock.height) // 2))
     card.convert("RGB").save(PUB / "card.png")
+    # the socials' banners: navy, the wordmark where every crop keeps it (X 1500x500: the avatar covers the lower left;
+    # YouTube 2560x1440: only the middle 1546x423 shows on every device)
+    for name, (bw, bh), lw, cx, cy in (("banner-x", (1500, 500), 620, 860, 230), ("banner-youtube", (2560, 1440), 1000, 1280, 720)):
+        ban = Image.new("RGBA", (bw, bh), NAVY)
+        lock = png(*files["lockup-dark"][:3], lw)
+        ban.alpha_composite(lock, (cx - lock.width // 2, cy - lock.height // 2))
+        ban.convert("RGB").save(OUT / f"{name}.png")
     print("ok:", ", ".join(sorted(p.name for p in OUT.iterdir())))
 
 
