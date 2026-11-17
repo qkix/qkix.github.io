@@ -43,7 +43,7 @@ const t = T[lang];
       <a class="card" style={`--accent:${g.accent}`} href={href(lang, `games/${g.id}/`)}>
         <img class="art px" src={asset(`/${g.id}/feature.png`)} alt="" width="1024" height="500" loading="lazy">
         <div class="body"><img class="icon px" src={asset(`/${g.id}/icon.png`)} alt="" width="56" height="56">
-          <h3>{g.name}</h3><Chip lang={lang} status={g.status} /><p>{g.tag[lang]}</p></div>
+          <h3>{g.name}</h3><Chip lang={lang} status={g.status} />{g.web && <span class="webchip">▶ {t.web_chip}</span>}<p>{g.tag[lang]}</p></div>
       </a>
     ))}
   </div></section>

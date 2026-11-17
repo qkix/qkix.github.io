@@ -1,6 +1,6 @@
 ---
 import { asset } from "../lib/asset";
-import { T, href, type Game, type Lang } from "../data/site";
+import { T, href, type Game, type Lang, PLAY_WEB } from "../data/site";
 import GameHead from "./GameHead.astro";
 import Trailer from "./Trailer.astro";
 
@@ -32,6 +32,8 @@ const shotLang = game.shotLangs.includes(lang) ? lang : "en";
     )}
   </div>
   <aside class="store">
+    {game.web && <a class="btn web" href={`${PLAY_WEB}/${game.id}/`}>▶ {t.web_play}</a>}
+    {game.web && <p class="webnote">{t.web_note}</p>}
     {game.status === "live" && game.test ? (
       <>
         <a class="play" href={game.test.store} target="_blank" rel="noopener"><canvas width="13" height="14" data-playicon></canvas>

@@ -18,13 +18,14 @@ export interface Game {
   lead: Record<Lang, string>;
   feats: Record<Lang, string[]>;
   test?: { group: string; optIn: string; store: string; ios?: string };   // ios: the TestFlight public link
+  web?: boolean;       // playable in the browser at PLAY_WEB/<id>/ (arcade play/deploy.sh, Google H5 Games Ads)
   roadmap?: boolean;   // has a public roadmap (its ROADMAP.md, `just roadmap <game>`): /<game>/roadmap/ + the idea form
   rmBand?: Record<Lang, string>;   // the roadmap band's line on the game page ({name}); else the generic T.rm_band
 }
 
 export const GAMES: Game[] = [
   {
-    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "live", roadmap: true,
+    id: "hoplow", name: "Hoplow", accent: "#FF9E40", status: "live", roadmap: true, web: true,
     rmBand: { en: "Out now on Google Play. Daily calendar, achievements, an Easter egg hunt, a new world… see what's coming to {name} and tell us what you'd like.",
               pl: "Już w Google Play. Kalendarz zagadek, osiągnięcia, wielkanocne szukanie jajek, nowy świat… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["2_run", "3_fox", "8_wardrobe", "6_calendar", "5_win"], shotLangs: ["en", "pl"], videoLangs: ["en", "pl"], youtube: "KyHVkzWpypE",
@@ -40,7 +41,7 @@ export const GAMES: Game[] = [
             store: "https://play.google.com/store/apps/details?id=eu.qkix.hoplow" },
   },
   {
-    id: "inchway", name: "Inchway", accent: "#F5D46B", status: "live", roadmap: true,
+    id: "inchway", name: "Inchway", accent: "#F5D46B", status: "live", roadmap: true, web: true,
     rmBand: { en: "Out now on Google Play. Power-ups, achievements, new worlds and cars… see what's coming to {name} and tell us what you'd like.",
               pl: "Już w Google Play. Bonusy na drodze, osiągnięcia, nowe światy i auta… zobacz, co szykujemy w {name}, i powiedz, czego ty chcesz." },
     shots: ["13_race_ghost", "3_warning", "7_winter", "9_city", "10_garage"], shotLangs: ["en", "pl"], videoLangs: ["en"], youtube: "-Zg7OfHHc7I",
@@ -134,6 +135,7 @@ export const SOCIALS = [
   { id: "x", name: "X", handle: "@qkixgames", url: "https://x.com/qkixgames", c: "#ffffff" },
 ];
 export const MAIL = "contact@qkix.eu";
+export const PLAY_WEB = "https://play.qkix.eu";   // the browser versions (Cloudflare Pages qkix-play)
 // qkix-community Worker (arcade/community): the games' roadmaps (JSON) and the players' ideas.
 export const COMMUNITY_API = "https://qkix-community.qkix.workers.dev";
 
@@ -142,6 +144,7 @@ const en = {
   description: "qkix is a one-person studio: small pixel-art games for one thumb (Hoplow, Inchway, Rubblers…) and open-source plugins for Strapi v5.",
   nav_games: "Games", nav_videos: "Videos", nav_about: "About", nav_contact: "Contact",
   nav_plugins: "Strapi plugins", nav_home: "Home",
+  web_play: "Play in your browser", web_chip: "Play in browser", web_note: "Free, with ads. Your progress stays in this browser – the app keeps it in the cloud.",
   games_title: "Tiny pixel games for one thumb", description_games: "Small, cozy pixel-art games for Android and iPhone, for one thumb: Hoplow, Inchway, Rubblers, Gloomdeep, Crosswoven and more.",
   plugins_title: "Strapi plugins", plugin_suffix: "Strapi plugin",
   description_plugins: "Open-source plugins for Strapi v5: Better Blocks, Chartkit, Rewind, Greenlight, Blueprint and Ferry – free, MIT, on npm.",
@@ -215,6 +218,7 @@ const pl: typeof en = {
   description: "qkix to jednoosobowe studio: małe gry pixel art na jeden kciuk (Hoplow, Inchway, Rubblers…) i pluginy open source do Strapi v5.",
   nav_games: "Gry", nav_videos: "Filmy", nav_about: "O nas", nav_contact: "Kontakt",
   nav_plugins: "Pluginy Strapi", nav_home: "Start",
+  web_play: "Zagraj w przeglądarce", web_chip: "Gra w przeglądarce", web_note: "Za darmo, z reklamami. Postęp zostaje w tej przeglądarce – aplikacja trzyma go w chmurze.",
   games_title: "Małe pixelowe gry na jeden kciuk", description_games: "Małe, przytulne gry pixel art na Androida i iPhone'a, na jeden kciuk: Hoplow, Inchway, Rubblers, Gloomdeep, Crosswoven i inne.",
   plugins_title: "Pluginy Strapi", plugin_suffix: "plugin Strapi",
   description_plugins: "Pluginy open source dla Strapi v5: Better Blocks, Chartkit, Rewind, Greenlight, Blueprint i Ferry – za darmo, MIT, w npm.",
