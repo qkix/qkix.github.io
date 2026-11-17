@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """qkix's logo, drawn from pixel grids (owner's pick, 17 Nov 2026: Fable's concept 3 "slot block").
 
-The mark: a cream 3x3 block frame read as a q - its centre is the counter, its bottom-right cell is missing, and an
-amber block is sliding into that slot (a game piece clicking into place, a plugin slotting in). The wordmark: chunky
-block letters on the same grid logic, the amber block again as the dot of the i. Everything is whole cells, so the
+The mark: a cream 3x3 block frame read as a Q - its centre is the counter, its bottom-right cell is missing, and an
+amber block is sliding into that slot (a game piece clicking into place, a plugin slotting in). The wordmark: QKIX, the
+mark as its Q and K I X from the same blocks, the I's top block amber. Everything is whole cells, so the
 SVGs are crisp at any size and the PNGs are drawn straight from the same grids (no SVG renderer needed).
 
     python3 brand/gen_brand.py      # -> brand/out/*.svg *.png and public/brand/ (what the site serves)
@@ -24,14 +24,10 @@ FRAME = ["XXX",
          "XX."]
 FRAME_AT, CELL = 88, 100
 BLOCK_AT = 324                          # the amber block: 36 units out of its slot, sliding in
-# The wordmark: 1 cell = WCELL; x-height 5 cells, ascender 2, descender 2 (k and the i's dot rise, q drops).
-WORD = {
-    "q": [".....", ".....", "XXXX", "X..X", "X..X", "X..X", "XXXX", "...X", "...X"],
-    "k": ["X...", "X...", "X..X", "X.X.", "XX..", "X.X.", "X..X", "....", "...."],
-    "i": ["A", ".", "X", "X", "X", "X", "X", ".", "."],
-    "x": [".....", ".....", "X...X", ".X.X.", "..X..", ".X.X.", "X...X", ".....", "....."],
-}
-WCELL, WGAP = 43, 1                     # units a cell: the k stands 7 cells = 301, as tall as the frame (300)
+# The wordmark (owner's pick of four, 17 Nov 2026): QKIX in capitals on the mark's own 3x3 block grid - the Q IS the mark
+# (frame + the amber block sliding in), then K, I, X from the same 100-unit blocks; the I's top block is amber.
+LETTERS = {"K": ["X.X", "XX.", "X.X"], "I": ["A", "X", "X"], "X": ["X.X", ".X.", "X.X"]}
+LGAP = 50                               # between letters (half a block)
 
 
 def rects_mark(scale=1.0, dx=0.0, dy=0.0, frame=CREAM):
@@ -45,18 +41,18 @@ def rects_mark(scale=1.0, dx=0.0, dy=0.0, frame=CREAM):
     return [(dx + x * scale, dy + y * scale, w * scale, h * scale, c) for x, y, w, h, c in out]
 
 
-def rects_word(x0, y0, ink):
-    """The wordmark's cells from (x0, y0) = the top of the ascender."""
-    out, x = [], x0
-    for ch in "qkix":
-        rows = WORD[ch]
-        width = max(len(r) for r in rows)
+def rects_word(ink):
+    """The QKIX wordmark in its own units: (rects, width, height). The Q = the mark (frame in `ink`)."""
+    out = [(x - FRAME_AT, y - FRAME_AT, w, h, c) for x, y, w, h, c in rects_mark(frame=ink)]
+    x = BLOCK_AT - FRAME_AT + CELL + LGAP                  # after the sliding block
+    for ch in "KIX":
+        rows = LETTERS[ch]
         for y, row in enumerate(rows):
             for cx, c in enumerate(row):
                 if c != ".":
-                    out.append((x + cx * WCELL, y0 + y * WCELL, WCELL, WCELL, AMBER if c == "A" else ink))
-        x += (width + WGAP) * WCELL
-    return out, x - WGAP * WCELL
+                    out.append((x + cx * CELL, y * CELL, CELL, CELL, AMBER if c == "A" else ink))
+        x += len(rows[0]) * CELL + LGAP
+    return out, x - LGAP, BLOCK_AT - FRAME_AT + CELL
 
 
 def svg(w, h, rects, bg=None, rx=0, comment="", tile=False):
@@ -97,20 +93,20 @@ def main():
                           "qkix mark without its tile, for dark backgrounds")
     files["mark-navy"] = (TILE - 2 * 76, TILE - 2 * 76, rects_mark(dx=-76, dy=-76, frame=NAVY), None, 0,
                           "qkix mark in navy, for light backgrounds")
-    # 2. lockups: tile + wordmark (navy letters for light backgrounds, cream for dark)
+    # 2. the wordmark QKIX (also served as lockup*.svg - the site's header): navy for light backgrounds, cream for dark
     for name, ink in (("lockup", NAVY), ("lockup-dark", CREAM)):
-        word, end = rects_word(TILE + 80, FRAME_AT, ink)
-        files[name] = (end + 40, TILE, rects_mark() + word, None, 0, f"qkix lockup ({'light' if ink == NAVY else 'dark'} background)")
+        rects, w, h = rects_word(ink)
+        files[name] = (w, h, rects, None, 0, f"qkix wordmark QKIX ({'light' if ink == NAVY else 'dark'} background)")
     # 3. the avatar for round crops (X, Instagram, YouTube, GitHub): navy square, the mark smaller in the middle
     av = rects_mark(scale=0.78, dx=256 - 256 * 0.78, dy=256 - 256 * 0.78)
     files["avatar"] = (TILE, TILE, av, NAVY, 0, "qkix avatar: navy square, safe inside a circle crop")
     for name, (w, h, rects, bg, rx, comment) in files.items():
-        (OUT / f"{name}.svg").write_text(svg(w, h, rects, bg, rx, comment, tile=name.startswith("lockup")))
+        (OUT / f"{name}.svg").write_text(svg(w, h, rects, bg, rx, comment))
     png(*files["mark"][:3], 512, NAVY, RADIUS).save(OUT / "mark-512.png")
     png(*files["avatar"][:3], 1024, NAVY).save(OUT / "avatar-1024.png")          # upload this to the socials
     png(*files["avatar"][:3], 1024, NAVY, circle=True).save(OUT / "avatar-preview-circle.png")
-    png(*files["lockup"][:3], 1600, tile=True).save(OUT / "lockup-1600.png")
-    png(*files["lockup-dark"][:3], 1600, tile=True).save(OUT / "lockup-dark-1600.png")
+    png(*files["lockup"][:3], 1600).save(OUT / "lockup-1600.png")
+    png(*files["lockup-dark"][:3], 1600).save(OUT / "lockup-dark-1600.png")
     for n in (180, 32, 16):
         png(*files["mark"][:3], n, NAVY, RADIUS).save(OUT / f"mark-{n}.png")
     # what the site serves
@@ -119,7 +115,7 @@ def main():
     (ROOT / "public" / "favicon.svg").write_text((OUT / "mark.svg").read_text())
     png(*files["mark"][:3], 180, NAVY, RADIUS).save(PUB / "apple-touch-icon.png")
     card = Image.new("RGBA", (1200, 630), NAVY)                       # the social card (og:image) of the home / plugins
-    lock = png(*files["lockup-dark"][:3], 760, tile=True)
+    lock = png(*files["lockup-dark"][:3], 760)
     card.alpha_composite(lock, ((1200 - lock.width) // 2, (630 - lock.height) // 2))
     card.convert("RGB").save(PUB / "card.png")
     print("ok:", ", ".join(sorted(p.name for p in OUT.iterdir())))
